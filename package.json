@@ -4,7 +4,8 @@
   "description": "",
   "main": "./root/html/index.js",
   "scripts": {
-    "test": "jest"
+    "test-unit": "jest",
+    "test-e2e": "./node_modules/.bin/cypress run"
   },
   "author": "Team 34",
   "dependencies": {
