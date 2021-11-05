@@ -1,0 +1,14 @@
+{
+  "name": "rocket_recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./root/html/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Team 34",
+  "dependencies": {
+    "cypress": "^8.7.0",
+    "jest": "^27.3.1"
+  }
+}
