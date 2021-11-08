@@ -25,7 +25,10 @@ jobs:
 
       - name: Install fresh npm packages
         run: npm install
-        
+
+      - name: Run ESLint
+        run: npm run test-lint
+
       - name: Run Jest tests
         run: npm run test-unit
         
