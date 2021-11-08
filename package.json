@@ -6,7 +6,8 @@
   "main": "./root/html/index.js",
   "scripts": {
     "test-unit": "jest",
-    "test-e2e": "./node_modules/.bin/cypress run"
+    "test-e2e": "./node_modules/.bin/cypress run",
+    "lint": "./node_modules/.bin/eslint . --fix"
   },
   "jest": {
     "verbose": true,
