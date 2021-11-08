@@ -3,6 +3,7 @@
 
 This is Team Rocket's (Team 34) project repository for Rocket Recipes, a web application that allows users to search and create recipes for their own personal culinary escapades. 
 
+---
 ## Testing
 ### Installation
 **Step 1:** Install npm on your local machine
@@ -26,3 +27,38 @@ Our unit tests are done with Jest. To go through all unit tests, run the command
 Our end to end tests are done with Cypress. To go through each of these tests, run the command
 
 `npm run test-e2e`
+
+
+---
+## Formatting
+We are using ESLint and Prettier to format our files. For this reason, I've included their respective packages in our package.json.
+
+We are using the [Airbnb](https://github.com/airbnb/javascript) style guide to format our code.
+### Installation
+The required packages will automatically be installed when you run `npm install` for the first time.
+
+In order to get the linting to work inside your VSCode, please intall the following extentions:
+
+
+[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+[Prettier ESLint](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint)
+
+
+Once you get these working, it should show you when you have style errors within your VSCode! 
+
+As you can see below, I'm using the var keyword which is a big no-go in modern JavaScript. VSCode makes the file header red and highlights the line. When I hover over that line, it tells me what I did wrong and I can easily change it!
+
+![ESLint in VSCode example](./docs/VSCode-ESLint-example.png)
+
+
+### Usage
+
+Before you commit your code, run the command 
+
+`npm run lint`
+
+This will automatically format your code, and if it is not able to, show you what styling or formatting errors you have.
+
+
+**You will not be able to merge your code into main until it passes all of the ESLint tests.**
