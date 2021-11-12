@@ -1,0 +1,125 @@
+.topBar {
+    margin-top: 20px;
+    text-align: right;
+}
+.topBar button {
+    margin-right: 40px;
+    border-radius: 12px;
+    border-width: 1px;
+    width: 115px;
+    height: 40px;
+    background-color: pink;
+    font-size: 20px;
+}
+.topBar a {
+    font-size: 20px;
+    margin-right: 40px;
+}
+.topBar form{
+    display: inline-block;
+}
+.midPart {
+    margin-top: 10%;
+    /* background-color: aqua; */
+    text-align: center;
+    margin-left:10% ;
+    margin-right:10% ;
+}
+.midPart h1{
+    text-align: left;
+}
+.midPart h2{
+    text-align: left;
+}
+.foodList {
+    /*border: 1px red solid;*/
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 0px;
+    padding-bottom: 100px;
+    padding-top: 0px;
+}
+.foodList h3{
+    text-decoration: underline;
+    margin-bottom:1px;
+}
+.foodList span{
+    display:block;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+.foodList p{
+    margin-bottom:1px;
+    display:inline;
+}
+.foodList h4{
+    display: inline;
+    margin-left: 20%;
+}
+.foodList button{
+    border-radius: 12px;
+    margin-bottom:3px;
+}
+
+.foodList div {
+    /*border: 10px red solid;*/
+    width: 20%;
+    height: 400px;
+    margin-right: 2%;
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: auto;
+}
+.foodPic {
+    width: 90%;
+    position: relative;
+}
+#Favorite{
+    text-align: left;
+    margin-left: 10%;
+}
+.FavoriteFood {
+    /*border: 1px red solid;*/
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 0px;
+    padding-bottom: 100px;
+    padding-top: 0px;
+}
+.FavoriteFood h3{
+    text-decoration: underline;
+    margin-bottom:1px;
+}
+.FavoriteFood span{
+    display:block;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+.FavoriteFood p{
+    margin-bottom:1px;
+    display:inline;
+}
+.FavoriteFood h4{
+    display: inline;
+    margin-left: 20%;
+}
+.FavoriteFood button{
+    border-radius: 12px;
+    margin-bottom:3px;
+}
+
+.FavoriteFood div {
+    /*border: 10px red solid;*/
+    width: 20%;
+    height: 400px;
+    margin-right: 2%;
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: auto;
+}
+.foodPic {
+    width: 90%;
+    position: relative;
+}
