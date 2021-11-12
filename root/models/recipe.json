@@ -9,6 +9,7 @@
     "vegan": true,
     "cheap": true,
     "glutenFree": false,
+    "isFromInternet": true,
     "dairyFree": true,
     "quickEat": false,
     "fiveIngredientsOrLess": true,
