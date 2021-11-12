@@ -29,8 +29,8 @@ jobs:
       - name: Run ESLint
         run: npm run test-lint
 
-      - name: Run Jest tests
+      - name: Run Jest Unit tests
         run: npm run test-unit
         
-      - name: Run Cypress tests
+      - name: Run Jest Puppeteer tests
         run: npm run test-e2e

@@ -13,20 +13,25 @@ This is Team Rocket's (Team 34) project repository for Rocket Recipes, a web app
 
 **Step 2:** Install testing packages
 
-We are using Jest and Cypress to test our application, and you need to install both of them to get our tests working. First, install the testing packages by typing:
+We are using Jest and Jest Puppeteer to test our application, and you need to install both of them to get our tests working. First, install the testing packages by typing:
 `npm install`
 
 ### Running Tests
 We have two different types of tests, unit tests and end to end tests.
 
-Our unit tests are done with Jest. To go through all unit tests, run the command
+Our unit tests are done with plain Jest. To go through all unit tests, run the command
 
 `npm run test-unit`
 
 
-Our end to end tests are done with Cypress. To go through each of these tests, run the command
+Our end to end tests are done with Jest Puppeteer. To go through each of these tests, run the command
 
 `npm run test-e2e`
+
+
+If you want to run all tests at the same time, you can use the command
+
+`npm run test`
 
 
 ---
@@ -60,5 +65,8 @@ Before you commit your code, run the command
 
 This will automatically format your code, and if it is not able to, show you what styling or formatting errors you have.
 
+If you just want to see the formatting errors in your code and *not* fix them, you can use the command
 
-**You will not be able to merge your code into main until it passes all of the ESLint tests.**
+`npm run test-lint`
+
+**You will not be able to merge your code into main until it passes all of the ESLint, Unit, and E2E tests.**

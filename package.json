@@ -5,24 +5,25 @@
   "author": "Team 34",
   "main": "./root/html/index.js",
   "scripts": {
-    "test-unit": "jest",
-    "test-e2e": "./node_modules/.bin/cypress run",
+    "test": "jest",
+    "test-unit": "jest ./testing/unit/*",
+    "test-e2e": "jest ./testing/e2e/*",
     "lint": "./node_modules/.bin/eslint . --fix",
     "test-lint": "./node_modules/.bin/eslint ."
   },
   "jest": {
+    "preset": "jest-puppeteer",
     "verbose": true,
-    "testPathIgnorePatterns": [
-      "cypress/"
-    ]
+    "testPathIgnorePatterns": []
   },
   "devDependencies": {
-    "cypress": "^8.7.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
     "jest": "^27.3.1",
+    "jest-puppeteer": "^6.0.0",
     "prettier": "^2.4.1",
-    "prettier-eslint": "^8.2.2"
+    "prettier-eslint": "^8.2.2",
+    "puppeteer": "^11.0.0"
   }
 }
