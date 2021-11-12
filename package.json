@@ -11,10 +11,9 @@
     "test-lint": "./node_modules/.bin/eslint ."
   },
   "jest": {
+    "preset": "jest-puppeteer",
     "verbose": true,
-    "testPathIgnorePatterns": [
-      "cypress/"
-    ]
+    "testPathIgnorePatterns": []
   },
   "devDependencies": {
     "eslint": "^7.32.0",
