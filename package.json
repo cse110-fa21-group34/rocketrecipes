@@ -5,8 +5,9 @@
   "author": "Team 34",
   "main": "./root/html/index.js",
   "scripts": {
-    "test-unit": "jest",
-    "test-e2e": "./node_modules/.bin/cypress run",
+    "test": "jest",
+    "test-unit": "jest ./testing/unit/*",
+    "test-e2e": "jest ./testing/e2e/*",
     "lint": "./node_modules/.bin/eslint . --fix",
     "test-lint": "./node_modules/.bin/eslint ."
   },
