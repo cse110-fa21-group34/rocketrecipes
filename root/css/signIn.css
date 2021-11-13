@@ -1,0 +1,28 @@
+.topbar {
+  margin-top: 20px;
+  text-align: right;
+}
+.topbar button {
+  margin-right: 40px;
+  border-radius: 12px;
+  border-width: 1px;
+  background-color: pink;
+}
+.topbar a {
+  margin-right: 40px;
+}
+
+.block {
+  text-align: center;
+  margin-right: 100px;
+  margin-top: 100px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.block button {
+  margin-top: 10px;
+}
+.block input {
+  margin-top: 10px;
+}
