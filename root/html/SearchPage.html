@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang=”en”>
+    <head>
+        <button type="button"></button>
+        <button type="button">Search</button>
+        <button type="button">Log in</button>
+        <button type="button">Sign up</button>
+    </head>
+    <body>
+        <form id="searchBar">
+            <input type="text" placeholder="Start Typing..." name="search">
+            <button type="button"></button>
+        </form>
+        <button onclick="ShowFilters()">Show Filters</button>
+        <form id="checkboxes" style="display: none">
+            <input type="checkbox" id="Vegan" name="Vegan">
+            <label for="Vegan">Vegan</label><br>
+            <input type="checkbox" id="Vegetarian" name="Vegetarian">
+            <label for="Vegetarian">Vegetarian</label><br>
+            <input type="checkbox" id="Quick Cook" name="Quick Cook">
+            <label for="Quick Cook">Quick Cook</label><br>
+            <input type="checkbox" id="Highly Rated" name="Highly Rated">
+            <label for="Highly Rated">Highly Rated</label><br>
+            <input type="checkbox" id="Easy" name="Easy">
+            <label for="Easy">Easy</label><br>
+            <input type="checkbox" id="Medium" name="Medium">
+            <label for="Medium">Medium</label><br>
+            <input type="checkbox" id="Hard" name="Hard">
+            <label for="Hard">Hard</label><br>
+            <input type="checkbox" id="Keto" name="Keto">
+            <label for="Keto">Keto</label><br>
+            <input type="checkbox" id="5 Ingredients" name="5 Ingredients">
+            <label for="5 Ingredients">5 Ingredients</label><br>
+        </form>
+        <button onclick="HideFilters()">Hide Filters</button>
+
+        <script>
+            function ShowFilters(){
+                document.getElementById("checkboxes").style.display="block";
+            }
+
+            function HideFilters(){
+                document.getElementById("checkboxes").style.display="none";
+            }
+        </script>
+    </body>
