@@ -1,3 +1,6 @@
+*{
+  font-family: Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
 .topbar {
   margin-top: 20px;
   text-align: right;
@@ -16,13 +19,50 @@
   text-align: center;
   margin-right: 100px;
   margin-top: 100px;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 35%;
+  margin-right: 35%;
+  border-radius: 20px;
+  background-color: #f1a58d;
 }
 
 .block button {
+  border: 0;
   margin-top: 10px;
+  margin-bottom: 10px;
+  background-color:#f8d55c;
+  padding: 4px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+.block button:hover, 
+button:focus{
+  background-color: #f3c213;
+  transition: all 0.1s linear;
+}
+.block button:active{
+  background-color: #977600;
 }
 .block input {
   margin-top: 10px;
+}
+
+.block h1{
+  font-style: normal;
+  font-size: auto;
+}
+
+.block form{
+  display: table;
+}
+.block p{
+  display: table-row;
+  text-align: center;
+}
+.block label{
+  display: table-cell;
+  text-align: right;
+}
+.block input{
+  display: table-cell;
 }
