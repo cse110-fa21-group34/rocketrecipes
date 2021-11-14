@@ -52,17 +52,5 @@ button:focus{
   font-size: auto;
 }
 
-.block form{
-  display: table;
-}
-.block p{
-  display: table-row;
-  text-align: center;
-}
-.block label{
-  display: table-cell;
-  text-align: right;
-}
-.block input{
-  display: table-cell;
-}
+
+
