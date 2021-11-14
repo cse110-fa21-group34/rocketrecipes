@@ -23,7 +23,23 @@
   margin-right: 35%;
   border-radius: 20px;
   background-color: #f1a58d;
+  
 }
+
+.block label{
+  display: inline-block;
+  clear: left;
+  width: 250px;
+  text-align: center;
+
+}
+
+.block form{
+  display: inline-block;
+  
+}
+
+
 
 .block button {
   border: 0;
@@ -51,6 +67,7 @@ button:focus{
   font-style: normal;
   font-size: auto;
 }
+
 
 
 

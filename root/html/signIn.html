@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../css/signIn.css" />
+    <script src = "../scripts/signIn.js"></script>
   </head>
   <body>
     <header>
@@ -14,24 +15,20 @@
           <img src="../media/teamLogo.png" width="100" />
         </a>
         <a href="">Search</a>
-        <a href="">Log In</a>
+        <a href="signIn.html">Log In</a>
         <button>Sign In</button>
       </div>
       <main>
         <div class="block">
-          
-          <h1>Sign-In to your Account</h1>
-          <form>
-            <p>
-            <label for="">Username: </label>
-            <input type="text" />
-            </p>
-            <p>
-            <label for="">Password: </label>
-            <input type="text" />
-            <br />
-            </p>
-            <button>Submit</button>
+            <h1>Sign-In to your Account</h1>
+            <form>
+              <label class="label" for="">Username: </label>
+              <input class="input"type="text" />
+              
+              <label class = "label" for="">Password: </label>
+              <input class="input"type="password" />
+              <br>
+           <button id = "btn1">Submit</button>
           </form>
         </div>
         <div class="block">
@@ -40,12 +37,12 @@
           <input type="text" />
           <br />
           <label for="">Password:</label>
-          <input type="text" />
+          <input type="password" />
           <br />
           <label for="">Confirm Password: </label>
           <input type="text" />
           <br>
-          <button>Submit</button>
+          <button id = "btn2">Submit</button>
         </div>
 
       </main>
