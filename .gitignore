@@ -3,3 +3,4 @@ node_modules
 # Cypress assets
 cypress/videos
 cypress/screenshots
+.DS_Store
