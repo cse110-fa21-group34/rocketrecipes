@@ -1,14 +1,14 @@
 # {short title of solved problem and solution}
 
-* Status: {proposed | rejected | accepted | deprecated | … | superseded by [ADR-0005](0005-example.md)} <!-- optional -->
-* Deciders: {list everyone involved in the decision} <!-- optional -->
-* Date: {YYYY-MM-DD when the decision was last updated} <!-- optional -->
+* Status: {proposed | rejected | accepted | deprecated | … | superseded by [ADR-0005](0005-example.md)} 
+* Deciders: {list everyone involved in the decision}
+* Date: {YYYY-MM-DD when the decision was last updated}
 
 ## Context and Problem Statement
 
 {Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in form of a question.}
 
-## Decision Drivers <!-- optional -->
+## Decision Drivers 
 
 * {driver 1, e.g., a force, facing concern, …}
 * {driver 2, e.g., a force, facing concern, …}
@@ -19,7 +19,6 @@
 * {option 1}
 * {option 2}
 * {option 3}
-* … <!-- numbers of options can vary -->
 
 ## Decision Outcome
 
