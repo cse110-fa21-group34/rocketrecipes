@@ -5,7 +5,7 @@
         "jest": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base" // Name of linting style
     ],
     "parserOptions": {
         "ecmaVersion": 12,
