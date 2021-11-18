@@ -1,15 +1,3 @@
-// import {
-//   getOrganization,
-//   convertTime,
-//   getUrl,
-//   getImage,
-//   getCategories,
-//   searchForKey,
-//   getTitle,
-// } from '../scripts/RecipeCardUtil';
-
-// RecipeCard.js
-
 class RecipeCard extends HTMLElement {
   constructor() {
     super(); // Inheret everything from HTMLElement
@@ -22,7 +10,6 @@ class RecipeCard extends HTMLElement {
   set data(data) {
     if (!data) return;
 
-    // Used to access the actual data object
     this.json = data;
 
     const style = document.createElement('style');
@@ -33,15 +20,10 @@ class RecipeCard extends HTMLElement {
     card.innerHTML = `
         <img src="../media/teamLogo.png" class="recipe-card-image">
         <div class="card-body">
-          <h3>Recipe Title</h3>
-          <p>45 mins</p>
-          <span class="tag-container">
-            <button id="button1" class="tag">Vegan</button>
-            <button id="button2" class="tag">Vegan</button>
-            <button id="button3" class="tag">long tag super</button>
-          </span>
+          <h3></h3>
+          <p></p>
+          <span class="tag-container" />
         </div>
-
     `;
 
     style.innerHTML = `
@@ -76,7 +58,6 @@ class RecipeCard extends HTMLElement {
       .tag-container {
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
         flex-wrap: wrap;
       }
       .tag {
@@ -84,99 +65,38 @@ class RecipeCard extends HTMLElement {
         height: 20px;
         display: flex;
         width: unset;
-        margin-left: 5px;
+        margin-right: 5px;
         margin-bottom: 5px;
       }
-      
-    
     `;
-    // .foodList span{
-    //   display:block;
-    //   margin-top: 4%;
-    //   margin-bottom: 4%;
-    // }
-    // .foodList p{
-    //   margin-bottom:1px;
-    //   display:inline;
-    // }
-    // .foodList h4{
-    //   display: inline;
-    //   margin-left: 20%;
-    // }
-    // .foodList button{
-    //   border-radius: 12px;
-    //   margin-bottom:3px;
-    // }
+    const titleElement = card.querySelector('h3');
+    titleElement.innerText = data.title || '';
 
-    // Grab the title
-    // const titleText = getTitle(data);
-    // const title = document.createElement('p');
-    // title.classList.add('title');
+    const timeElement = card.querySelector('p');
+    timeElement.innerText = `${data.readyInMinutes} minutes` || '';
 
-    // // Grab the recipe link
-    // const href = getUrl(data);
-    // const link = document.createElement('a');
-    // link.setAttribute('href', href);
-    // link.innerText = titleText;
-    // title.appendChild(link); // Make the title a link
+    const imageElement = card.querySelector('img');
+    imageElement.src = data.image || '';
 
-    // // Grab the thumbnail
-    // const imageUrl = getImage(data);
-    // const image = document.createElement('img');
-    // image.setAttribute('src', imageUrl);
-    // image.setAttribute('alt', titleText);
-
-    // // Grab the organization name
-    // const organizationText = getOrganization(data);
-    // const organization = document.createElement('p');
-    // organization.classList.add('organization');
-    // organization.innerText = organizationText;
-
-    // // Grab the reviews
-    // const ratingVal = searchForKey(data, 'ratingValue');
-    // const ratingTotal = searchForKey(data, 'ratingCount');
-    // const rating = document.createElement('div');
-    // rating.classList.add('rating');
-    // const numStars = Math.round(ratingVal);
-    // if (ratingVal) {
-    //   rating.innerHTML = `
-    //     <span>${ratingVal}</span>
-    //     <img src="root/media/${numStars}-star.svg" alt="${numStars} stars">
-    //   `;
-    //   if (ratingTotal) {
-    //     rating.innerHTML += `<span>(${ratingTotal})</span>`;
-    //   }
-    // } else {
-    //   rating.innerHTML = `
-    //     <span>No Reviews</span>
-    //   `;
-    // }
-
-    // // Grab the total time
-    // const totalTime = searchForKey(data, 'totalTime');
-    // const time = document.createElement('time');
-    // time.innerText = convertTime(totalTime);
-
-    // // Grab the categories
-    // const categoriesArr = getCategories(data);
-    // const categories = document.createElement('div');
-    // categories.classList.add('meta--categories');
-    // if (categoriesArr !== undefined) {
-    //   categoriesArr.forEach((category) => {
-    //     const cateItem = document.createElement('span');
-    //     cateItem.innerHTML = category;
-    //     categories.append(cateItem);
-    //   });
-    // }
-
-    // // Add all of the elements to the card
-    // card.appendChild(image);
-    // card.appendChild(title);
-    // card.appendChild(organization);
-    // card.appendChild(rating);
-    // card.appendChild(time);
-    // card.appendChild(categories);
-
+    // Create tag buttons based on these tag properties
+    const tagProperties = [
+      { id: 'cheap', name: 'Cheap' },
+      { id: 'dairyFree', name: 'Dairy Free' },
+      { id: 'fiveIngredientsOrLess', name: 'Easy' },
+      { id: 'glutenFree', name: 'Gluten Free' },
+      { id: 'quickEat', name: 'Quick Eat' },
+      { id: 'vegan', name: 'Vegan' },
+      { id: 'vegetarian', name: 'Vegetarian' },
+    ];
+    const tagContainerElement = card.querySelector('.tag-container');
+    tagProperties.forEach((tag) => {
+      if (data[tag.id] === true) {
+        const tagButton = document.createElement('button');
+        tagButton.classList.add('tag');
+        tagButton.innerText = tag.name;
+        tagContainerElement.appendChild(tagButton);
+      }
+    });
     this.shadowRoot.append(style, card);
   }
 
