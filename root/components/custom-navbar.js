@@ -42,8 +42,8 @@ class Navbar extends HTMLElement {
         <a href="./homepage.html" style="text-decoration: none; float: left;">
             <img src="../media/teamLogo.png" width="60" height="60" > 
         </a>
-        <a>Search</a>
-        <a>My Account</a>
+        <a href="./searchpage.html">Search</a>
+        <a href="./generalAccount.html">My Account</a>
     `;
     navbarContainer.classList.add('topBar');
 
