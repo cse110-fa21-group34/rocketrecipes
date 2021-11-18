@@ -1,4 +1,3 @@
-
 // custom-navbar.js
 
 class Navbar extends HTMLElement {
@@ -8,7 +7,7 @@ class Navbar extends HTMLElement {
     // Attach the shadow DOM and append this markup / stlying inside
     // The shadow root will help us keep everything separated
     this.attachShadow({ mode: 'open' });
-    
+
     // create styles for navbar
     const style = document.createElement('style');
     style.innerHTML = `
@@ -47,8 +46,6 @@ class Navbar extends HTMLElement {
         <a>My Account</a>
     `;
     navbarContainer.classList.add('topBar');
-
-    
 
     this.shadowRoot.append(style, navbarContainer);
   }
