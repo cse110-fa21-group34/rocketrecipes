@@ -1,0 +1,136 @@
+body {
+    margin:20px auto;
+    margin-bottom: 100px;
+}
+.topBar {
+    margin-top: 20px;
+    text-align: right;
+}
+.topBar button {
+    margin-right: 40px;
+    border-radius: 12px;
+    border-width: 1px;
+    width: 115px;
+    height: 40px;
+    background-color: pink;
+    font-size: 20px;
+}
+.topBar a {
+    font-size: 20px;
+    margin-right: 40px;
+}
+.topBar form{
+    display: inline-block;
+}
+
+/* main */
+
+.midPart {
+    margin-top: 15%;
+    /* background-color: aqua; */
+    text-align: center;
+    margin-left:15% ;
+    margin-right:15% ;
+}
+.midPart h1 {
+    text-align: left;
+}
+.midPart input {
+    width: 80%;
+    border-radius: 12px;
+    padding: 1%;
+}
+.midPart input[type=text] {
+    margin: 20px;
+}
+
+/* footer */
+
+.foostPart {
+    margin-top: 3%;
+    /* background-color: aqua; */
+    text-align: left;
+    margin-left:15% ;
+    margin-right:15% ;
+    margin-bottom: 0px;
+}
+
+.foodList {
+    /*border: 1px red solid;*/
+    width: 85%;
+    margin-left: 15%;
+    margin-right: 10%;
+    margin-top: 0px;
+    padding-bottom: 100px;
+    padding-top: 0px;
+}
+.foodList h3{
+    text-decoration: underline;
+    margin-bottom:1px;
+}
+.foodList span{
+    display:block;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+.foodList p{
+    margin-bottom:1px;
+    display:inline;
+}
+.foodList h4{
+    display: inline;
+    margin-left: 20%;
+}
+.foodList button{
+    border-radius: 12px;
+    margin-bottom:3px;
+}
+
+.foodList div {
+    /*border: 10px red solid;*/
+    width: 20%;
+    height: 400px;
+    margin-right: 2%;
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: 30%;
+}
+
+.foodPic {
+    width: 90%;
+    position: relative;
+}
+.bar{
+    margin:0 auto;
+    width:700px;
+    border-radius:30px;
+    border:1px solid #dcdcdc;
+    
+  }
+  .bar:hover{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+  }
+  .bar:focus-within{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    outline:none;
+  }
+  .searchbar{
+    height:10px;
+    border:none;
+    
+    width:575px;
+    font-size:16px;
+    outline: none;
+    
+  }
+  .search{
+    height:20px;
+    position:relative;
+    top:5px;
+    left:10px;
+  }
+  .bar button{
+      border:none;
+      outline: none;
+      background-color: #ffffff;
+  }

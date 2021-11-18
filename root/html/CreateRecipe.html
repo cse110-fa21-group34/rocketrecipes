@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/CreateRecipe.css" class="style">
+    <title>General Account</title>
+</head>
+<body>
+    <header>
+    
+        <div class="topBar">
+            <a href="./homepage.html" style="text-decoration: none; float: left;">
+                <img src="../media/teamLogo.png" width="100" height="100" > 
+            </a>
+            <a>Search</a>
+            <a>Log Out</a>
+            <form action="https://google.com">
+                <button>Sign Up</button>
+            </form>
+        </div>
+    </header>
+<main>
+    <div class="midPart">
+        <h2>Create your recipe:</h2>
+        <input class="recipeName" type="text" id="name"
+        placeholder="Recipe Name">
+        <button id="Upload">Upload Image</button>
+        <textarea class="descrip" type="text"
+        placeholder="Recipe description (100 words max)"></textarea>
+        <br>
+        <h4 class="make">Makes:</h4>
+        <input class="amount" type="text" 
+        placeholder="Total Amount">
+        <h4 class="make2">Time:</h4>
+        <input class="amount" type="text" 
+        placeholder="Total time">
+        <br>
+        <h3>Ingredients:</h3>
+        <input class="Ingre" type="text" 
+        placeholder="Amount">
+        <input class="Ingredient" type="text" 
+        placeholder="Ingredient">
+        <br>
+        <button id="addIngredient">Add Ingredient</button>
+    </div>
+
+</main>
+<footer>
+    <h3 id="instruct">Instructions:</h3>
+    <textarea class="instructArea" type="text"
+    placeholder="input Instructions here"></textarea>
+    <br>
+    <button id="Create">Create Recipe</button>
+</footer>

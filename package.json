@@ -25,5 +25,8 @@
     "prettier": "^2.4.1",
     "prettier-eslint": "^8.2.2",
     "puppeteer": "^11.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.4"
   }
 }
