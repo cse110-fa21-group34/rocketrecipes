@@ -136,6 +136,8 @@ body {
   height: 40px;
   background-color: pink;
   font-size: 20px;
-  top: 100px;
-  font-weight: bold;
+  float: right;
+  position: relative;
+  bottom: 110px;
+  right: 65%;
 }
