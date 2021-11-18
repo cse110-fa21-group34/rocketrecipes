@@ -1,27 +1,4 @@
-body {
-    margin:20px auto;
-    margin-bottom: 100px;
-}
-.topBar {
-    margin-top: 20px;
-    text-align: right;
-}
-.topBar button {
-    margin-right: 40px;
-    border-radius: 12px;
-    border-width: 1px;
-    width: 115px;
-    height: 40px;
-    background-color: pink;
-    font-size: 20px;
-}
-.topBar a {
-    font-size: 20px;
-    margin-right: 40px;
-}
-.topBar form{
-    display: inline-block;
-}
+
 .midPart {
     margin-top: 10%;
     /* background-color: aqua; */

@@ -2,32 +2,22 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
     <link rel="stylesheet" href="../css/homeStyle.css" class="style">
-
+    <script src="../components/custom-navbar.js" type="module"></script>
+    <title>Home page</title>
 </head>
 
 <body>
-  <header>
-    
-    <div class="topBar">
-        <a href="./homepage.html" style="text-decoration: none; float: left;">
-            <img src="../media/teamLogo.png" width="100" height="100" > 
-        </a>
-        <a>Search</a>
-        <a>Log In</a>
-        <form action="https://google.com">
-            <button>Sign Up</button>
-        </form>
-    </div>
-  </header>
+    <header>
+        <custom-navbar />
+    </header>
   <main>
       <div class="midPart">
         <h1>Rocket Recipes</h1>
         <h3>Search through our library of 500+ recipes</h3>
         <div class="bar">
             <form id="form">
-                <input class="searchbar"type="text" id="ss" name="s"
+                <input class="searchbar"type="text" id="ss" name="searchbar-home"
                 placeholder="Start typing..."
                 aria-label="Search through site content">
                 <button><a href="#"> <img class="search" src="../media/search.png" alt="Search"></a></button>
