@@ -23,21 +23,24 @@ class Searchbar extends HTMLElement {
                 outline:none;
             }
             .searchbar{
-                height:10px;
+                height:16px;
                 border:none;
                 
                 width:575px;
                 font-size:16px;
                 outline: none;
-                
+                padding-bottom:20px;
             }
             .search{
-                height:20px;
+                padding-top:10px;
+                height:16px;
                 position:relative;
+                display:inline-block;
                 top:5px;
                 left:10px;
             }
             .bar button{
+                padding-top:10px;
                 border:none;
                 outline: none;
                 background-color: #ffffff;
