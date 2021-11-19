@@ -20,7 +20,10 @@ class RecipeCard extends HTMLElement {
     card.innerHTML = `
         <img src="../media/teamLogo.png" class="recipe-card-image">
         <div class="card-body">
-          <h3></h3>
+          <h3>
+            <button>Edit Recipe</button>
+            <button>Delete Recipe</button>
+          </h3>
           <p></p>
           <span class="tag-container" />
         </div>
