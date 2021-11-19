@@ -16,7 +16,6 @@ export async function getAllRecipes() {
 
 export async function readRecipe(id) {
   const allRecipes = await getAllRecipes();
-
   for (let i = 0; i < allRecipes.length; i += 1) {
     if (allRecipes[i].id === id) {
       return allRecipes[i];
@@ -27,12 +26,11 @@ export async function readRecipe(id) {
 }
 
 export async function deleteRecipe(id) {
-  let allRecipes = await getAllRecipes();
+  const allRecipes = await getAllRecipes();
 
   for (let i = 0; i < allRecipes.length; i += 1) {
     if (allRecipes[i].id === id) {
-      allRecipes = allRecipes.splice(i, 1);
-      localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(allRecipes));
+      allRecipes.splice(i, 1);
       return true;
     }
   }
@@ -54,6 +52,13 @@ export async function updateRecipe(newRecipe) {
 
 export async function createRecipe(newRecipe) {
   const allRecipes = await getAllRecipes();
+  for (let i = 0; i < allRecipes.length; i += 1) {
+    if (allRecipes[i].id === newRecipe.id) {
+      return false;
+    }
+  }
+
   allRecipes.push(newRecipe);
   localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(allRecipes));
+  return true;
 }
