@@ -4,7 +4,6 @@
 
   margin-left: 10%;
   margin-right: 10%;
-  
 }
 .midPart h2 {
   text-align: left;
@@ -64,9 +63,8 @@
   border-radius: 15px;
   height: 28px;
   padding-left: 1%;
-  
 }
-.unit{
+.unit {
   margin-top: 2%;
   width: 8%;
   border-radius: 15px;
@@ -124,6 +122,7 @@
 }
 .buttons button {
   margin-top: 2%;
+  margin-bottom: 3%;
   width: 20%;
   height: 43px;
   font-size: 20px;

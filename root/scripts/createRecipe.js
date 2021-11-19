@@ -15,8 +15,8 @@ function addStep() {
 
 function deleteStep() {
   i -= 1;
-  if (i < 1) {
-    i = 1;
+  if (i < 2) {
+    i = 2;
   }
   const stepStr = `Step${i.toString()}`;
   const lastStep = document.getElementById(stepStr);
@@ -55,8 +55,8 @@ function addIng() {
 function deleteIng() {
   // console.log('working');
   ingCount -= 1;
-  if (ingCount < 1) {
-    ingCount = 1;
+  if (ingCount < 2) {
+    ingCount = 2;
   }
   const ingStep = document.getElementById(`ing${ingCount.toString()}`);
   const amountStep = document.getElementById(`amount${ingCount.toString()}`);
