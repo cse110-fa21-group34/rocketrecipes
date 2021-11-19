@@ -1,4 +1,9 @@
-async function init() {}
+async function init() {
+  const fetchSuccessful = await fetchRecipes();
+  if (!fetchSuccessful) {
+    console.log('Recipe fetch unsuccessful');
+  }
+}
 
 // parses a list of json and gets recipes from those components
 async function fetchRecipes() {
@@ -18,7 +23,7 @@ async function fetchRecipes() {
     }
 
     setTimeout((c) => {
-      if (recipes.length == Object.keys(recipeData).length) {
+      if (recipes.length === Object.keys(recipeData).length) {
         resolve(true);
       }
       reject(false);

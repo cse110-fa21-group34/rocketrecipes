@@ -2,32 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
     <link rel="stylesheet" href="../css/homeStyle.css" class="style">
-
+    <script src="../components/custom-navbar.js" type="module"></script>
+    <script src="../components/recipe-card.js" type="module"></script>
+    <script src="../scripts/homepage.js" type="module"></script>
+    <title>Home page</title>
 </head>
 
 <body>
-  <header>
-    
-    <div class="topBar">
-        <a href="./homepage.html" style="text-decoration: none; float: left;">
-            <img src="../media/teamLogo.png" width="100" height="100" > 
-        </a>
-        <a>Search</a>
-        <a>Log In</a>
-        <form action="https://google.com">
-            <button>Sign Up</button>
-        </form>
-    </div>
-  </header>
+    <header>
+        <custom-navbar />
+    </header>
   <main>
       <div class="midPart">
         <h1>Rocket Recipes</h1>
         <h3>Search through our library of 500+ recipes</h3>
         <div class="bar">
             <form id="form">
-                <input class="searchbar"type="text" id="ss" name="s"
+                <input class="searchbar"type="text" id="ss" name="searchbar-home"
                 placeholder="Start typing..."
                 aria-label="Search through site content">
                 <button><a href="#"> <img class="search" src="../media/search.png" alt="Search"></a></button>
@@ -39,57 +31,8 @@
         <div class="foostPart">
             <h3>Recommended Recipes</h3>
         </div>
-        <div class="foodList">
-            <div >
-                <img src="../media/teamLogo.png" class="foodPic">
-                <h3 >Recipe Title</h3>
-                <span>
-                    <p>45 Minutes</p>
-                    <h4>+17</h4>
-                </span>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-            </div>
-            <div>
-                <img src="../media/teamLogo.png" class="foodPic">
-                <h3 >Recipe Title</h3>
-                <span>
-                    <p>45 Minutes</p>
-                    <h4>+17</h4>
-                </span>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-            </div>
-            <div>
-                <img src="../media/teamLogo.png" class="foodPic">
-                <h3>Recipe Title</h3>
-                <span>
-                    <p>45 Minutes</p>
-                    <h4>+17</h4>
-                </span>
-                <button id="buttonS">This is a lon tag</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-            </div>
-            <div>
-                <img src="../media/teamLogo.png" class="foodPic">
-                <h3 >Recipe Title</h3>
-                <span>
-                    <p>45 Minutes</p>
-                    <h4>+17</h4>
-                </span>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-                <button id="buttonS">Vegan</button>
-            </div>
+        <div class="foodList" id="recommendedRecipeContainer">
+            
         </div>
   </footer>
 </body>
