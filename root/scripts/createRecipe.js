@@ -1,22 +1,7 @@
-const createRecipe = document.querySelector(document.getElementById('Create'));
-const deleteRecipe = document.querySelector(document.getElementById('Delete'));
-window.addEventListener('DOMContentLoaded', init);
-
+// const createRecipe = document.querySelector(document.getElementById('Create'));
+// const deleteRecipe = document.querySelector(document.getElementById('Delete'));
 let i = 6; // instructions counter
 let ingCount = 1; // Ingredient Counter
-function init() {
-  const button = document.getElementById('plus');
-  button.addEventListener('click', addStep);
-
-  const deleteButton = document.getElementById('Delete');
-  deleteButton.addEventListener('click', deleteStep);
-
-  const addIngredient = document.getElementById('addIngredient');
-  addIngredient.addEventListener('click', addIng);
-
-  const deleteIngredient = document.getElementById('deleteIngredient');
-  deleteIngredient.addEventListener('click', deleteIng);
-}
 
 function addStep() {
   // appendchild   const input = document.createElement('input');
@@ -53,19 +38,18 @@ function addIng() {
   units.setAttribute('placeholder', 'Units');
   units.setAttribute('id', `units${ingCount.toString()}`);
 
-  
   const steps = document.createElement('input');
   steps.setAttribute('type', 'text');
   steps.setAttribute('class', 'Ingredient');
   steps.setAttribute('placeholder', `Ingredient ${ingCount.toString()}`);
   steps.setAttribute('id', `ing${ingCount.toString()}`);
 
-  //const breakline = document.createElement('br');
+  // const breakline = document.createElement('br');
 
   ingredSteps.appendChild(amount);
   ingredSteps.appendChild(units);
   ingredSteps.appendChild(steps);
-  //ingredSteps.appendChild(breakline);
+  // ingredSteps.appendChild(breakline);
   ingCount += 1;
 }
 
@@ -81,5 +65,19 @@ function deleteIng() {
   unitStep.remove();
   ingStep.remove();
   amountStep.remove();
-
 }
+
+function init() {
+  const button = document.getElementById('plus');
+  button.addEventListener('click', addStep);
+
+  const deleteButton = document.getElementById('Delete');
+  deleteButton.addEventListener('click', deleteStep);
+
+  const addIngredient = document.getElementById('addIngredient');
+  addIngredient.addEventListener('click', addIng);
+
+  const deleteIngredient = document.getElementById('deleteIngredient');
+  deleteIngredient.addEventListener('click', deleteIng);
+}
+window.addEventListener('DOMContentLoaded', init);
