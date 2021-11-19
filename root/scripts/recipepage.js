@@ -1,10 +1,9 @@
 // eslint-disable-next-line import/extensions
 import { readRecipe } from './utils.js';
 
-// takes the current recipe object and fills the html of the page with 
+// takes the current recipe object and fills the html of the page with
 // the information within it
 function fillRecipePage(currentRecipe) {
-  console.log(currentRecipe);
   const recipeTitleElement = document.getElementById('recipe-title');
   recipeTitleElement.innerText = currentRecipe.title;
 
@@ -19,23 +18,23 @@ function fillRecipePage(currentRecipe) {
 
   // add categories
   // Create tag buttons based on these tag properties
-    const tagProperties = [
-      { id: 'cheap', name: 'Cheap' },
-      { id: 'dairyFree', name: 'Dairy Free' },
-      { id: 'fiveIngredientsOrLess', name: 'Easy' },
-      { id: 'glutenFree', name: 'Gluten Free' },
-      { id: 'quickEat', name: 'Quick Eat' },
-      { id: 'vegan', name: 'Vegan' },
-      { id: 'vegetarian', name: 'Vegetarian' },
-    ];
+  const tagProperties = [
+    { id: 'cheap', name: 'Cheap' },
+    { id: 'dairyFree', name: 'Dairy Free' },
+    { id: 'fiveIngredientsOrLess', name: 'Easy' },
+    { id: 'glutenFree', name: 'Gluten Free' },
+    { id: 'quickEat', name: 'Quick Eat' },
+    { id: 'vegan', name: 'Vegan' },
+    { id: 'vegetarian', name: 'Vegetarian' },
+  ];
 
-    const categoryArray = [];
-    const categoriesElement = document.getElementById('categories');
-    tagProperties.forEach((tag) => {
-      if (currentRecipe[tag.id] === true) {
-        categoryArray.push(tag.name);
-      }
-    });
+  const categoryArray = [];
+  const categoriesElement = document.getElementById('categories');
+  tagProperties.forEach((tag) => {
+    if (currentRecipe[tag.id] === true) {
+      categoryArray.push(tag.name);
+    }
+  });
   categoriesElement.innerText = `Categories: ${categoryArray.join(', ')}`;
 
   const recipeInstructionsElement = document.getElementById('instructions-list');
@@ -64,7 +63,6 @@ async function init() {
   if (recipeId === null) {
     // handle bad request
     // show empty page with note that we can't find that id
-    console.log('null');
   } else {
     const currentRecipe = await readRecipe(recipeId);
     fillRecipePage(currentRecipe);
