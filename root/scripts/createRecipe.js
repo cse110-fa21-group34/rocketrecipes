@@ -4,7 +4,6 @@ let i = 6; // instructions counter
 let ingCount = 1; // Ingredient Counter
 
 function addStep() {
-  // appendchild   const input = document.createElement('input');
   const instructions = document.querySelector('.instructions');
   const steps = document.createElement('input');
   steps.setAttribute('type', 'text');
@@ -54,7 +53,7 @@ function addIng() {
 }
 
 function deleteIng() {
-  console.log('working');
+  // console.log('working');
   ingCount -= 1;
   if (ingCount < 1) {
     ingCount = 1;
