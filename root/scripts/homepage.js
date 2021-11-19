@@ -1,8 +1,5 @@
-// this is temporary until we figure out how to fetch the data
 const COMMUNITY_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json';
-const LOCAL_STORAGE_RECIPE_KEY = 'localRecipes';
-let communityRecipes = {};
-let localRecipes = {};
+const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 let allRecipes = {};
 
 function createRecommendedRecipes() {
@@ -24,25 +21,21 @@ function createRecommendedRecipes() {
   }
 }
 
-async function getCommunityRecipes() {
-  return fetch(COMMUNITY_RECIPE_URL)
+async function getAllRecipes() {
+  if (localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY) !== null) {
+    const localStorageRecipes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY));
+    return localStorageRecipes;
+  }
+  const fetchedRecipes = await fetch(COMMUNITY_RECIPE_URL)
     .then((response) => response.json())
     .then((data) => data);
-}
 
-function getLocalRecipes() {
-  return localStorage.getItem(LOCAL_STORAGE_RECIPE_KEY);
+  localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
+  return fetchedRecipes;
 }
 
 async function init() {
-  communityRecipes = await getCommunityRecipes();
-  localRecipes = getLocalRecipes();
-
-  if (localRecipes) {
-    allRecipes = communityRecipes.concat(JSON.parse(localRecipes));
-  } else {
-    allRecipes = communityRecipes;
-  }
+  allRecipes = await getAllRecipes();
   createRecommendedRecipes();
 }
 
