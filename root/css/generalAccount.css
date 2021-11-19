@@ -90,7 +90,14 @@
     border-radius: 12px;
     margin-bottom:3px;
 }
-
+#Create{
+    margin-left: 30%;
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: pink;
+    font-size: 15px;
+}
 .FavoriteFood div {
     /*border: 10px red solid;*/
     width: 20%;
