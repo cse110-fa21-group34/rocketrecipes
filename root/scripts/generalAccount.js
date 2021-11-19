@@ -32,7 +32,8 @@ function createMyRecipes(){
 async function init() {
     myRecipes = await getFavoriteRecipes();
     favoriteRecipes = await getMyRecipes();
-    createRecommendedRecipes();
+    createMyRecipes();
+    createFavoriteRecipes();
   }
   
 window.addEventListener('DOMContentLoaded', init);
