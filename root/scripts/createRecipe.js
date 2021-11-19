@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/extensions
+import { createRecipe } from './utils.js';
+/* eslint-disable prefer-destructuring */
+const crypto = require('crypto');
+
 // const createRecipe = document.querySelector(document.getElementById('Create'));
 // const deleteRecipe = document.querySelector(document.getElementById('Delete'));
 let i = 6; // instructions counter
@@ -80,3 +85,44 @@ function init() {
   deleteIngredient.addEventListener('click', deleteIng);
 }
 window.addEventListener('DOMContentLoaded', init);
+
+document.getElementById('Create').addEventListener('click', () => {
+  const userGenRecipe = {};
+  userGenRecipe.id = crypto.randomBytes(16).toString('hex');
+  userGenRecipe.title = document.getElementsByClassName('recipeName')[0];
+  userGenRecipe.readyInMinutes = 0;
+  userGenRecipe.servings = document.getElementsByClassName('amount')[0];
+  userGenRecipe.image = document.getElementsByClassName('amount')[1];
+  userGenRecipe.uploader = 'From the User';
+  userGenRecipe.isFromInternet = false;
+  userGenRecipe.vegetarian = false;
+  userGenRecipe.vegan = false;
+  userGenRecipe.cheap = false;
+  userGenRecipe.glutenFree = false;
+  userGenRecipe.dairyFree = false;
+  userGenRecipe.quickEat = false;
+
+  userGenRecipe.ingredients = {};
+  let numIngredients = 0;
+  for (let j = 0; j < document.getElementsByClassName('Ingre').length; j += 1) {
+    const ingredientInfo = {};
+    ingredientInfo.name = document.getElementsByClassName('Ingredient')[j];
+    ingredientInfo.amount = document.getElementsByClassName('Ingre')[j];
+    ingredientInfo.unit = document.getElementsByClassName('unit')[j];
+    userGenRecipe.ingredients.push(ingredientInfo);
+    numIngredients += 1;
+  }
+
+  userGenRecipe.fiveIngredientsOrLess = (numIngredients <= 5);
+  userGenRecipe.description = document.getElementsByClassName('descrip')[0];
+
+  userGenRecipe.steps = {};
+  for (let k = 0; i < document.getElementsByClassName('instructions')[0].childNodes.length; k += 1) {
+    const currStep = {};
+    currStep.number = k;
+    currStep.step = document.getElementsByClassName('instructions')[0].childNodes[k];
+    userGenRecipe.steps.push(currStep);
+  }
+
+  createRecipe(userGenRecipe);
+});
