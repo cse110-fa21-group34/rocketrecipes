@@ -12,7 +12,7 @@ jobs:
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./source
+          source_dir: ./root
           recurse: true
           output_dir: ./jsdocs
           front_page: README.md
