@@ -20,10 +20,7 @@ class RecipeCard extends HTMLElement {
     card.innerHTML = `
         <img src="../media/teamLogo.png" class="recipe-card-image">
         <div class="card-body">
-          <h3>
-            <button>Edit Recipe</button>
-            <button>Delete Recipe</button>
-          </h3>
+          <h3></h3>
           <p></p>
           <span class="tag-container" />
         </div>
@@ -37,7 +34,6 @@ class RecipeCard extends HTMLElement {
         border-radius: 20px;
         margin: 20px;
         overflow: hidden;
-        cursor: pointer;
       }
       .recipe-card-image {
         width: 100%;
@@ -102,10 +98,6 @@ class RecipeCard extends HTMLElement {
       }
     });
     this.shadowRoot.append(style, card);
-    this.addEventListener('click', () => {
-      const currentUrl = window.location;
-      window.location = `${currentUrl.origin}/root/html/RecipePage.html?id=${data.id}`;
-    });
   }
 
   get data() {

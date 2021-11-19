@@ -6,6 +6,14 @@
     float: right;
     background-color: rgb(255,193,203);
 }
+.delete-button{
+    margin:2.2vh 4vh 2.2vh 0vh;
+    display:inline;
+    padding:1vh 2vh 1vh 2vh;
+    border-radius:2vh;
+    float: right;
+    background-color: rgb(255,193,203);
+}
 .header-title span{
     padding: 5px;
     color:gray;
