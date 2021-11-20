@@ -14,13 +14,12 @@
   height: 35px;
   border-radius: 10px;
 }
-#Upload {
-  margin-left: 2%;
-  width: 13%;
-  height: 40px;
+.image-upload {
+  margin-top: 2%;
+  width: 60%;
+  height: 35px;
   border-radius: 10px;
-  font-size: 15px;
-  background-color: pink;
+  padding: 1%;
 }
 .descrip {
   margin-top: 2%;

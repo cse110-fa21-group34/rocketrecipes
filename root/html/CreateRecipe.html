@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/CreateRecipe.css" class="style" />
     <script src="../components/custom-navbar.js" type="module"></script>
-    <script src="../scripts/createRecipe.js"></script>
+    <script src="../scripts/createRecipe.js" type="module"></script>
     <title>General Account</title>
   </head>
   <body>
@@ -22,7 +22,13 @@
           id="name"
           placeholder="Recipe Name"
         />
-        <button id="Upload">Upload Image</button>
+        <br />
+        <input 
+          class="image-upload"
+          id="image"
+          type="text"
+          placeholder="Paste a link to your recipe's picture here"
+        />
         <textarea
           class="descrip"
           type="text"
@@ -52,11 +58,11 @@
     <footer>
       <h3 id="instruct">Instructions:</h3>
       <div class="instructions">
-        <input type="text" placeholder="Step 1" id="Step1" />
-        <input type="text" placeholder="Step 2" id="Step2" />
-        <input type="text" placeholder="Step 3" id="Step3" />
-        <input type="text" placeholder="Step 4" id="Step4" />
-        <input type="text" placeholder="Step 5" id="Step5" />
+        <input class="step" type="text" placeholder="Step 1" id="Step1" />
+        <input class="step" type="text" placeholder="Step 2" id="Step2" />
+        <input class="step" type="text" placeholder="Step 3" id="Step3" />
+        <input class="step" type="text" placeholder="Step 4" id="Step4" />
+        <input class="step" type="text" placeholder="Step 5" id="Step5" />
       </div>
       <div class="buttons">
         <button id="Create">Create Recipe</button>
