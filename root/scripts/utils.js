@@ -3,6 +3,11 @@ const COMMUNITY_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-grou
 const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 const LOCAL_STORAGE_FAVORITED_RECIPES_KEY = 'favoritedRecipes';
 
+/**
+ * This function gets all recipes from localStorage. If localStorage does not contain any recipes,
+ * it fetches them from GitHub and loads them into localStorage.
+ * @returns {array} recipes - An array of recipe objects, following the given schema
+ */
 export async function getAllRecipes() {
   if (localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY) !== null) {
     const localStorageRecipes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY));
