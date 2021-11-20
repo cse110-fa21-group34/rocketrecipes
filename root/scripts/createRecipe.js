@@ -87,12 +87,15 @@ function init() {
 
   document.getElementById('Create').addEventListener('click', async () => {
     const userGenRecipe = {};
-    userGenRecipe.id = '6323e437e48e6a96e4bdd4bd76878986'; // crypto.randomBytes(16).toString('hex');
+    userGenRecipe.id = '6888e437e48e6a96e4bdd4bd76878986'; // crypto.randomBytes(16).toString('hex');
     userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
-    userGenRecipe.readyInMinutes = 0;
+    userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;;
     userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
-    userGenRecipe.image = document.getElementsByClassName('amount')[1].value;
+    userGenRecipe.image = document.getElementById('image').value;
     userGenRecipe.uploader = 'From the User';
+
+    // Need to add tags to CreateRecipe.html so that the user can manually select which tags
+    // associate with their recipe.
     userGenRecipe.isFromInternet = false;
     userGenRecipe.vegetarian = false;
     userGenRecipe.vegan = false;
@@ -100,7 +103,7 @@ function init() {
     userGenRecipe.glutenFree = false;
     userGenRecipe.dairyFree = false;
     userGenRecipe.quickEat = false;
-  
+
     userGenRecipe.ingredients = [];
     let numIngredients = 0;
     for (let j = 0; j < document.getElementsByClassName('Ingre').length; j += 1) {
@@ -111,19 +114,18 @@ function init() {
       userGenRecipe.ingredients.push(ingredientInfo);
       numIngredients += 1;
     }
-  
+
     userGenRecipe.fiveIngredientsOrLess = (numIngredients <= 5);
     userGenRecipe.description = document.getElementsByClassName('descrip')[0].value;
-  
+
     userGenRecipe.steps = [];
-    for (let k = 0; i < document.getElementsByClassName('step').length; k += 1) {
+    for (let k = 0; k < document.getElementsByClassName('step').length; k += 1) {
       const currStep = {};
       currStep.number = k;
       currStep.step = document.getElementsByClassName('step')[k].value;
       userGenRecipe.steps.push(currStep);
     }
-  
-    console.log(userGenRecipe);
+
     await createRecipe(userGenRecipe);
   });
 }
