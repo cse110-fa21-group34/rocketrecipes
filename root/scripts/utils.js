@@ -102,6 +102,7 @@ export async function deleteRecipe(id) {
   return false;
 }
 
+
 export function createId() {
   // eslint-disable-next-line no-bitwise
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
@@ -131,4 +132,43 @@ export async function createRecipe(newRecipe) {
   allRecipes.push(newRecipe);
   localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(allRecipes));
   return true;
+}
+
+export async function search(searchQuery, tags) {
+  // match query to title, ingredients
+  const searchResults = new Set();
+  const allRecipes = await getAllRecipes();
+  const query = searchQuery.toLowerCase();
+
+  for (let i = 0; i < allRecipes.length; i += 1) {
+    const recipe = allRecipes[i];
+    try {
+      tags.forEach((tag) => {
+        if (recipe[`${tag}`]) {
+          searchResults.add(recipe);
+        }
+      });
+
+      const { title } = recipe;
+      if (title) {
+        if (title.toLowerCase().includes(query)) {
+          searchResults.add(recipe);
+        }
+      }
+
+      recipe.ingredients.forEach((ingredient) => {
+        const { name } = ingredient;
+        if (name) {
+          if (ingredient.name.toLowerCase().includes(query)) {
+            searchResults.add(recipe);
+          }
+        }
+      });
+    } catch (e) {
+      if (searchResults.has(recipe)) {
+        searchResults.delete(recipe);
+      }
+    }
+  }
+  return Array.from(searchResults);
 }
