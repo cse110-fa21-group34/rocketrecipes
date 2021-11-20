@@ -72,7 +72,7 @@ function deleteIng() {
   amountStep.remove();
 }
 
-function init() {
+async function init() {
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
 
@@ -84,7 +84,7 @@ function init() {
 
   const deleteButton = document.getElementById('Delete');
   deleteButton.addEventListener('click', deleteStep);
-  
+
   await getAllRecipes();
   document.getElementById('Create').addEventListener('click', async () => {
     const userGenRecipe = {};
