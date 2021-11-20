@@ -26,6 +26,19 @@ export async function getFavoriteRecipes() {
   return blankFavoritedRecipes;
 }
 
+export async function getMyRecipes() {
+  if (localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY) !== null) {
+    const allRecipes = await getAllRecipes();
+    const myRecipes = [];
+    for (let i = 0; i < allRecipes.length; i++){
+      if (!allRecipes[i].isFromInternet){
+        myRecipes.push(allRecipes[i]);
+      }
+    }
+    return myRecipes;
+  }
+}
+
 export async function addFavoriteRecipe(id) {
   const allRecipes = await getAllRecipes();
   let recipeExists = false;

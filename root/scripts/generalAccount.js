@@ -1,23 +1,24 @@
-import { getAllRecipes } from './utils.js';
+import { addFavoriteRecipe, getMyRecipes, getFavoriteRecipes, readRecipe } from './utils.js';
 
-let favoriteRecipes = {};
-let myRecipes = {};
+let favoriteRecipes = [];
+let allRecipes = {};
+let myRecipes = [];
 
-function createFavoriteRecipes(){
-    const Favorite = document.getElementById('Favorite');
+async function createFavoriteRecipes(){
+    const Favorite = document.getElementsByClassName("FavoriteFood")[0];
     Favorite.style.display = 'flex';
     Favorite.style.maxWidth = '100%';
     Favorite.style.flexWrap = 'wrap';
-
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < favoriteRecipes.length; i += 1) {
         const recipeCard = document.createElement('recipe-card');
-        recipeCard.data = favoriteRecipes[i];
+        const rec = await readRecipe(favoriteRecipes[i]);
+        recipeCard.data = rec;
         Favorite.appendChild(recipeCard);
     }
 }
 
-function createMyRecipes(){
-    const foodList = document.getElementById('foodList');
+async function createMyRecipes(){
+    const foodList = document.getElementsByClassName('foodList')[0];
     foodList.style.display = 'flex';
     foodList.style.maxWidth = '100%';
     foodList.style.flexWrap = 'wrap';
@@ -30,8 +31,11 @@ function createMyRecipes(){
 }
 
 async function init() {
-    myRecipes = await getFavoriteRecipes();
-    favoriteRecipes = await getMyRecipes();
+    //addFavoriteRecipe("bd23bca6a5f969c0718bef3d778b1a48");
+    //addFavoriteRecipe("b1ffbdfcc516588601f4ee651b5ed684");
+    favoriteRecipes = await getFavoriteRecipes();
+    myRecipes = await getMyRecipes();
+
     createMyRecipes();
     createFavoriteRecipes();
   }
