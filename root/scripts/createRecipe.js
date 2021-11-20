@@ -128,6 +128,8 @@ async function init() {
     }
 
     await createRecipe(userGenRecipe);
+
+    window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
   });
 }
 window.addEventListener('DOMContentLoaded', init);
