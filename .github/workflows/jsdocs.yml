@@ -17,11 +17,9 @@ jobs:
       - name: Build
         uses: andstor/jsdoc-action@v1
         with:
-          source_dir: ./src
+          source_dir: ./root
           output_dir: ./out
-          config_file: conf.json
           template: minami
-          front_page: README.md
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
