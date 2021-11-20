@@ -89,7 +89,7 @@ function init() {
     const userGenRecipe = {};
     userGenRecipe.id = '6888e437e48e6a96e4bdd4bd76878986'; // crypto.randomBytes(16).toString('hex');
     userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
-    userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;;
+    userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;
     userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
     userGenRecipe.image = document.getElementById('image').value;
     userGenRecipe.uploader = 'From the User';
