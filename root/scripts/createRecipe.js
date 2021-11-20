@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/extensions
-import { createRecipe } from './utils.js';
+import { getAllRecipes, createRecipe } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
@@ -84,7 +84,8 @@ function init() {
 
   const deleteButton = document.getElementById('Delete');
   deleteButton.addEventListener('click', deleteStep);
-
+  
+  await getAllRecipes();
   document.getElementById('Create').addEventListener('click', async () => {
     const userGenRecipe = {};
     userGenRecipe.id = '6888e437e48e6a96e4bdd4bd76878986'; // crypto.randomBytes(16).toString('hex');
