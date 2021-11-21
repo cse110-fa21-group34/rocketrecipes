@@ -73,17 +73,17 @@ async function init() {
   const button = document.querySelector('#fav-icon');
   const isFav = await isFavorite(recipeId);
   button.addEventListener('click', () => {
-    if (button.style.color === 'yellow') {
+    if (button.style.color === 'rgb(255, 204, 0)') {
       button.style = 'color:grey';
       deleteFavoriteRecipe(recipeId);
     } else {
-      button.style = 'color:yellow';
+      button.style = 'color:rgb(255, 204, 0)';
       addFavoriteRecipe(recipeId);
     }
   });
   // not favorited, user clicks
   if (isFav) {
-    button.style = 'color:yellow';
+    button.style = 'color:rgb(255, 204, 0)';
   } else {
     button.style = 'color:grey';
   }
