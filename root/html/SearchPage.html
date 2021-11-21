@@ -8,6 +8,7 @@
         <script src="../components/custom-navbar.js" type="module"></script>
         <script src="../scripts/searchpage.js" type="module"></script>
         <script src="../components/recipe-card.js" type="module"></script>
+        <script src="../components/custom-searchbar.js" type="module"></script>
         <title>Search</title>
     </head>
     <body>
@@ -16,21 +17,8 @@
         </header>    
         <div class="center">
             <div class="bar">
-                <form id="form">
-                    <input class="searchbar"type="text" id="ss" name="s"
-                    placeholder="Start typing..."
-                    aria-label="Search through site content">
-                    <button><a href="#"> <img class="search" src="../media/search.png" alt="Search"></a></button>
-                </form>
+                <custom-searchbar />
             </div>
-            <!--
-            <form id="searchBar">
-                <input type="text" placeholder="Start Typing..." name="search" class="search">
-                <a href="./homepage.html" style="text-decoration: none; float: left;">
-                    <img src="../media/search.png" width="50" height="50" > 
-                </a><br>
-            </form><br>
-            -->
             <button onclick="ShowFilters()">Show Filters</button>
             <div class = "checkcenter">
                 <form id="checkboxes" style="display: none" class="checkboxes">
@@ -70,26 +58,6 @@
                         <input type="checkbox" id="5 ingredients" name="5 ingredients">
                         <span class="checkmark"></span>
                     </label>
-                    <!--
-                    <input type="checkbox" id="Vegan" name="Vegan">
-                    <label for="Vegan">Vegan</label><br>
-                    <input type="checkbox" id="Vegetarian" name="Vegetarian">
-                    <label for="Vegetarian">Vegetarian</label><br>
-                    <input type="checkbox" id="Quick Cook" name="Quick Cook">
-                    <label for="Quick Cook">Quick Cook</label><br>
-                    <input type="checkbox" id="Highly Rated" name="Highly Rated">
-                    <label for="Highly Rated">Highly Rated</label><br>
-                    <input type="checkbox" id="Easy" name="Easy">
-                    <label for="Easy">Easy</label><br>
-                    <input type="checkbox" id="Medium" name="Medium">
-                    <label for="Medium">Medium</label><br>
-                    <input type="checkbox" id="Hard" name="Hard">
-                    <label for="Hard">Hard</label><br>
-                    <input type="checkbox" id="Keto" name="Keto">
-                    <label for="Keto">Keto</label><br>
-                    <input type="checkbox" id="5 Ingredients" name="5 Ingredients">
-                    <label for="5 Ingredients">5 Ingredients</label><br>
-                    -->
                 </form>
             </div>
             <button onclick="HideFilters()">Hide Filters</button>
