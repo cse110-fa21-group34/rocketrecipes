@@ -1,13 +1,13 @@
 class Searchbar extends HTMLElement {
-    constructor() {
-        super(); // Inheret everything from HTMLElement
-    
-        // Attach the shadow DOM and append this markup / stlying inside
-        this.attachShadow({ mode: 'open' });
-    
-        // create styles for searchbar
-        const style = document.createElement('style');
-        style.innerHTML = ` 
+  constructor() {
+    super(); // Inheret everything from HTMLElement
+
+    // Attach the shadow DOM and append this markup / stlying inside
+    this.attachShadow({ mode: 'open' });
+
+    // create styles for searchbar
+    const style = document.createElement('style');
+    style.innerHTML = ` 
             .bar{
                 margin:0 auto;
                 width:700px;
@@ -47,9 +47,9 @@ class Searchbar extends HTMLElement {
             }
         `;
 
-        // create html for searchbar
-        const searchbarContainer = document.createElement('div');
-        searchbarContainer.innerHTML = `
+    // create html for searchbar
+    const searchbarContainer = document.createElement('div');
+    searchbarContainer.innerHTML = `
         <form id="form">
             <input class="searchbar"type="text" id="ss" name="s"
             placeholder="Start typing..."
@@ -61,10 +61,10 @@ class Searchbar extends HTMLElement {
             </button>
         </form>
         `;
-        searchbarContainer.classList.add('bar');
+    searchbarContainer.classList.add('bar');
 
-        this.shadowRoot.append(style, searchbarContainer);
-    }
+    this.shadowRoot.append(style, searchbarContainer);
+  }
 }
 
 // Define the Class so you can use it as a custom element
