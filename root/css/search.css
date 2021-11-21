@@ -94,7 +94,7 @@
   transform: rotate(45deg);
 }
 
-
+/*
 .bar{
     margin:0 auto;
     width:700px;
@@ -111,7 +111,7 @@
     box-shadow: 1px 1px 8px 1px #dcdcdc;
     outline:none;
   }
-  */
+  
   .searchbar{
     height:20px;
     border:none;
