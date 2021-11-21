@@ -49,21 +49,43 @@ class Searchbar extends HTMLElement {
 
     // create html for searchbar
     const searchbarContainer = document.createElement('div');
-    searchbarContainer.innerHTML = `
-        <form id="form">
-            <input class="searchbar"type="text" id="ss" name="s"
-            placeholder="Start typing..."
-            aria-label="Search through site content"/>
-            <button>
-                <a href="#"> 
-                    <img class="search" src="../media/search.png" alt="Search"/>
-                </a>
-            </button>
-        </form>
-        `;
+    const form = document.createElement('form');
+    form.id = 'search-bar-form';
+    searchbarContainer.appendChild(form);
     searchbarContainer.classList.add('bar');
 
+    const searchInput = document.createElement('input');
+    searchInput.classList.add('searchbar');
+    searchInput.type = 'text';
+    searchInput.id = 'ss';
+    searchInput.name = 's';
+    searchInput.placeholder = 'Start typing...';
+    searchInput.ariaLabel = 'Search through site content';
+
+    const searchButton = document.createElement('button');
+    searchButton.innerHTML = `
+        <a href="#"> 
+            <img class="search" src="../media/search.png" alt="Search"/>
+        </a>
+    `;
+
+    form.appendChild(searchInput);
+    form.appendChild(searchButton);
+
     this.shadowRoot.append(style, searchbarContainer);
+
+    function handleSearch() {
+      const searchInputValue = searchInput.value;
+
+      const currentUrl = window.location;
+      window.location = `${currentUrl.origin}/root/html/searchpage.html?searchQuery=${searchInputValue}`;
+    }
+
+    form.addEventListener('submit',
+      (e) => {
+        e.preventDefault();
+        handleSearch(e);
+      });
   }
 }
 
