@@ -1,5 +1,7 @@
-// eslint-disable-next-line import/extensions
-import { readRecipe, getAllRecipes } from './utils.js';
+/* eslint-disable import/extensions */
+import {
+  readRecipe, addFavoriteRecipe, isFavorite, deleteFavoriteRecipe, getAllRecipes,
+} from './utils.js';
 
 // holds recipes from localStorage
 let allRecipes = {};
@@ -102,6 +104,23 @@ async function init() {
     allRecipes = await getAllRecipes();
   } finally {
     createRecommendedRecipes();
+  }
+  const button = document.querySelector('#fav-icon');
+  const isFav = await isFavorite(recipeId);
+  button.addEventListener('click', () => {
+    if (button.style.color === 'rgb(255, 204, 0)') {
+      button.style = 'color:grey';
+      deleteFavoriteRecipe(recipeId);
+    } else {
+      button.style = 'color:rgb(255, 204, 0)';
+      addFavoriteRecipe(recipeId);
+    }
+  });
+  // not favorited, user clicks
+  if (isFav) {
+    button.style = 'color:rgb(255, 204, 0)';
+  } else {
+    button.style = 'color:grey';
   }
 }
 

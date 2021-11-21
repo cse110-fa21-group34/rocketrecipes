@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/extensions
+import { getAllRecipes, createRecipe, createId } from './utils.js';
+/* eslint-disable prefer-destructuring */
+// const crypto = require('crypto');
+
 // const createRecipe = document.querySelector(document.getElementById('Create'));
 // const deleteRecipe = document.querySelector(document.getElementById('Delete'));
 let i = 6; // instructions counter
@@ -6,6 +11,7 @@ let ingCount = 1; // Ingredient Counter
 function addStep() {
   const instructions = document.querySelector('.instructions');
   const steps = document.createElement('input');
+  steps.setAttribute('class', 'step');
   steps.setAttribute('type', 'text');
   steps.setAttribute('placeholder', `Step ${i.toString()}`);
   steps.setAttribute('id', `Step${i.toString()}`);
@@ -66,17 +72,64 @@ function deleteIng() {
   amountStep.remove();
 }
 
-function init() {
+async function init() {
+  const addIngredient = document.getElementById('addIngredient');
+  addIngredient.addEventListener('click', addIng);
+
+  const deleteIngredient = document.getElementById('deleteIngredient');
+  deleteIngredient.addEventListener('click', deleteIng);
+
   const button = document.getElementById('plus');
   button.addEventListener('click', addStep);
 
   const deleteButton = document.getElementById('Delete');
   deleteButton.addEventListener('click', deleteStep);
 
-  const addIngredient = document.getElementById('addIngredient');
-  addIngredient.addEventListener('click', addIng);
+  await getAllRecipes();
+  document.getElementById('Create').addEventListener('click', async () => {
+    const userGenRecipe = {};
+    userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
+    userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
+    userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;
+    userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
+    userGenRecipe.image = document.getElementById('image').value;
+    userGenRecipe.uploader = 'From the User';
 
-  const deleteIngredient = document.getElementById('deleteIngredient');
-  deleteIngredient.addEventListener('click', deleteIng);
+    // Need to add tags to CreateRecipe.html so that the user can manually select which tags
+    // associate with their recipe.
+    userGenRecipe.isFromInternet = false;
+    userGenRecipe.vegetarian = false;
+    userGenRecipe.vegan = false;
+    userGenRecipe.cheap = false;
+    userGenRecipe.glutenFree = false;
+    userGenRecipe.dairyFree = false;
+    userGenRecipe.quickEat = false;
+
+    userGenRecipe.ingredients = [];
+    let numIngredients = 0;
+    for (let j = 0; j < document.getElementsByClassName('Ingre').length; j += 1) {
+      const ingredientInfo = {};
+      ingredientInfo.name = document.getElementsByClassName('Ingredient')[j].value;
+      ingredientInfo.amount = document.getElementsByClassName('Ingre')[j].value;
+      ingredientInfo.unit = document.getElementsByClassName('unit')[j].value;
+      userGenRecipe.ingredients.push(ingredientInfo);
+      numIngredients += 1;
+    }
+
+    userGenRecipe.fiveIngredientsOrLess = (numIngredients <= 5);
+    userGenRecipe.description = document.getElementsByClassName('descrip')[0].value;
+
+    userGenRecipe.steps = [];
+    for (let k = 0; k < document.getElementsByClassName('step').length; k += 1) {
+      const currStep = {};
+      currStep.number = k;
+      currStep.step = document.getElementsByClassName('step')[k].value;
+      userGenRecipe.steps.push(currStep);
+    }
+
+    await createRecipe(userGenRecipe);
+
+    window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
+  });
 }
 window.addEventListener('DOMContentLoaded', init);
