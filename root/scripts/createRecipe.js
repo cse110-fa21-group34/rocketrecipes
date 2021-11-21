@@ -61,7 +61,6 @@ function addIng() {
 }
 
 function deleteIng() {
-  // console.log('working');
   ingCount -= 1;
   if (ingCount < 2) {
     ingCount = 2;
@@ -74,24 +73,7 @@ function deleteIng() {
   amountStep.remove();
 }
 
-function getCookie(cname) {
-  const name = `${cname}=`;
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return '';
-}
-
 async function fillRecipePage(recipeId) {
-  console.log('Hello There!');
   const recipe = await readRecipe(recipeId);
   const header = document.getElementById('header');
   header.innerHTML = 'Edit Your Recipe!';
@@ -105,7 +87,7 @@ async function fillRecipePage(recipeId) {
   servings.value = recipe.servings;
   const time = document.getElementById('time');
   time.value = recipe.readyInMinutes;
-  for (let j = 1; j < recipe.ingredients.length + 1; j++) {
+  for (let j = 1; j < recipe.ingredients.length + 1; j += 1) {
     addIng();
     const name = document.getElementById(`ing${j.toString()}`);
     const amount = document.getElementById(`amount${j.toString()}`);
@@ -116,7 +98,7 @@ async function fillRecipePage(recipeId) {
   }
   const steps = document.createElement('input');
 
-  for (let k = 1; k <= recipe.steps.length; k++) {
+  for (let k = 1; k <= recipe.steps.length; k += 1) {
     if (k > 5) {
       addStep();
     }
@@ -126,13 +108,11 @@ async function fillRecipePage(recipeId) {
 }
 
 async function init() {
-  // const recipeId =
   const queryString = window.location.search;
 
   const searchParams = new URLSearchParams(queryString);
   const recipeId = searchParams.get('id');
-  console.log(recipeId);
-  if (document.cookie.length != 0) {
+  if (document.cookie.length !== 0) {
     fillRecipePage(recipeId);
   }
   const addIngredient = document.getElementById('addIngredient');
