@@ -38,6 +38,16 @@ export async function getFavoriteRecipes() {
   return blankFavoritedRecipes;
 }
 
+export async function isFavorite(id) {
+  const favoritedRecipes = await getFavoriteRecipes();
+  for (let i = 0; i < favoritedRecipes.length; i += 1) {
+    if (favoritedRecipes[i] === id) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export async function getUserRecipes() {
   const allRecipes = await getAllRecipes();
   const userRecipes = [];
