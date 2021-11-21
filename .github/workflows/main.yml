@@ -50,10 +50,12 @@ jobs:
           output_dir: ./docs/jsdocs/
           template: minami
 
-      - name: Deploy Documentation
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/jsdocs/
+      - name: Publish docs
+            uses: peaceiris/actions-gh-pages@v1.0.1
+            env:
+              ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+              PUBLISH_BRANCH: gh-pages
+              PUBLISH_DIR: ./docs/jsdocs/
+
 
 
