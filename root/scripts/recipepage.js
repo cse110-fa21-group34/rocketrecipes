@@ -75,7 +75,11 @@ async function init() {
 
   const editRecipeButton = document.getElementById('editButton');
   editRecipeButton.addEventListener('click', () => {
-    window.location.href = '../html/CreateRecipe.html';
+    // document.cookie = `recipe=${recipeId}`;
+    // console.log(document.cookie);
+    // window.location.href = '../html/CreateRecipe.html';
+    const currentUrl = window.location;
+    window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
   });
 }
 

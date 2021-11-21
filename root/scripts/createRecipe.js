@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/extensions
-import { getAllRecipes, createRecipe, createId } from './utils.js';
+import {
+  getAllRecipes, createRecipe, createId, readRecipe,
+} from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
@@ -72,7 +74,67 @@ function deleteIng() {
   amountStep.remove();
 }
 
+function getCookie(cname) {
+  const name = `${cname}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return '';
+}
+
+async function fillRecipePage(recipeId) {
+  console.log('Hello There!');
+  const recipe = await readRecipe(recipeId);
+  const header = document.getElementById('header');
+  header.innerHTML = 'Edit Your Recipe!';
+  const name = document.getElementById('name');
+  name.value = recipe.title;
+  const imageLink = document.getElementById('image');
+  imageLink.value = recipe.image;
+  const summary = document.querySelector('.descrip');
+  summary.value = recipe.summary.replace(/<[^>]+>/g, '');
+  const servings = document.getElementById('serving');
+  servings.value = recipe.servings;
+  const time = document.getElementById('time');
+  time.value = recipe.readyInMinutes;
+  for (let j = 1; j < recipe.ingredients.length + 1; j++) {
+    addIng();
+    const name = document.getElementById(`ing${j.toString()}`);
+    const amount = document.getElementById(`amount${j.toString()}`);
+    const unit = document.getElementById(`units${j.toString()}`);
+    amount.value = recipe.ingredients[j - 1].amount;
+    name.value = recipe.ingredients[j - 1].name;
+    unit.value = recipe.ingredients[j - 1].unit;
+  }
+  const steps = document.createElement('input');
+
+  for (let k = 1; k <= recipe.steps.length; k++) {
+    if (k > 5) {
+      addStep();
+    }
+    const stepVal = document.getElementsByClassName('step')[k - 1];
+    stepVal.value = recipe.steps[k - 1].step;
+  }
+}
+
 async function init() {
+  // const recipeId =
+  const queryString = window.location.search;
+
+  const searchParams = new URLSearchParams(queryString);
+  const recipeId = searchParams.get('id');
+  console.log(recipeId);
+  if (document.cookie.length != 0) {
+    fillRecipePage(recipeId);
+  }
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
 
@@ -116,7 +178,7 @@ async function init() {
       numIngredients += 1;
     }
 
-    userGenRecipe.fiveIngredientsOrLess = (numIngredients <= 5);
+    userGenRecipe.fiveIngredientsOrLess = numIngredients <= 5;
     userGenRecipe.description = document.getElementsByClassName('descrip')[0].value;
 
     userGenRecipe.steps = [];
@@ -128,7 +190,6 @@ async function init() {
     }
 
     await createRecipe(userGenRecipe);
-
     window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
   });
 }

@@ -15,7 +15,7 @@
     </header>
     <main>
       <div class="midPart">
-        <h2>Create your recipe:</h2>
+        <h2 id="header">Create your recipe:</h2>
         <input
           class="recipeName"
           type="text"
@@ -23,7 +23,7 @@
           placeholder="Recipe Name"
         />
         <br />
-        <input 
+        <input
           class="image-upload"
           id="image"
           type="text"
@@ -36,23 +36,31 @@
         ></textarea>
         <br />
         <h4 class="make">Makes:</h4>
-        <input class="amount" type="text" placeholder="Total Amount" />
+        <input
+          class="amount"
+          id="serving"
+          type="text"
+          placeholder="Total Amount"
+        />
         <h4 class="make2">Time:</h4>
-        <input class="amount" type="text" placeholder="Total time" />
+        <input
+          class="amount"
+          type="text"
+          placeholder="Total time in Minutes"
+          id="time"
+        />
         <br />
         <h3>Ingredients:</h3>
         <div class="ingredSteps">
           <!-- <input class="Ingre" type="text" placeholder="Amount" id="amount1" />
           <input class="unit" type="text" placeholder="Units" id="units1" />
           <input class="Ingredient" type="text" placeholder="Ingredient 1" id="ing1"/> -->
-          
-        
         </div>
-        
+
         <div>
-        <button id="addIngredient">Add Ingredient</button>
-        <button id="deleteIngredient">Delete Ingredient</button>
-      </div>
+          <button id="addIngredient">Add Ingredient</button>
+          <button id="deleteIngredient">Delete Ingredient</button>
+        </div>
       </div>
     </main>
     <footer>
