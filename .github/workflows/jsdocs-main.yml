@@ -8,7 +8,7 @@ on:
 
 jobs:
   generate-docs:
-    name: Generating documentation for this PR
+    name: Generating documentation for the main branch
     runs-on: ubuntu-latest
 
     steps:
