@@ -4,9 +4,7 @@ const COMMUNITY_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-grou
 const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 const LOCAL_STORAGE_FAVORITED_RECIPES_KEY = 'favoritedRecipes';
 
-
 /**
- * @memberof utils
  * @async
  * This function gets all recipes from localStorage.
  * @returns {Array} recipes - An array of recipe objects, following the given schema
@@ -25,7 +23,6 @@ export async function getAllRecipes() {
 }
 
 /**
- * @memberof utils
  * @async
  * Gets all recipes a user has favorited from localStorage.
  * @returns {Array}
