@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel = "stylesheet" href="../css/search.css"/>
         <script src="../components/custom-navbar.js" type="module"></script>
+        <script src="../scripts/searchpage.js" type="module"></script>
+        <script src="../components/recipe-card.js" type="module"></script>
         <title>Search</title>
     </head>
     <body>
@@ -91,6 +93,7 @@
                 </form>
             </div>
             <button onclick="HideFilters()">Hide Filters</button>
+            <div id="search-results-container" />
         </div>
         <script>
             function ShowFilters(){
