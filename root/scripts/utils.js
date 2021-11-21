@@ -1,12 +1,12 @@
+/** @module utils */
 /* eslint-disable no-mixed-operators */
 const COMMUNITY_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json';
 const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 const LOCAL_STORAGE_FAVORITED_RECIPES_KEY = 'favoritedRecipes';
 
+
 /**
- * @module utils
- *
- * @memberof utils:getAllRecipes
+ * @memberof utils
  * @async
  * This function gets all recipes from localStorage.
  * @returns {Array} recipes - An array of recipe objects, following the given schema
@@ -25,12 +25,10 @@ export async function getAllRecipes() {
 }
 
 /**
- * @module utils
- *
- * @memberof module:getFavoriteRecipes
+ * @memberof utils
  * @async
  * Gets all recipes a user has favorited from localStorage.
- * @returns {Array} 
+ * @returns {Array}
  */
 export async function getFavoriteRecipes() {
   if (localStorage.getItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY) !== null) {
