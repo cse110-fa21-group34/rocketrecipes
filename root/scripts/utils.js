@@ -209,7 +209,7 @@ export async function createRecipe(newRecipe) {
 
 /**
  * A helper function to convert an array of recipe ids to an object with ids as keys
- * @param {recipeIds Array[]} arr array of recipeIds
+ * @param {Array} arr array of recipeIds
  * @returns an object with recipeIds as keys
  */
 export function recipeIdArrayToObject(arr) {
@@ -223,7 +223,7 @@ export function recipeIdArrayToObject(arr) {
 /**
  * Searches all recipes, matches title/ingredients by query and tags
  * @param {String} searchQuery - a text query
- * @param {String Array[]} tags - an array of tags (must correspond to the schema format)
+ * @param {Array} tags - an array of tags (must correspond to the schema format)
  * @returns An array of recipeObjects that matches the search parameters
  */
 export async function search(searchQuery, tags) {
