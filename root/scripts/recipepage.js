@@ -1,5 +1,7 @@
-// eslint-disable-next-line import/extensions
-import { readRecipe } from './utils.js';
+/* eslint-disable import/extensions */
+import {
+  readRecipe, addFavoriteRecipe, isFavorite, deleteFavoriteRecipe,
+} from './utils.js';
 
 // takes the current recipe object and fills the html of the page with
 // the information within it
@@ -66,6 +68,24 @@ async function init() {
   } else {
     const currentRecipe = await readRecipe(recipeId);
     fillRecipePage(currentRecipe);
+  }
+
+  const button = document.querySelector('#fav-icon');
+  const isFav = await isFavorite(recipeId);
+  button.addEventListener('click', () => {
+    if (button.style.color === 'yellow') {
+      button.style = 'color:grey';
+      deleteFavoriteRecipe(recipeId);
+    } else {
+      button.style = 'color:yellow';
+      addFavoriteRecipe(recipeId);
+    }
+  });
+  // not favorited, user clicks
+  if (isFav) {
+    button.style = 'color:yellow';
+  } else {
+    button.style = 'color:grey';
   }
 }
 
