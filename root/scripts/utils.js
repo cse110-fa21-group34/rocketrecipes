@@ -39,6 +39,21 @@ export async function getFavoriteRecipes() {
 }
 
 /**
+ * Determines if the given recipe in a user's favorite list
+ * @param {recipeId} id - recipeId to check
+ * @returns {Boolean}
+ */
+export async function isFavorite(id) {
+  const favoritedRecipes = await getFavoriteRecipes();
+  for (let i = 0; i < favoritedRecipes.length; i += 1) {
+    if (favoritedRecipes[i] === id) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
  * @async
  * Gets all recipes a user has created
  * @returns {Array} An array of recipe objects, following the given schema
