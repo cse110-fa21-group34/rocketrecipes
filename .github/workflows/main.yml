@@ -47,6 +47,7 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./root/
+          recurse: true
           output_dir: ./docs/jsdocs/
           template: minami
 
