@@ -28,6 +28,8 @@ async function init() {
 
   const searchParams = new URLSearchParams(queryString);
   const searchQuery = searchParams.get('searchQuery');
+  const filterTags = searchParams.get('tags')?.split(',') || [];
+
   if (searchQuery === null || searchQuery === undefined) {
     const searchResultsContainer = document.getElementById('search-results-container');
     searchResultsContainer.style.display = 'flex';
@@ -39,7 +41,7 @@ async function init() {
       <p>Enter your search term above!</p>
     `;
   } else {
-    const searchedRecipes = await search(searchQuery, []);
+    const searchedRecipes = await search(searchQuery, filterTags);
     fillSearchPage(searchedRecipes);
   }
 }

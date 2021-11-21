@@ -1,3 +1,71 @@
+// creates form with all checkboxes for filtering search
+function createCheckboxes() {
+  const tagProperties = [
+    { id: 'cheap', name: 'Cheap' },
+    { id: 'dairyFree', name: 'Dairy Free' },
+    { id: 'fiveIngredientsOrLess', name: 'Easy' },
+    { id: 'glutenFree', name: 'Gluten Free' },
+    { id: 'quickEat', name: 'Quick Eat' },
+    { id: 'vegan', name: 'Vegan' },
+    { id: 'vegetarian', name: 'Vegetarian' },
+  ];
+
+  const checkboxContainer = document.createElement('form');
+  checkboxContainer.id = 'checkboxes';
+  checkboxContainer.classList.add('checkboxes');
+
+  tagProperties.forEach((tag) => {
+    const tagCheckbox = document.createElement('label');
+    tagCheckbox.classList.add('container');
+    tagCheckbox.innerText = tag.name;
+
+    const inp = document.createElement('input');
+    inp.id = tag.id;
+    inp.name = tag.name;
+    inp.type = 'checkbox';
+
+    const inpspan = document.createElement('span');
+    inpspan.classList.add('checkmark');
+
+    tagCheckbox.appendChild(inp);
+    tagCheckbox.appendChild(inpspan);
+    checkboxContainer.appendChild(tagCheckbox);
+  });
+
+  return checkboxContainer;
+}
+
+// creates checkbox container with show and hide buttons
+function createCheckboxContainer() {
+  const filterContainer = document.createElement('div');
+  const checkboxFormContainer = createCheckboxes();
+  // create show and hide checkbox buttons and their logic
+  const showCheckboxesButton = document.createElement('button');
+  showCheckboxesButton.innerText = 'Show';
+
+  const hideCheckboxesButton = document.createElement('button');
+  hideCheckboxesButton.style.display = 'none';
+  hideCheckboxesButton.innerText = 'Hide';
+
+  showCheckboxesButton.onclick = () => {
+    checkboxFormContainer.style.display = 'unset';
+    showCheckboxesButton.style.display = 'none';
+    hideCheckboxesButton.style.display = 'unset';
+  };
+
+  hideCheckboxesButton.onclick = () => {
+    checkboxFormContainer.style.display = 'none';
+    showCheckboxesButton.style.display = 'unset';
+    hideCheckboxesButton.style.display = 'none';
+  };
+
+  // add all checkbox containers and elements to the container
+  filterContainer.appendChild(showCheckboxesButton);
+  filterContainer.appendChild(hideCheckboxesButton);
+  filterContainer.appendChild(checkboxFormContainer);
+  return filterContainer;
+}
+
 class Searchbar extends HTMLElement {
   constructor() {
     super(); // Inheret everything from HTMLElement
@@ -45,7 +113,6 @@ class Searchbar extends HTMLElement {
                 outline: none;
                 background-color: #ffffff;
             }
-
             .checkboxes {
                 display: none;
                 position: relative;
@@ -60,7 +127,6 @@ class Searchbar extends HTMLElement {
                 -ms-user-select: none;
                 user-select: none;
             }
-
             .container {
                 display: block;
                 position: relative;
@@ -75,7 +141,6 @@ class Searchbar extends HTMLElement {
                 -ms-user-select: none;
                 user-select: none;
             }
-
             .container input {
                 position: absolute;
                 opacity: 0;
@@ -83,7 +148,6 @@ class Searchbar extends HTMLElement {
                 height: 0;
                 width: 0;
             }
-
             .checkmark {
                 position: absolute;
                 top: 0;
@@ -92,25 +156,20 @@ class Searchbar extends HTMLElement {
                 width: 25px;
                 background-color: #eee;
             }
-
             .container:hover input ~ .checkmark {
                 background-color: #ccc;
             }
-
             .container input:checked ~ .checkmark {
                 background-color: #2196F3;
             }
-
             .checkmark:after {
                 content: "";
                 position: absolute;
                 display: none;
             }
-
             .container input:checked ~ .checkmark:after {
                 display: block;
             }
-
             .container .checkmark:after {
                 left: 9px;
                 top: 5px;
@@ -149,85 +208,25 @@ class Searchbar extends HTMLElement {
     form.appendChild(searchInput);
     form.appendChild(searchButton);
 
-    const filterContainer = document.createElement('div');
-    const checkboxFormContainer = document.createElement('form');
-    checkboxFormContainer.id = 'checkboxes';
-    checkboxFormContainer.classList.add('checkboxes');
-
-    // create checkboxes
-    checkboxFormContainer.innerHTML = `
-        <label class="container">Vegan
-            <input type="checkbox" id="Vegan" name="Vegan">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Vegetarian
-            <input type="checkbox" id="Vegetarian" name="Vegetarian">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Quick Cook
-            <input type="checkbox" id="Quick Cook" name="Quick Cook">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Highly Rated
-            <input type="checkbox" id="Highly Rated" name="Highly Rated">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Easy
-            <input type="checkbox" id="Easy" name="Easy">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Medium
-            <input type="checkbox" id="Medium" name="Medium">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Hard
-            <input type="checkbox" id="Hard" name="Hard">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Keto
-            <input type="checkbox" id="Keto" name="Keto">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">5 ingredients
-            <input type="checkbox" id="5 ingredients" name="5 ingredients">
-            <span class="checkmark"></span>
-        </label>
-    `;
-
-    // create show and hide checkbox buttons and their logic
-    const showCheckboxesButton = document.createElement('button');
-    showCheckboxesButton.innerText = 'Show';
-
-    const hideCheckboxesButton = document.createElement('button');
-    hideCheckboxesButton.style.display = 'none';
-    hideCheckboxesButton.innerText = 'Hide';
-
-    showCheckboxesButton.onclick = () => {
-      checkboxFormContainer.style.display = 'unset';
-      showCheckboxesButton.style.display = 'none';
-      hideCheckboxesButton.style.display = 'unset';
-    };
-
-    hideCheckboxesButton.onclick = () => {
-      checkboxFormContainer.style.display = 'none';
-      showCheckboxesButton.style.display = 'unset';
-      hideCheckboxesButton.style.display = 'none';
-    };
-
-    // add all checkbox containers and elements to the container
-    filterContainer.appendChild(showCheckboxesButton);
-    filterContainer.appendChild(hideCheckboxesButton);
-    filterContainer.appendChild(checkboxFormContainer);
-
-    searchbarContainer.appendChild(filterContainer);
+    const checkboxContainer = createCheckboxContainer();
+    searchbarContainer.appendChild(checkboxContainer);
 
     this.shadowRoot.append(style, searchbarContainer);
 
     function handleSearch() {
-      const searchInputValue = searchInput.value;
+      const searchInputValue = searchInput.value; // serach query
+
+      // get tags
+      const tags = [];
+      const checkboxes = checkboxContainer.querySelectorAll('input');
+      checkboxes.forEach((c) => {
+        if (c.checked) {
+          tags.push(c.id);
+        }
+      });
 
       const currentUrl = window.location;
-      window.location = `${currentUrl.origin}/root/html/searchpage.html?searchQuery=${searchInputValue}`;
+      window.location = `${currentUrl.origin}/root/html/searchpage.html?searchQuery=${searchInputValue}${tags.length > 0 ? `&tags=${tags.join(',')}` : ''}`;
     }
 
     form.addEventListener('submit',
