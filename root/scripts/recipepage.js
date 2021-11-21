@@ -71,6 +71,7 @@ async function init() {
   const createButton = document.getElementById('deleteButton');
   createButton.addEventListener('click', () => {
     deleteRecipe(recipeId);
+    window.location = `${window.location.origin}/root/html/homepage.html`;
   });
 
   const editRecipeButton = document.getElementById('editButton');
