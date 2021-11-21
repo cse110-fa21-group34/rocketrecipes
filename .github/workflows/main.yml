@@ -34,3 +34,26 @@ jobs:
         
       - name: Run Jest Puppeteer tests
         run: npm run test-e2e
+
+  generate-docs:
+  name: Generating documentation with JSDocs
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run JSDocs
+      uses: andstor/jsdoc-action@v1
+      with:
+        source_dir: ./root/
+        output_dir: ./docs/jsdocs/
+        template: minami
+
+    - name: Deploy Documentation
+      uses: peaceiris/actions-gh-pages@v3.7.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/jsdocs/
+
+
