@@ -15,9 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check the value
-        run: echo $env.GITHUB_PR_NUMBER 
-
       - name: Checkout code
         uses: actions/checkout@v2
 
