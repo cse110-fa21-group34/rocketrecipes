@@ -12,24 +12,23 @@ function addStep() {
   const instructions = document.querySelector('.instructions');
   const steps = document.createElement('input');
   let blank = false;
-  for(let j=1;j<i;j+=1){
-    let lastid="Step"+j;
-    let lastinput=document.getElementById(lastid).value;
-    if(lastinput.length==0){
-      blank=true;
+  for (let j = 1; j < i; j += 1) {
+    const lastid = `Step${j}`;
+    const lastinput = document.getElementById(lastid).value;
+    if (lastinput.length === 0) {
+      blank = true;
       break;
     }
   }
-  if(blank){
-    alert("blank inputs are not allowed!");
-  }
-  else{
+  if (blank) {
+    alert('blank inputs are not allowed!');
+  } else {
     steps.setAttribute('class', 'step');
     steps.setAttribute('type', 'text');
     steps.setAttribute('placeholder', `Step ${i.toString()}`);
     steps.setAttribute('id', `Step${i.toString()}`);
     instructions.appendChild(steps);
-    i += 1; 
+    i += 1;
   }
 }
 
@@ -45,22 +44,21 @@ function deleteStep() {
 
 function addIng() {
   let blank = false;
-  for(let j=1;j<ingCount;j+=1){
-    let lastid1="amount"+j;
-    let lastid2="units"+j;
-    let lastid3="ing"+j;
-    let lastinput1=document.getElementById(lastid1).value;
-    let lastinput2=document.getElementById(lastid2).value;
-    let lastinput3=document.getElementById(lastid3).value;
-    if(lastinput1.length==0 || lastinput2.length==0 || lastinput3.length==0){
-      blank=true;
+  for (let j = 1; j < ingCount; j += 1) {
+    const lastid1 = `amount${j}`;
+    const lastid2 = `units${j}`;
+    const lastid3 = `ing${j}`;
+    const lastinput1 = document.getElementById(lastid1).value;
+    const lastinput2 = document.getElementById(lastid2).value;
+    const lastinput3 = document.getElementById(lastid3).value;
+    if (lastinput1.length === 0 || lastinput2.length === 0 || lastinput3.length === 0) {
+      blank = true;
       break;
     }
   }
-  if(blank){
-    alert("blank inputs are not allowed!");
-  }
-  else{
+  if (blank) {
+    alert('blank inputs are not allowed!');
+  } else {
     const ingredSteps = document.querySelector('.ingredSteps');
     const amount = document.createElement('input');
     amount.setAttribute('type', 'text');
@@ -116,23 +114,18 @@ async function init() {
 
   const deleteButton = document.getElementById('Delete');
   deleteButton.addEventListener('click', deleteStep);
-  
+
   await getAllRecipes();
   document.getElementById('Create').addEventListener('click', async () => {
     const title = document.getElementsByClassName('recipeName')[0].value;
     const makes = document.getElementsByClassName('amount')[0].value;
     const readyInMinutes = document.getElementsByClassName('amount')[1].value;
-    const image =  document.getElementById('image').value;
+    const image = document.getElementById('image').value;
     const description = document.getElementsByClassName('descrip')[0].value;
-    if(title.length==0 || readyInMinutes.length==0 || image.length==0 || description.length==0 || makes.length==0){
-      console.log(title);
-      console.log(image);
-      console.log(description);
-      console.log(makes);
-      console.log(readyInMinutes);
-      alert("Blank inputs not allowed!");
-    }
-    else{
+    if (title.length === 0 || readyInMinutes.length === 0 || image.length === 0
+        || description.length === 0 || makes.length === 0) {
+      alert('Blank inputs not allowed!');
+    } else {
       const userGenRecipe = {};
       userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
       userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
@@ -177,7 +170,6 @@ async function init() {
 
       window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
     }
-    
   });
 }
 window.addEventListener('DOMContentLoaded', init);
