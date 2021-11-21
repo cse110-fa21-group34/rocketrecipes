@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/extensions
 import { readRecipe } from './utils.js';
+import { deleteRecipe } from './utils.js';
 
 // takes the current recipe object and fills the html of the page with
 // the information within it
@@ -67,6 +68,15 @@ async function init() {
     const currentRecipe = await readRecipe(recipeId);
     fillRecipePage(currentRecipe);
   }
+  const createButton = document.getElementById('deleteButton');
+  createButton.addEventListener('click', () => {
+    deleteRecipe(recipeId);
+  });
+
+  const editRecipeButton = document.getElementById('editButton');
+  editRecipeButton.addEventListener('click', () => {
+    window.location.href = '../html/CreateRecipe.html';
+  });
 }
 
 window.addEventListener('DOMContentLoaded', init);
