@@ -28,7 +28,6 @@ jobs:
 
       - name: Publish docs
         uses: peaceiris/actions-gh-pages@v3
-        run: echo "PR number = "
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: "docs-pr-${env.GITHUB_PR_NUMBER}"
