@@ -1,8 +1,14 @@
+/** @module utils */
 /* eslint-disable no-mixed-operators */
 const COMMUNITY_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json';
 const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 const LOCAL_STORAGE_FAVORITED_RECIPES_KEY = 'favoritedRecipes';
 
+/**
+ * @async
+ * This function gets all recipes from localStorage.
+ * @returns {Array} recipes - An array of recipe objects, following the given schema
+ */
 export async function getAllRecipes() {
   if (localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY) !== null) {
     const localStorageRecipes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY));
@@ -16,6 +22,11 @@ export async function getAllRecipes() {
   return fetchedRecipes;
 }
 
+/**
+ * @async
+ * Gets all recipes a user has favorited from localStorage.
+ * @returns {Array}
+ */
 export async function getFavoriteRecipes() {
   if (localStorage.getItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY) !== null) {
     const favoritedRecipes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY));
@@ -25,6 +36,17 @@ export async function getFavoriteRecipes() {
   const blankFavoritedRecipes = [];
   localStorage.setItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY, JSON.stringify(blankFavoritedRecipes));
   return blankFavoritedRecipes;
+}
+
+export async function getUserRecipes() {
+  const allRecipes = await getAllRecipes();
+  const userRecipes = [];
+  for (let i = 0; i < allRecipes.length; i += 1) {
+    if (!allRecipes[i].isFromInternet) {
+      userRecipes.push(allRecipes[i]);
+    }
+  }
+  return userRecipes;
 }
 
 export async function addFavoriteRecipe(id) {
@@ -131,6 +153,14 @@ export async function createRecipe(newRecipe) {
   allRecipes.push(newRecipe);
   localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(allRecipes));
   return true;
+}
+
+export function recipeIdArrayToObject(arr) {
+  const obj = {};
+  for (let i = 0; i < arr.length; i += 1) {
+    obj[arr[i]] = true;
+  }
+  return obj;
 }
 
 export async function search(searchQuery, tags) {
