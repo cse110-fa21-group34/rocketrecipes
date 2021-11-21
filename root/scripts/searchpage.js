@@ -38,8 +38,6 @@ async function init() {
     searchResultsContainer.innerHTML = `
       <p>Enter your search term above!</p>
     `;
-    // handle bad request
-    // show empty page with note that we can't find that id
   } else {
     const searchedRecipes = await search(searchQuery, []);
     fillSearchPage(searchedRecipes);

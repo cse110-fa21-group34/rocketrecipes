@@ -19,57 +19,6 @@
             <div class="bar">
                 <custom-searchbar />
             </div>
-            <button onclick="ShowFilters()">Show Filters</button>
-            <div class = "checkcenter">
-                <form id="checkboxes" style="display: none" class="checkboxes">
-                    <label class="container">Vegan
-                        <input type="checkbox" id="Vegan" name="Vegan">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Vegetarian
-                        <input type="checkbox" id="Vegetarian" name="Vegetarian">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Quick Cook
-                        <input type="checkbox" id="Quick Cook" name="Quick Cook">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Highly Rated
-                        <input type="checkbox" id="Highly Rated" name="Highly Rated">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Easy
-                        <input type="checkbox" id="Easy" name="Easy">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Medium
-                        <input type="checkbox" id="Medium" name="Medium">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Hard
-                        <input type="checkbox" id="Hard" name="Hard">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Keto
-                        <input type="checkbox" id="Keto" name="Keto">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">5 ingredients
-                        <input type="checkbox" id="5 ingredients" name="5 ingredients">
-                        <span class="checkmark"></span>
-                    </label>
-                </form>
-            </div>
-            <button onclick="HideFilters()">Hide Filters</button>
             <div id="search-results-container" />
         </div>
-        <script>
-            function ShowFilters(){
-                document.getElementById("checkboxes").style.display="block";
-            }
-
-            function HideFilters(){
-                document.getElementById("checkboxes").style.display="none";
-            }
-        </script>
     </body>
