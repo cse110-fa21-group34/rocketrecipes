@@ -1,90 +1,130 @@
 .midPart {
-    margin-top: 5%;
-    /* background-color: aqua; */
+  margin-top: 5%;
+  /* background-color: aqua; */
 
-    margin-left:10% ;
-    margin-right:10% ;
+  margin-left: 10%;
+  margin-right: 10%;
 }
-.midPart h2{
-    text-align: left;
-    clear:both;
+.midPart h2 {
+  text-align: left;
+  clear: both;
 }
-.recipeName{
-    width: 60%;
-    height: 35px;
-    border-radius: 10px;
+.recipeName {
+  width: 60%;
+  height: 35px;
+  border-radius: 10px;
 }
-#Upload{
-    margin-left: 2%;
-    width: 13%;
-    height: 40px;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: pink;
+.image-upload {
+  margin-top: 2%;
+  width: 60%;
+  height: 35px;
+  border-radius: 10px;
+  padding: 1%;
 }
-.descrip{
-    margin-top: 2%;;
-    width: 77%;
-    height: 200px;
-    border-radius: 15px;
-    border-width: 2px;
-    padding: 1%;
+.descrip {
+  margin-top: 2%;
+  width: 77%;
+  height: 200px;
+  border-radius: 15px;
+  border-width: 2px;
+  padding: 1%;
 }
-.make{
-    display: inline-block;
-    margin-top: 2%;
-    margin-left: 2%;
+.instructions {
+  text-align: center;
 }
-.amount{
-    margin-left: 3%;
-    width: 20%;
-    height: 20px;
-    border-radius: 5px;
+.instructions input {
+  margin-top: 2%;
+  width: 77%;
+  border-radius: 15px;
+  border-width: 2px;
+  padding: 0.5%;
 }
-.make2{
-    display: inline-block;
-    margin-top: 2%;
-    margin-left: 15%;
+.make {
+  display: inline-block;
+  margin-top: 2%;
+  margin-left: 2%;
 }
-.Ingre{
-    width: 8%;
-    border-radius: 15px;
-    height: 28px;
-    padding-left: 1%;
-}.Ingredient{
-    margin-left: 3%;
-    width: 65%;
-    height: 28px;
-    border-radius: 15px;
-    padding-left: 1%;
+.amount {
+  margin-left: 3%;
+  width: 20%;
+  height: 20px;
+  border-radius: 5px;
 }
-#addIngredient{
-    margin-top: 2%;
-    margin-left: 65%;
-    width: 13%;
-    height: 27px;
-    border-radius: 12px;
-    background-color: pink;
-}
-#instruct{
-    margin-top: 10%;
-    margin-left: 10%;
-}
-.instructArea{
-    margin-left: 10%;
-    width: 63%;
-    height: 200px;
-    border-radius: 15px;
-    border-width: 2px;
-    padding: 1%;
-}
-#Create{
-    margin-top: 2%;
-    margin-left: 60%;
-    width: 15%;
-    height: 43px;
-    font-size: 20px;
-    border-radius: 12px;
-    background-color: pink;
+.make2 {
+  display: inline-block;
+  margin-top: 2%;
+  margin-left: 15%;
 }
 
+.Ingre {
+  margin-top: 2%;
+  width: 8%;
+  border-radius: 15px;
+  height: 28px;
+  padding-left: 1%;
+}
+.unit {
+  margin-top: 2%;
+  width: 8%;
+  border-radius: 15px;
+  height: 28px;
+  padding-left: 1%;
+  margin-left: 2%;
+  clear: both;
+}
+.Ingredient {
+  margin-left: 2%;
+  width: 70%;
+  height: 28px;
+  border-radius: 15px;
+  padding-left: 1%;
+}
+#addIngredient {
+  margin-top: 2%;
+  margin-left: 50%;
+  width: 13%;
+  height: 27px;
+  border-radius: 12px;
+  background-color: pink;
+}
+#deleteIngredient {
+  margin-left: 2%;
+  width: 13%;
+  height: 27px;
+  border-radius: 12px;
+  background-color: pink;
+}
+#instruct {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.instructArea {
+  margin-left: 10%;
+  width: 63%;
+  height: 200px;
+  border-radius: 15px;
+  border-width: 2px;
+  padding: 1%;
+}
+#Create {
+  margin-top: 2%;
+
+  width: 15%;
+  height: 43px;
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: pink;
+}
+
+.buttons {
+  text-align: center;
+}
+.buttons button {
+  margin-top: 2%;
+  margin-bottom: 3%;
+  width: 20%;
+  height: 43px;
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: pink;
+}

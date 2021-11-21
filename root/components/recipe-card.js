@@ -34,6 +34,7 @@ class RecipeCard extends HTMLElement {
         border-radius: 20px;
         margin: 20px;
         overflow: hidden;
+        cursor: pointer;
       }
       .recipe-card-image {
         width: 100%;
@@ -98,6 +99,10 @@ class RecipeCard extends HTMLElement {
       }
     });
     this.shadowRoot.append(style, card);
+    this.addEventListener('click', () => {
+      const currentUrl = window.location;
+      window.location = `${currentUrl.origin}/root/html/RecipePage.html?id=${data.id}`;
+    });
   }
 
   get data() {
