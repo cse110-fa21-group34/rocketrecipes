@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/extensions
 import { readRecipe, getAllRecipes } from './utils.js';
 
-//holds recipes from localStorage
-var allRecipes = {};
+// holds recipes from localStorage
+let allRecipes = {};
 
-//holds recipe ID of currently displayed recipe
-var recipeId;
+// holds recipe ID of currently displayed recipe
+let recipeId;
 
 // takes the current recipe object and fills the html of the page with
 // the information within it
@@ -60,25 +60,24 @@ function fillRecipePage(currentRecipe) {
   });
 }
 
-//grabs four random recipes from localStorage and displays them at the bottom of the page
+// grabs four random recipes from localStorage and displays them at the bottom of the page
 function createRecommendedRecipes() {
   const recommendedRecipeContainer = document.getElementById('recommendedRecipeContainer');
   recommendedRecipeContainer.style.display = 'flex';
   recommendedRecipeContainer.style.maxWidth = '100%';
   recommendedRecipeContainer.style.flexWrap = 'wrap';
 
-  for (let i = 0; i < 4; i += 1) {
+  let numReccRecipes = 0;
+  while (numReccRecipes < 4) {
     const randomNumber = Math.floor(Math.random() * (allRecipes.length - 5));
-    const recipe = allRecipes[randomNumber]
-    
-    //if id matches current recipe, reroll, otherwise create recipe card
-    if(recipeId === recipe.id) {
-      i -= 1;
-      continue;
-    } else {
+    const recipe = allRecipes[randomNumber];
+
+    // if current id does not match random recipe id, create recipe card
+    if (recipeId !== recipe.id) {
       const recipeCard = document.createElement('recipe-card');
       recipeCard.data = recipe;
       recommendedRecipeContainer.appendChild(recipeCard);
+      numReccRecipes += 1;
     }
   }
 }
@@ -97,14 +96,13 @@ async function init() {
     fillRecipePage(currentRecipe);
   }
 
-  //fetch four random recipes (except the currently displayed recipe) and 
-  //display at bottom of page
+  // fetch four random recipes (except the currently displayed recipe) and
+  // display at bottom of page
   try {
     allRecipes = await getAllRecipes();
-  } catch(e) {
-    console.log(e);
+  } finally {
+    createRecommendedRecipes();
   }
-  createRecommendedRecipes();
 }
 
 window.addEventListener('DOMContentLoaded', init);
