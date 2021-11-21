@@ -4,9 +4,12 @@ const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 const LOCAL_STORAGE_FAVORITED_RECIPES_KEY = 'favoritedRecipes';
 
 /**
- * This function gets all recipes from localStorage. If localStorage does not contain any recipes,
- * it fetches them from GitHub and loads them into localStorage.
- * @returns {array} recipes - An array of recipe objects, following the given schema
+ * @module utils
+ *
+ * @memberof utils:getAllRecipes
+ * @async
+ * This function gets all recipes from localStorage.
+ * @returns {Array} recipes - An array of recipe objects, following the given schema
  */
 export async function getAllRecipes() {
   if (localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY) !== null) {
@@ -21,6 +24,14 @@ export async function getAllRecipes() {
   return fetchedRecipes;
 }
 
+/**
+ * @module utils
+ *
+ * @memberof module:getFavoriteRecipes
+ * @async
+ * Gets all recipes a user has favorited from localStorage.
+ * @returns {Array} 
+ */
 export async function getFavoriteRecipes() {
   if (localStorage.getItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY) !== null) {
     const favoritedRecipes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY));
