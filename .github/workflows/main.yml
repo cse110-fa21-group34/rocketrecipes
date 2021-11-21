@@ -51,11 +51,11 @@ jobs:
           template: minami
 
       - name: Publish docs
-        uses: peaceiris/actions-gh-pages@v1.0.1
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./docs/jsdocs/
+          publish_dir: ./docs/jsdocs
+
 
 
 
