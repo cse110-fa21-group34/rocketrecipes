@@ -1,5 +1,11 @@
 // eslint-disable-next-line import/extensions
-import { readRecipe } from './utils.js';
+import { readRecipe, getAllRecipes } from './utils.js';
+
+//holds recipes from localStorage
+var allRecipes = {};
+
+//holds recipe ID of currently displayed recipe
+var recipeId;
 
 // takes the current recipe object and fills the html of the page with
 // the information within it
@@ -54,11 +60,34 @@ function fillRecipePage(currentRecipe) {
   });
 }
 
+//grabs four random recipes from localStorage and displays them at the bottom of the page
+function createRecommendedRecipes() {
+  const recommendedRecipeContainer = document.getElementById('recommendedRecipeContainer');
+  recommendedRecipeContainer.style.display = 'flex';
+  recommendedRecipeContainer.style.maxWidth = '100%';
+  recommendedRecipeContainer.style.flexWrap = 'wrap';
+
+  for (let i = 0; i < 4; i += 1) {
+    const randomNumber = Math.floor(Math.random() * (allRecipes.length - 5));
+    const recipe = allRecipes[randomNumber]
+    
+    //if id matches current recipe, reroll, otherwise create recipe card
+    if(recipeId === recipe.id) {
+      i -= 1;
+      continue;
+    } else {
+      const recipeCard = document.createElement('recipe-card');
+      recipeCard.data = recipe;
+      recommendedRecipeContainer.appendChild(recipeCard);
+    }
+  }
+}
+
 async function init() {
   const queryString = window.location.search;
 
   const searchParams = new URLSearchParams(queryString);
-  const recipeId = searchParams.get('id');
+  recipeId = searchParams.get('id');
 
   if (recipeId === null) {
     // handle bad request
@@ -67,6 +96,15 @@ async function init() {
     const currentRecipe = await readRecipe(recipeId);
     fillRecipePage(currentRecipe);
   }
+
+  //fetch four random recipes (except the currently displayed recipe) and 
+  //display at bottom of page
+  try {
+    allRecipes = await getAllRecipes();
+  } catch(e) {
+    console.log(e);
+  }
+  createRecommendedRecipes();
 }
 
 window.addEventListener('DOMContentLoaded', init);
