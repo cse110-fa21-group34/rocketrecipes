@@ -171,6 +171,7 @@ export async function deleteRecipe(id) {
   for (let i = 0; i < allRecipes.length; i += 1) {
     if (allRecipes[i].id === id) {
       allRecipes.splice(i, 1);
+      localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(allRecipes));
       return true;
     }
   }
@@ -183,7 +184,7 @@ export async function deleteRecipe(id) {
  */
 export function createId() {
   // eslint-disable-next-line no-bitwise
-  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
 }
 
 /**
@@ -249,28 +250,32 @@ export async function search(searchQuery, tags) {
 
   for (let i = 0; i < allRecipes.length; i += 1) {
     const recipe = allRecipes[i];
+    let recipeMatches = true;
     try {
       tags.forEach((tag) => {
-        if (recipe[`${tag}`]) {
-          searchResults.add(recipe);
+        if (!recipe[`${tag}`]) {
+          recipeMatches = false;
         }
       });
 
       const { title } = recipe;
       if (title) {
-        if (title.toLowerCase().includes(query)) {
-          searchResults.add(recipe);
+        if (!title.toLowerCase().includes(query)) {
+          recipeMatches = false;
         }
       }
 
-      recipe.ingredients.forEach((ingredient) => {
-        const { name } = ingredient;
-        if (name) {
-          if (ingredient.name.toLowerCase().includes(query)) {
-            searchResults.add(recipe);
-          }
-        }
-      });
+      if (recipeMatches) {
+        searchResults.add(recipe);
+      }
+      // recipe.ingredients.forEach((ingredient) => {
+      //   const { name } = ingredient;
+      //   if (name) {
+      //     if (ingredient.name.toLowerCase().includes(query)) {
+      //       searchResults.add(recipe);
+      //     }
+      //   }
+      // });
     } catch (e) {
       if (searchResults.has(recipe)) {
         searchResults.delete(recipe);
