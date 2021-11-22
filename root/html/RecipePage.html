@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/RecipePage.css" class="style">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/RecipePage.css" class="style" />
     <script src="../components/custom-navbar.js" type="module"></script>
     <script src="../components/recipe-card.js" type="module"></script>
     <script src="../scripts/recipepage.js" type="module"></script>
     <title>Home page</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <custom-navbar />
+      <custom-navbar />
     </header>
-  <main>
-    <div class="expand-recipe">
+    <main>
+      <div class="expand-recipe">
         <!-- <div class="sidebar">
             <span class="top-arrow">&#10224;</span><br />
             <span class="down-arrow">&#10225;</span>
         </div> -->
         <div class="main-info">
-            <div>
-                <div class="recipe-header">
-                    <div class="header-title">
-                        <h1 id="recipe-title"></h1> <span>&#9733;</span>
-                    </div>
-                    <button class="edit-button">Edit Recipe</button>
-                </div>
-                <div class="meta--wrapper">
-                    <span><b>Yield: </b><span class="meta--yield" id="yield"></span></span>
-                    <span><b>Total time: </b><time class="meta--total-time" id="time"></time></span>     
-                </div>
-                <div class="categories" id="categories">Categories: <span class="meta--categories" id='categories'></span></div>
-                <p class="description" id="description"></p>
+          <div>
+            <div class="recipe-header">
+              <div class="header-title">
+                <h1 id="recipe-title"></h1> 
+                <span id="fav-icon">&#9733;</span>
+              </div>
+              <button class="edit-button" id="editButton">Edit Recipe</button>
+              <button class="edit-button" id="deleteButton">
+                Delete Recipe
+              </button>
             </div>
-            <main>
-                <section class="section--instructions">
-                    <h2>Instructions</h2>
-                    <ol id="instructions-list"></ol>
-                </section>
-                <section class="section--ingredients">
-                    <h2>Ingredients</h2>
-                    <ul id="ingredients-list"></ul>
-                </section>
-            </main>
+            <div class="meta--wrapper">
+              <span
+                ><b>Yield: </b><span class="meta--yield" id="yield"></span
+              ></span>
+              <span
+                ><b>Total time: </b
+                ><time class="meta--total-time" id="time"></time
+              ></span>
+            </div>
+            <div class="categories" id="categories">
+              Categories: <span class="meta--categories" id="categories"></span>
+            </div>
+            <p class="description" id="description"></p>
+          </div>
+          <main>
+            <section class="section--instructions">
+              <h2>Instructions</h2>
+              <ol id="instructions-list"></ol>
+            </section>
+            <section class="section--ingredients">
+              <h2>Ingredients</h2>
+              <ul id="ingredients-list"></ul>
+            </section>
+          </main>
         </div>
         <div class="main-image">
-            <img src="" alt="" class="thumbnail" id="recipe-image" />
+          <img src="" alt="" class="thumbnail" id="recipe-image" />
         </div>
-    </div>
-  </main>
-  <footer>
-        <div class="foostPart">
-            <h3>Recommended Recipes</h3>
-        </div>
-        <div class="foodList" id="recommendedRecipeContainer">
-            
-        </div>
-  </footer>
-</body>
+      </div>
+    </main>
+    <footer>
+      <div class="foostPart">
+        <h3>Recommended Recipes</h3>
+      </div>
+      <div class="foodList" id="recommendedRecipeContainer"></div>
+    </footer>
+  </body>
 </html>
