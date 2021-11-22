@@ -128,6 +128,7 @@ export async function deleteRecipe(id) {
   for (let i = 0; i < allRecipes.length; i += 1) {
     if (allRecipes[i].id === id) {
       allRecipes.splice(i, 1);
+      localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(allRecipes));
       return true;
     }
   }
@@ -136,7 +137,7 @@ export async function deleteRecipe(id) {
 
 export function createId() {
   // eslint-disable-next-line no-bitwise
-  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
 }
 
 export async function updateRecipe(newRecipe) {

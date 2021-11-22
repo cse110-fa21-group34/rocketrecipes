@@ -2,7 +2,7 @@
 
 class Navbar extends HTMLElement {
   constructor() {
-    super(); // Inheret everything from HTMLElement
+    super(); // Inherit everything from HTMLElement
 
     // Attach the shadow DOM and append this markup / stlying inside
     // The shadow root will help us keep everything separated
@@ -49,6 +49,16 @@ class Navbar extends HTMLElement {
             font-size: 20px;
             font-family: 'Times';
         }
+        .navbar-button-link-create-recipe {
+            margin-left: 40px;
+            border-radius: 12px;
+            border-width: 1px;
+            width: 150px;
+            height: 40px;
+            background-color: pink;
+            font-size: 20px;
+            font-family: 'Times';
+        }
         .navbar-button-link:hover {
             cursor: pointer;
         }
@@ -62,6 +72,9 @@ class Navbar extends HTMLElement {
         </a>
         <div class="navbar-links-container"> 
             <a class="navbar-text-link" href="./searchpage.html">Search</a>
+            <form action="./CreateRecipe.html">
+                <button class="navbar-button-link-create-recipe">Create Recipe</button>
+            </form>
             <form action="./generalAccount.html">
                 <button class="navbar-button-link">My Account</button>
             </form>
