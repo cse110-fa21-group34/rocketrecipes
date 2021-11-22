@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
 import {
   getAllRecipes, createRecipe, createId, readRecipe,
 } from './utils.js';
@@ -89,14 +89,13 @@ async function fillRecipePage(recipeId) {
   time.value = recipe.readyInMinutes;
   for (let j = 1; j < recipe.ingredients.length + 1; j += 1) {
     addIng();
-    const name = document.getElementById(`ing${j.toString()}`);
+    const ingredientName = document.getElementById(`ing${j.toString()}`);
     const amount = document.getElementById(`amount${j.toString()}`);
     const unit = document.getElementById(`units${j.toString()}`);
     amount.value = recipe.ingredients[j - 1].amount;
-    name.value = recipe.ingredients[j - 1].name;
+    ingredientName.value = recipe.ingredients[j - 1].name;
     unit.value = recipe.ingredients[j - 1].unit;
   }
-  const steps = document.createElement('input');
 
   for (let k = 1; k <= recipe.steps.length; k += 1) {
     if (k > 5) {
@@ -112,8 +111,7 @@ async function init() {
 
   const searchParams = new URLSearchParams(queryString);
   const recipeId = searchParams.get('id');
-  console.log(recipeId);
-  if (recipeId.length != 0) {
+  if (recipeId.length !== 0) {
     fillRecipePage(recipeId);
   }
   const addIngredient = document.getElementById('addIngredient');
