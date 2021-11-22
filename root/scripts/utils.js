@@ -182,28 +182,32 @@ export async function search(searchQuery, tags) {
 
   for (let i = 0; i < allRecipes.length; i += 1) {
     const recipe = allRecipes[i];
+    let recipeMatches = true;
     try {
       tags.forEach((tag) => {
-        if (recipe[`${tag}`]) {
-          searchResults.add(recipe);
+        if (!recipe[`${tag}`]) {
+          recipeMatches = false;
         }
       });
 
       const { title } = recipe;
       if (title) {
-        if (title.toLowerCase().includes(query)) {
-          searchResults.add(recipe);
+        if (!title.toLowerCase().includes(query)) {
+          recipeMatches = false;
         }
       }
 
-      recipe.ingredients.forEach((ingredient) => {
-        const { name } = ingredient;
-        if (name) {
-          if (ingredient.name.toLowerCase().includes(query)) {
-            searchResults.add(recipe);
-          }
-        }
-      });
+      if (recipeMatches) {
+        searchResults.add(recipe);
+      }
+      // recipe.ingredients.forEach((ingredient) => {
+      //   const { name } = ingredient;
+      //   if (name) {
+      //     if (ingredient.name.toLowerCase().includes(query)) {
+      //       searchResults.add(recipe);
+      //     }
+      //   }
+      // });
     } catch (e) {
       if (searchResults.has(recipe)) {
         searchResults.delete(recipe);
