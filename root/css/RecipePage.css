@@ -6,11 +6,11 @@
   float: right;
   background-color: rgb(255, 193, 203);
 }
-
 .header-title span {
   padding: 5px;
   color: gray;
   font-size: 30px;
+  cursor: pointer;
 }
 .header-title h1 {
   display: inline;
