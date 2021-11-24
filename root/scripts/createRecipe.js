@@ -111,7 +111,7 @@ async function init() {
 
   const searchParams = new URLSearchParams(queryString);
   const recipeId = searchParams.get('id');
-  if (recipeId === 0) {
+  if (recipeId !== null) {
     fillRecipePage(recipeId);
   }
   const addIngredient = document.getElementById('addIngredient');
