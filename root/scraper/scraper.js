@@ -17,8 +17,9 @@ async function appendToFile(parsedRecipe) {
 }
 
 async function parseRecipe(baseRecipe) {
-  const recipeArr = baseRecipe.recipes;
-  const [scrapedRecipe] = recipeArr;
+  // console.log(baseRecipe);
+  const scrapedRecipe = baseRecipe;
+  // const [scrapedRecipe] = recipeArr;
 
   const minutesToPrepare = scrapedRecipe.readyInMinutes;
   const numIngredients = scrapedRecipe.extendedIngredients.length;
@@ -88,10 +89,13 @@ async function getBigJson() {
   const bigJson = await fs.readFile('recipe.json');
   const arr = JSON.parse(bigJson);
   const index = parseInt(process.argv[2], 10);
-  parseRecipe(arr.recipes[index]);
+  console.log('recipe: ' + index);
+  // console.log(arr.results[0]);
+  parseRecipe(arr.results[index]);
+  // parseRecipe(arr.recipes[index]);
 }
 
-const scrapingMode = 'remote';
+const scrapingMode = 'big';
 
 if (scrapingMode === 'remote') {
   getRecipe();
