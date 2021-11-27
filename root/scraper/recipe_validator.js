@@ -83,6 +83,10 @@ async function validateRecipes() {
     }
   }
 
+  // remove html
+  for (let i = 0; i < recipes.length; i += 1) {
+    recipes[i].summary = recipes[i].summary.replace(/<[^>]*>?/gm, '');
+  }
   await fs.writeFile(filename, JSON.stringify(recipes));
 }
 
