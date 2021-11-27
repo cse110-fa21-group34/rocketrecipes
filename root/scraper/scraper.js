@@ -11,16 +11,10 @@ async function appendToFile(parsedRecipe) {
   const arr = JSON.parse(file);
   arr.push(parsedRecipe);
   await fs.writeFile(filename, JSON.stringify(arr));
-
-  // logging statement below
-//   console.log(`adding recipe #${arr.length}`);
 }
 
 async function parseRecipe(baseRecipe) {
-  // console.log(baseRecipe);
   const scrapedRecipe = baseRecipe;
-  // const [scrapedRecipe] = recipeArr;
-
   const minutesToPrepare = scrapedRecipe.readyInMinutes;
   const numIngredients = scrapedRecipe.extendedIngredients.length;
 
@@ -89,10 +83,7 @@ async function getBigJson() {
   const bigJson = await fs.readFile('scraper-util-recipe.json');
   const arr = JSON.parse(bigJson);
   const index = parseInt(process.argv[2], 10);
-  console.log('recipe: ' + index);
-  // console.log(arr.results[0]);
   parseRecipe(arr.results[index]);
-  // parseRecipe(arr.recipes[index]);
 }
 
 const scrapingMode = 'big';

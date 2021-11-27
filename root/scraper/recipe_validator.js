@@ -31,7 +31,6 @@ async function checkImage(url) {
 
 async function validateRecipes() {
   const recipes = await readJSON();
-  console.log(`original length: ${recipes.length}`);
   // delete duplicate recipes
   const set = new Set();
 
@@ -45,8 +44,6 @@ async function validateRecipes() {
       set.add(recipes[i].title);
     }
   }
-
-  console.log(`length after removing duplicates: ${recipes.length}`);
 
   // checking null fields
   for (let i = 0; i < recipes.length; i += 1) {
@@ -69,7 +66,6 @@ async function validateRecipes() {
 
     // check steps
     recipe.steps.forEach((step) => {
-      // console.log(step);
       if (step.number == null || step.step == null) {
         invalidRecipe = true;
       }
@@ -87,7 +83,6 @@ async function validateRecipes() {
     }
   }
 
-  console.log(`length after removing invalid images: ${recipes.length}`);
   await fs.writeFile(filename, JSON.stringify(recipes));
 }
 
