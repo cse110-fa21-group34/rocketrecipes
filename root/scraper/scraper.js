@@ -86,7 +86,7 @@ async function getRecipe() {
 }
 
 async function getBigJson() {
-  const bigJson = await fs.readFile('recipe.json');
+  const bigJson = await fs.readFile('scraper-util-recipe.json');
   const arr = JSON.parse(bigJson);
   const index = parseInt(process.argv[2], 10);
   console.log('recipe: ' + index);

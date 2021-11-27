@@ -48,12 +48,44 @@ async function validateRecipes() {
 
   console.log(`length after removing duplicates: ${recipes.length}`);
 
-  // for (let i = 0; i < recipes.length; i += 1) {
-  //   const imageExists = await checkImage(recipes[i].image);
-  //   if (!imageExists) {
-  //     recipes.splice(i, 1);
-  //   }
-  // }
+  // checking null fields
+  for (let i = 0; i < recipes.length; i += 1) {
+    const recipe = recipes[i];
+    let invalidRecipe = false;
+    if (recipe.title == null || recipe.id == null || recipe.readyInMinutes == null
+      || recipe.servings == null || recipe.image == null || recipe.uploader == null
+      || recipe.vegetarian == null || recipe.vegan || recipe.cheap == null
+      || recipe.glutenFree == null || recipe.isFromInternet == null || recipe.dairyFree == null
+      || recipe.quickEat == null || recipe.fiveIngredientsOrLess == null
+      || recipe.summary == null) {
+      invalidRecipe = true;
+    }
+    // check ingredients
+    recipe.ingredients.forEach((ingredient) => {
+      if (ingredient.name == null || ingredient.amount == null || ingredient.unit == null) {
+        invalidRecipe = true;
+      }
+    });
+
+    // check steps
+    recipe.steps.forEach((step) => {
+      // console.log(step);
+      if (step.number == null || step.step == null) {
+        invalidRecipe = true;
+      }
+    });
+
+    if (invalidRecipe) {
+      recipes.splice(i, 1);
+    }
+  }
+
+  for (let i = 0; i < recipes.length; i += 1) {
+    const imageExists = await checkImage(recipes[i].image);
+    if (!imageExists) {
+      recipes.splice(i, 1);
+    }
+  }
 
   console.log(`length after removing invalid images: ${recipes.length}`);
   await fs.writeFile(filename, JSON.stringify(recipes));
