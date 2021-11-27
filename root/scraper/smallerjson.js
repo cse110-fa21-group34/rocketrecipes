@@ -14,4 +14,4 @@ async function minimizeJson(factor, filename) {
   await fs.writeFile(newFilename, JSON.stringify(returnArr));
 }
 
-minimizeJson(4, 'recipes.json');
+minimizeJson(3, 'recipes.json');
