@@ -104,6 +104,13 @@ async function fillRecipePage(recipeId) {
     const stepVal = document.getElementsByClassName('step')[k - 1];
     stepVal.value = recipe.steps[k - 1].step;
   }
+
+  document.getElementById('cheap').checked = recipe.cheap;
+  document.getElementById('vegetarian').value = recipe.vegetarian;
+  document.getElementById('vegan').value = recipe.vegan;
+  document.getElementById('glutenFree').value = recipe.glutenFree;
+  document.getElementById('dairyFree').value = recipe.dairyFree;
+  document.getElementById('quickEat').value = recipe.quickEat;
 }
 
 async function init() {
@@ -139,12 +146,12 @@ async function init() {
     // Need to add tags to CreateRecipe.html so that the user can manually select which tags
     // associate with their recipe.
     userGenRecipe.isFromInternet = false;
-    userGenRecipe.vegetarian = false;
-    userGenRecipe.vegan = false;
-    userGenRecipe.cheap = false;
-    userGenRecipe.glutenFree = false;
-    userGenRecipe.dairyFree = false;
-    userGenRecipe.quickEat = false;
+    userGenRecipe.vegetarian = document.getElementById('vegetarian').checked;
+    userGenRecipe.vegan = document.getElementById('vegan').checked;
+    userGenRecipe.cheap = document.getElementById('cheap').checked;
+    userGenRecipe.glutenFree = document.getElementById('glutenFree').checked;
+    userGenRecipe.dairyFree = document.getElementById('dairyFree').checked;
+    userGenRecipe.quickEat = document.getElementById('quickEat').checked;
 
     userGenRecipe.ingredients = [];
     let numIngredients = 0;
@@ -172,4 +179,5 @@ async function init() {
     window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
   });
 }
+
 window.addEventListener('DOMContentLoaded', init);
