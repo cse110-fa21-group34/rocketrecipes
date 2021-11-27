@@ -1,6 +1,6 @@
 /** @module utils */
 /* eslint-disable no-mixed-operators */
-const COMMUNITY_HALF_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/bugfix/scraper/root/scraper/recipes.json';
+const COMMUNITY_HALF_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/bugfix/scraper/root/scraper/recipes.json_2.json';
 const COMMUNITY_THIRD_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/bugfix/scraper/root/scraper/recipes.json_3.json';
 const COMMUNITY_QUARTER_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/bugfix/scraper/root/scraper/recipes.json_4.json';
 const COMMUNITY_TENTH_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/bugfix/scraper/root/scraper/recipes.json_10.json';
@@ -30,7 +30,6 @@ export async function getAllRecipes() {
         .then((data) => data);
 
       localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
-      console.log('THIRD');
     } catch (e) {
       try {
         fetchedRecipes = await fetch(COMMUNITY_QUARTER_RECIPE_URL)
@@ -38,7 +37,6 @@ export async function getAllRecipes() {
           .then((data) => data);
 
         localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
-        console.log('quarter');
       } catch (se) {
         try {
           fetchedRecipes = await fetch(COMMUNITY_TENTH_RECIPE_URL)
@@ -46,7 +44,6 @@ export async function getAllRecipes() {
             .then((data) => data);
 
           localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
-          console.log('tenth');
         } catch (te) {
           return null;
         }
