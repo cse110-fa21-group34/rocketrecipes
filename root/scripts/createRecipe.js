@@ -5,7 +5,7 @@ import { getAllRecipes, createRecipe, createId } from './utils.js';
 
 // const createRecipe = document.querySelector(document.getElementById('Create'));
 // const deleteRecipe = document.querySelector(document.getElementById('Delete'));
-let i = 6; // instructions counter
+let i = 1; // instructions counter
 let ingCount = 1; // Ingredient Counter
 
 function addStep() {
@@ -34,9 +34,11 @@ function addStep() {
 
 function deleteStep() {
   i -= 1;
+  /*
   if (i < 2) {
     i = 2;
   }
+  */
   const stepStr = `Step${i.toString()}`;
   const lastStep = document.getElementById(stepStr);
   lastStep.remove();
@@ -91,9 +93,11 @@ function addIng() {
 function deleteIng() {
   // console.log('working');
   ingCount -= 1;
+  /*
   if (ingCount < 2) {
     ingCount = 2;
   }
+  */
   const ingStep = document.getElementById(`ing${ingCount.toString()}`);
   const amountStep = document.getElementById(`amount${ingCount.toString()}`);
   const unitStep = document.getElementById(`units${ingCount.toString()}`);
@@ -103,6 +107,9 @@ function deleteIng() {
 }
 
 async function init() {
+  addStep();
+  addIng();
+
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
 
