@@ -1,56 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/CreateRecipe.css" class="style">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/CreateRecipe.css" class="style" />
+    <link rel="stylesheet" href="../css/global.css" class="style">
+    <script src="../components/custom-navbar.js" type="module"></script>
+    <script src="../scripts/createRecipe.js" type="module"></script>
     <title>General Account</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-    
-        <div class="topBar">
-            <a href="./homepage.html" style="text-decoration: none; float: left;">
-                <img src="../media/teamLogo.png" width="100" height="100" > 
-            </a>
-            <a>Search</a>
-            <a>Log Out</a>
-            <form action="https://google.com">
-                <button>Sign Up</button>
-            </form>
-        </div>
+      <custom-navbar />
     </header>
-<mian>
-    <div class="midPart">
-        <h2>Create your recipe:</h2>
-        <input class="recipeName" type="text" id="name"
-        placeholder="Recipe Name">
-        <button id="Upload">Upload Image</button>
-        <textarea class="descrip" type="text"
-        placeholder="Recipe description (100 words max)"></textarea>
-        <br>
+    <main>
+      <div class="midPart">
+        <h2 id="header">Create your recipe:</h2>
+        <input
+          class="recipeName"
+          type="text"
+          id="name"
+          placeholder="Recipe Name"
+        />
+        <br />
+        <input
+          class="image-upload"
+          id="image"
+          type="text"
+          placeholder="Paste a link to your recipe's picture here"
+        />
+        <textarea
+          class="descrip"
+          type="text"
+          placeholder="RecipeSummary (100 words max)"
+        ></textarea>
+        <br />
         <h4 class="make">Makes:</h4>
-        <input class="amount" type="text" 
-        placeholder="Total Amount">
+        <input
+          class="amount"
+          id="serving"
+          type="text"
+          placeholder="Total Amount"
+        />
         <h4 class="make2">Time:</h4>
-        <input class="amount" type="text" 
-        placeholder="Total time">
-        <br>
+        <input
+          class="amount"
+          type="text"
+          placeholder="Total time in Minutes"
+          id="time"
+        />
+        <br />
         <h3>Ingredients:</h3>
-        <input class="Ingre" type="text" 
-        placeholder="Amount">
-        <input class="Ingredient" type="text" 
-        placeholder="Ingredient">
-        <br>
-        <button id="addIngredient">Add Ingredient</button>
-    </div>
+        <div class="ingredSteps">
+          <!-- <input class="Ingre" type="text" placeholder="Amount" id="amount1" />
+          <input class="unit" type="text" placeholder="Units" id="units1" />
+          <input class="Ingredient" type="text" placeholder="Ingredient 1" id="ing1"/> -->
+        </div>
 
-</mian>
-<footer>
-    <h3 id="instruct">Instructions:</h3>
-    <textarea class="instructArea" type="text"
-    placeholder="input Instructions here"></textarea>
-    <br>
-    <button id="Create">Create Recipe</button>
-</footer>
+        <div>
+          <button id="addIngredient">Add Ingredient</button>
+          <button id="deleteIngredient">Delete Ingredient</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <h3 id="instruct">Instructions:</h3>
+      <div class="instructions">
+        <input class="step" type="text" placeholder="Step 1" id="Step1" />
+        <input class="step" type="text" placeholder="Step 2" id="Step2" />
+        <input class="step" type="text" placeholder="Step 3" id="Step3" />
+        <input class="step" type="text" placeholder="Step 4" id="Step4" />
+        <input class="step" type="text" placeholder="Step 5" id="Step5" />
+      </div>
+      <div class="buttons">
+        <button id="Create">Create Recipe</button>
+        <button id="plus">Add Step</button>
+        <button id="Delete">Delete Step</button>
+      </div>
+    </footer>
+  </body>
+</html>
