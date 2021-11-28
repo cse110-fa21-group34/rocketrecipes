@@ -34,12 +34,14 @@ class RecipeCard extends HTMLElement {
     card.classList.add('recipe-card');
 
     card.innerHTML = `
-        <img src="../media/teamLogo.png" class="recipe-card-image">
-        <div class="card-body">
-          <h3></h3>
-          <p></p>
-          <span class="tag-container" />
-        </div>
+        <span class="clickable-card">
+          <img src="../media/teamLogo.png" class="recipe-card-image">
+          <div class="card-body">
+            <h3></h3>
+            <p></p>
+            <span class="tag-container" />
+          </div>
+        <span>
     `;
 
     style.innerHTML = `
@@ -131,7 +133,7 @@ class RecipeCard extends HTMLElement {
       }
     });
     this.shadowRoot.append(style, card);
-    this.addEventListener('click', () => {
+    card.querySelector('.clickable-card').addEventListener('click', () => {
       const currentUrl = window.location;
       window.location = `${currentUrl.origin}/root/html/RecipePage.html?id=${data.id}`;
     });
