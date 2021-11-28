@@ -117,6 +117,7 @@ async function init() {
 
   await getAllRecipes();
   document.getElementById('Create').addEventListener('click', async () => {
+    let blank = false;
     const title = document.getElementsByClassName('recipeName')[0].value;
     const makes = document.getElementsByClassName('amount')[0].value;
     const readyInMinutes = document.getElementsByClassName('amount')[1].value;
@@ -124,7 +125,10 @@ async function init() {
     const description = document.getElementsByClassName('descrip')[0].value;
     if (title.length === 0 || readyInMinutes.length === 0 || image.length === 0
         || description.length === 0 || makes.length === 0) {
-      alert('Blank inputs not allowed!');
+      blank = true;
+    }
+    if (blank) {
+      alert('blank inputs are not allowed!');
     } else {
       const userGenRecipe = {};
       userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
