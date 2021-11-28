@@ -28,6 +28,7 @@ class RecipeCard extends HTMLElement {
 
     style.innerHTML = `
       .recipe-card {
+        position: relative;
         width: 200px;
         height: 250px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -36,6 +37,19 @@ class RecipeCard extends HTMLElement {
         overflow: hidden;
         cursor: pointer;
       }
+      .recipe-card:after {
+        content  : "";
+        position : absolute;
+        z-index  : 1;
+        bottom   : 0;
+        left     : 0;
+        pointer-events   : none;
+        background-image : linear-gradient(to bottom, 
+                          rgba(255,255,255, 0), 
+                          rgba(255,255,255, 1) 90%);
+        width    : 100%;
+        height   : 15px;
+      }
       .recipe-card-image {
         width: 100%;
         height: 120px;
@@ -43,7 +57,8 @@ class RecipeCard extends HTMLElement {
       }
       .card-body {
         margin: 0px 10px;
-        height: 115px;
+        height: 126px;
+        overflow-y: scroll;
       }
       .recipe-card h3{
         text-decoration: underline;
@@ -60,6 +75,7 @@ class RecipeCard extends HTMLElement {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        margin-bottom: 20px;
       }
       .tag {
         border-radius: 12px;
