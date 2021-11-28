@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import {
-  getAllRecipes, createRecipe, createId, readRecipe,
+  getAllRecipes, createRecipe, createId, /* readRecipe, */
 } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
@@ -107,6 +107,7 @@ function deleteIng() {
   amountStep.remove();
 }
 
+/*
 async function fillRecipePage(recipeId) {
   const recipe = await readRecipe(recipeId);
   const header = document.getElementById('header');
@@ -139,7 +140,7 @@ async function fillRecipePage(recipeId) {
     stepVal.value = recipe.steps[k - 1].step;
   }
 }
-
+*/
 async function init() {
   addStep();
   addIng();
