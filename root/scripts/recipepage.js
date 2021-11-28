@@ -1,6 +1,12 @@
+/* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import {
-  readRecipe, addFavoriteRecipe, isFavorite, deleteFavoriteRecipe, getAllRecipes,
+  readRecipe,
+  addFavoriteRecipe,
+  isFavorite,
+  deleteFavoriteRecipe,
+  getAllRecipes,
+  deleteRecipe,
 } from './utils.js';
 
 // holds recipes from localStorage
@@ -97,6 +103,20 @@ async function init() {
     const currentRecipe = await readRecipe(recipeId);
     fillRecipePage(currentRecipe);
   }
+  const createButton = document.getElementById('deleteButton');
+  createButton.addEventListener('click', () => {
+    deleteRecipe(recipeId);
+    window.location = `${window.location.origin}/root/html/homepage.html`;
+  });
+
+  const editRecipeButton = document.getElementById('editButton');
+  editRecipeButton.addEventListener('click', () => {
+    // document.cookie = `recipe=${recipeId}`;
+    // console.log(document.cookie);
+    // window.location.href = '../html/CreateRecipe.html';
+    const currentUrl = window.location;
+    window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
+  });
 
   // fetch four random recipes (except the currently displayed recipe) and
   // display at bottom of page
