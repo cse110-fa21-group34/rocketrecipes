@@ -1,3 +1,19 @@
+/**
+ * Takes a time in minutes and turns it into a string with hours and minutes
+ * @param {Integer} number of minutes to be converted
+ * @returns {String} string of the time to be shown on the recipe card
+ */
+function minutesToTimeString(timeInMinutes) {
+  const numHours = Math.floor(timeInMinutes / 60);
+  const numMins = timeInMinutes % 60;
+
+  let resultString = '';
+  resultString += numHours > 0 ? `${numHours} hours ` : '';
+  resultString += numMins > 0 ? `${numMins} minutes` : '';
+
+  return resultString;
+}
+
 class RecipeCard extends HTMLElement {
   constructor() {
     super(); // Inheret everything from HTMLElement
@@ -18,16 +34,19 @@ class RecipeCard extends HTMLElement {
     card.classList.add('recipe-card');
 
     card.innerHTML = `
-        <img src="../media/teamLogo.png" class="recipe-card-image">
-        <div class="card-body">
-          <h3></h3>
-          <p></p>
-          <span class="tag-container" />
-        </div>
+        <span class="clickable-card">
+          <img src="../media/teamLogo.png" class="recipe-card-image">
+          <div class="card-body">
+            <h3></h3>
+            <p></p>
+            <span class="tag-container" />
+          </div>
+        <span>
     `;
 
     style.innerHTML = `
       .recipe-card {
+        position: relative;
         width: 200px;
         height: 250px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -36,6 +55,19 @@ class RecipeCard extends HTMLElement {
         overflow: hidden;
         cursor: pointer;
       }
+      .recipe-card:after {
+        content  : "";
+        position : absolute;
+        z-index  : 1;
+        bottom   : 0;
+        left     : 0;
+        pointer-events   : none;
+        background-image : linear-gradient(to bottom, 
+                          rgba(255,255,255, 0), 
+                          rgba(255,255,255, 1) 90%);
+        width    : 100%;
+        height   : 15px;
+      }
       .recipe-card-image {
         width: 100%;
         height: 120px;
@@ -43,7 +75,8 @@ class RecipeCard extends HTMLElement {
       }
       .card-body {
         margin: 0px 10px;
-        height: 115px;
+        height: 126px;
+        overflow-y: scroll;
       }
       .recipe-card h3{
         text-decoration: underline;
@@ -60,6 +93,7 @@ class RecipeCard extends HTMLElement {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        margin-bottom: 20px;
       }
       .tag {
         border-radius: 12px;
@@ -74,7 +108,7 @@ class RecipeCard extends HTMLElement {
     titleElement.innerText = data.title || '';
 
     const timeElement = card.querySelector('p');
-    timeElement.innerText = `${data.readyInMinutes} minutes` || '';
+    timeElement.innerText = `${minutesToTimeString(data.readyInMinutes)}`;
 
     const imageElement = card.querySelector('img');
     imageElement.src = data.image || '';
@@ -99,7 +133,7 @@ class RecipeCard extends HTMLElement {
       }
     });
     this.shadowRoot.append(style, card);
-    this.addEventListener('click', () => {
+    card.querySelector('.clickable-card').addEventListener('click', () => {
       const currentUrl = window.location;
       window.location = `${currentUrl.origin}/root/html/RecipePage.html?id=${data.id}`;
     });
