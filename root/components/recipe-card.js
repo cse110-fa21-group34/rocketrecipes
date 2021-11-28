@@ -1,3 +1,19 @@
+/**
+ * Takes a time in minutes and turns it into a string with hours and minutes
+ * @param {Integer} number of minutes to be converted
+ * @returns {String} string of the time to be shown on the recipe card
+ */
+function minutesToTimeString(timeInMinutes) {
+  const numHours = Math.floor(timeInMinutes / 60);
+  const numMins = timeInMinutes % 60;
+
+  let resultString = '';
+  resultString += numHours > 0 ? `${numHours} hours ` : '';
+  resultString += numMins > 0 ? `${numMins} minutes` : '';
+
+  return resultString;
+}
+
 class RecipeCard extends HTMLElement {
   constructor() {
     super(); // Inheret everything from HTMLElement
@@ -90,7 +106,7 @@ class RecipeCard extends HTMLElement {
     titleElement.innerText = data.title || '';
 
     const timeElement = card.querySelector('p');
-    timeElement.innerText = `${data.readyInMinutes} minutes` || '';
+    timeElement.innerText = `${minutesToTimeString(data.readyInMinutes)}`;
 
     const imageElement = card.querySelector('img');
     imageElement.src = data.image || '';
