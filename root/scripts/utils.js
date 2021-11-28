@@ -1,6 +1,9 @@
 /** @module utils */
 /* eslint-disable no-mixed-operators */
-const COMMUNITY_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json';
+const COMMUNITY_HALF_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json_2.json';
+const COMMUNITY_THIRD_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json_3.json';
+const COMMUNITY_QUARTER_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json_4.json';
+const COMMUNITY_TENTH_RECIPE_URL = 'https://raw.githubusercontent.com/cse110-fa21-group34/rocketrecipes/main/root/scraper/recipes.json_10.json';
 const LOCAL_STORAGE_ALL_RECIPES_KEY = 'allRecipes';
 const LOCAL_STORAGE_FAVORITED_RECIPES_KEY = 'favoritedRecipes';
 
@@ -14,11 +17,39 @@ export async function getAllRecipes() {
     const localStorageRecipes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ALL_RECIPES_KEY));
     return localStorageRecipes;
   }
-  const fetchedRecipes = await fetch(COMMUNITY_RECIPE_URL)
+  let fetchedRecipes = await fetch(COMMUNITY_HALF_RECIPE_URL)
     .then((response) => response.json())
     .then((data) => data);
 
-  localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
+  try {
+    localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
+  } catch (fe) {
+    try {
+      fetchedRecipes = await fetch(COMMUNITY_THIRD_RECIPE_URL)
+        .then((response) => response.json())
+        .then((data) => data);
+
+      localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
+    } catch (e) {
+      try {
+        fetchedRecipes = await fetch(COMMUNITY_QUARTER_RECIPE_URL)
+          .then((response) => response.json())
+          .then((data) => data);
+
+        localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
+      } catch (se) {
+        try {
+          fetchedRecipes = await fetch(COMMUNITY_TENTH_RECIPE_URL)
+            .then((response) => response.json())
+            .then((data) => data);
+
+          localStorage.setItem(LOCAL_STORAGE_ALL_RECIPES_KEY, JSON.stringify(fetchedRecipes));
+        } catch (te) {
+          return null;
+        }
+      }
+    }
+  }
   return fetchedRecipes;
 }
 
@@ -34,7 +65,12 @@ export async function getFavoriteRecipes() {
   }
 
   const blankFavoritedRecipes = [];
-  localStorage.setItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY, JSON.stringify(blankFavoritedRecipes));
+  try {
+    localStorage.setItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY,
+      JSON.stringify(blankFavoritedRecipes));
+  } catch (e) {
+    return false;
+  }
   return blankFavoritedRecipes;
 }
 
