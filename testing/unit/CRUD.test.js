@@ -3,6 +3,7 @@
  */
 import * as utils from './testutil.js'
 import * as utilFunctions from '../../root/scripts/utils.js'; // eslint-disable-line no-lone-blocks
+import { util } from 'prettier';
 
 // unmockedFetch stores the original global fetch function
 const unmockedFetch = global.fetch
@@ -23,6 +24,15 @@ test('fetches recipes', async () => {
     expect(recipes.length).toBeGreaterThan(0);
 });
 
+test('read recipe returns 1 recipe', async () => {
+    const recipe = await utilFunctions.readRecipe('b1ffbdfcc516588601f4ee651b5ed684');
+    expect(recipe.title).toBe('Slow Cooker Chicken and Dumplings');
+});
+
+test('read recipe returns correct recipe', async () => {
+    const recipe = await utilFunctions.readRecipe('b1ffbdfcc516588601f4ee651b5ed684');
+    expect(recipe.id).toBe('b1ffbdfcc516588601f4ee651b5ed684');
+});
 
 // After all tests are done, restore the global fetch function
 // back to the original 
