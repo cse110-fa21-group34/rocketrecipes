@@ -104,6 +104,7 @@ async function init() {
     document.getElementsByClassName('main-info')[0].remove();
     document.querySelector('main').innerHTML = 'The recipe could not be found.';
   } else {
+    // fill the recipe page
     fillRecipePage(currentRecipe);
     // delete recipe button
     const deleteButton = document.getElementById('deleteButton');
