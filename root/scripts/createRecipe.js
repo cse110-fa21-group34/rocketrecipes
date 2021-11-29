@@ -50,10 +50,8 @@ function addIng() {
   let blank = false;
   for (let j = 1; j < ingCount; j += 1) {
     const lastid1 = `amount${j}`;
-    //const lastid2 = `units${j}`;
     const lastid3 = `ing${j}`;
     const lastinput1 = document.getElementById(lastid1).value;
-    //const lastinput2 = document.getElementById(lastid2).value;
     const lastinput3 = document.getElementById(lastid3).value;
     if (lastinput1.length === 0 || lastinput3.length === 0) {
       blank = true;
