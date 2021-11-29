@@ -2,17 +2,12 @@ const rootUrl = '127.0.0.1:5501';
 
 beforeAll(async () => {
     const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_PR_NUMBER);
-    try {
-      console.log(process.env.GITHUB_PR_NUMBER);
-      if (!result) throw new Error("Reference not found.");
-      const [, pullRequestId] = result;
-      
-      if(pullRequestId) {
-        rootUrl = `deploy-preview-${pullRequestId}--rocketrecipes.netlify.app`;
-      }
-      console.log('PULL REQUEST ID: ' + pullRequestId);
+
+    if(process.env.GITHUB_PR_NUMBER) {
+      console.log("PR: " + process.env.GITHUB_PR_NUMBER);
+      rootUrl = `deploy-preview-${pullRequestId}--rocketrecipes.netlify.app`;
     }
-    catch(e) {
+    else {
       console.log('not in pr');
     }
 
