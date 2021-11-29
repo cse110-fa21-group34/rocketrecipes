@@ -1,4 +1,4 @@
-const rootUrl = '127.0.0.1:5501';
+let rootUrl = '127.0.0.1:5501';
 const pullRequestId = process.env.GITHUB_PR_NUMBER;
 
 beforeAll(async () => {
