@@ -1,108 +1,142 @@
+/* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import {
-  getAllRecipes, createRecipe, createId, readRecipe,
+  readRecipe,
+  addFavoriteRecipe,
+  isFavorite,
+  deleteFavoriteRecipe,
+  getAllRecipes,
+  deleteRecipe,
 } from './utils.js';
-/* eslint-disable prefer-destructuring */
-// const crypto = require('crypto');
 
-// const createRecipe = document.querySelector(document.getElementById('Create'));
-// const deleteRecipe = document.querySelector(document.getElementById('Delete'));
-let i = 6; // instructions counter
-let ingCount = 1; // Ingredient Counter
+// holds recipes from localStorage
+let allRecipes = {};
 
-function addStep() {
-  const instructions = document.querySelector('.instructions');
-  const steps = document.createElement('input');
-  steps.setAttribute('class', 'step');
-  steps.setAttribute('type', 'text');
-  steps.setAttribute('placeholder', `Step ${i.toString()}`);
-  steps.setAttribute('id', `Step${i.toString()}`);
-  instructions.appendChild(steps);
-  i += 1;
-}
+// holds recipe ID of currently displayed recipe
+let recipeId;
 
-function deleteStep() {
-  i -= 1;
-  if (i < 2) {
-    i = 2;
-  }
-  const stepStr = `Step${i.toString()}`;
-  const lastStep = document.getElementById(stepStr);
-  lastStep.remove();
-}
+// takes the current recipe object and fills the html of the page with
+// the information within it
+function fillRecipePage(currentRecipe) {
+  const recipeTitleElement = document.getElementById('recipe-title');
+  recipeTitleElement.innerText = currentRecipe.title;
 
-function addIng() {
-  const ingredSteps = document.querySelector('.ingredSteps');
-  const amount = document.createElement('input');
-  amount.setAttribute('type', 'text');
-  amount.setAttribute('class', 'Ingre');
-  amount.setAttribute('placeholder', 'Amount');
-  amount.setAttribute('id', `amount${ingCount.toString()}`);
+  const recipeImageElement = document.getElementById('recipe-image');
+  recipeImageElement.src = currentRecipe.image;
 
-  const units = document.createElement('input');
-  units.setAttribute('type', 'text');
-  units.setAttribute('class', 'unit');
-  units.setAttribute('placeholder', 'Units');
-  units.setAttribute('id', `units${ingCount.toString()}`);
+  const recipeYieldlement = document.getElementById('yield');
+  recipeYieldlement.innerText = currentRecipe.servings;
 
-  const steps = document.createElement('input');
-  steps.setAttribute('type', 'text');
-  steps.setAttribute('class', 'Ingredient');
-  steps.setAttribute('placeholder', `Ingredient ${ingCount.toString()}`);
-  steps.setAttribute('id', `ing${ingCount.toString()}`);
+  const recipeTimeElement = document.getElementById('time');
+  recipeTimeElement.innerText = `${currentRecipe.readyInMinutes} minutes`;
 
-  // const breakline = document.createElement('br');
+  // add categories
+  // Create tag buttons based on these tag properties
+  const tagProperties = [
+    { id: 'cheap', name: 'Cheap' },
+    { id: 'dairyFree', name: 'Dairy Free' },
+    { id: 'fiveIngredientsOrLess', name: 'Easy' },
+    { id: 'glutenFree', name: 'Gluten Free' },
+    { id: 'quickEat', name: 'Quick Eat' },
+    { id: 'vegan', name: 'Vegan' },
+    { id: 'vegetarian', name: 'Vegetarian' },
+  ];
 
-  ingredSteps.appendChild(amount);
-  ingredSteps.appendChild(units);
-  ingredSteps.appendChild(steps);
-  // ingredSteps.appendChild(breakline);
-  ingCount += 1;
-}
-
-function deleteIng() {
-  ingCount -= 1;
-  if (ingCount < 2) {
-    ingCount = 2;
-  }
-  const ingStep = document.getElementById(`ing${ingCount.toString()}`);
-  const amountStep = document.getElementById(`amount${ingCount.toString()}`);
-  const unitStep = document.getElementById(`units${ingCount.toString()}`);
-  unitStep.remove();
-  ingStep.remove();
-  amountStep.remove();
-}
-
-async function fillRecipePage(recipeId) {
-  const recipe = await readRecipe(recipeId);
-  const header = document.getElementById('header');
-  header.innerHTML = 'Edit Your Recipe!';
-  const name = document.getElementById('name');
-  name.value = recipe.title;
-  const imageLink = document.getElementById('image');
-  imageLink.value = recipe.image;
-  const summary = document.querySelector('.descrip');
-  summary.value = recipe.summary.replace(/<[^>]+>/g, '');
-  const servings = document.getElementById('serving');
-  servings.value = recipe.servings;
-  const time = document.getElementById('time');
-  time.value = recipe.readyInMinutes;
-  for (let j = 1; j < recipe.ingredients.length + 1; j += 1) {
-    addIng();
-    const ingredientName = document.getElementById(`ing${j.toString()}`);
-    const amount = document.getElementById(`amount${j.toString()}`);
-    const unit = document.getElementById(`units${j.toString()}`);
-    amount.value = recipe.ingredients[j - 1].amount;
-    ingredientName.value = recipe.ingredients[j - 1].name;
-    unit.value = recipe.ingredients[j - 1].unit;
-  }
-
-  for (let k = 1; k <= recipe.steps.length; k += 1) {
-    if (k > 5) {
-      addStep();
+  const categoryArray = [];
+  const categoriesElement = document.getElementById('categories');
+  tagProperties.forEach((tag) => {
+    if (currentRecipe[tag.id] === true) {
+      categoryArray.push(tag.name);
     }
-    const stepVal = document.getElementsByClassName('step')[k - 1];
-    stepVal.value = recipe.steps[k - 1].step;
+  });
+  categoriesElement.innerText = `Categories: ${categoryArray.join(', ')}`;
+
+  const recipeInstructionsElement = document.getElementById('instructions-list');
+  currentRecipe.steps.forEach((step) => {
+    // create new ingredient li
+    const currentIngredientLi = document.createElement('li');
+    currentIngredientLi.innerText = `${step.step}`;
+    recipeInstructionsElement.appendChild(currentIngredientLi);
+  });
+
+  const recipeIngredientsElement = document.getElementById('ingredients-list');
+  currentRecipe.ingredients.forEach((ingredient) => {
+    // create new ingredient li
+    const currentIngredientLi = document.createElement('li');
+    currentIngredientLi.innerText = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`;
+    currentIngredientLi.setAttribute('class', 'ingred');
+    recipeIngredientsElement.appendChild(currentIngredientLi);
+  });
+}
+
+// grabs four random recipes from localStorage and displays them at the bottom of the page
+function createRecommendedRecipes() {
+  const recommendedRecipeContainer = document.getElementById('recommendedRecipeContainer');
+  recommendedRecipeContainer.style.display = 'flex';
+  recommendedRecipeContainer.style.maxWidth = '100%';
+  recommendedRecipeContainer.style.flexWrap = 'wrap';
+
+  let numReccRecipes = 0;
+  while (numReccRecipes < 4) {
+    const randomNumber = Math.floor(Math.random() * (allRecipes.length - 5));
+    const recipe = allRecipes[randomNumber];
+
+    // if current id does not match random recipe id, create recipe card
+    if (recipeId !== recipe.id) {
+      const recipeCard = document.createElement('recipe-card');
+      recipeCard.data = recipe;
+      recommendedRecipeContainer.appendChild(recipeCard);
+      numReccRecipes += 1;
+    }
+  }
+}
+
+String.prototype.replaceAt = function (index, replacement) {
+  return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+};
+
+function getNum(str, multiple) {
+  let newStr = '';
+  if (str.length === 0) {
+    return '';
+  }
+  let numStr = '';
+  let i = 0;
+  while (true) {
+    if (str[i] === ' ') {
+      break;
+    }
+    numStr += str[i];
+    i += 1;
+  }
+  let num = parseFloat(numStr);
+  num *= multiple;
+  const newNumStr = num.toString();
+  for (let i = 0; i < newNumStr.length; i++) {
+    newStr += newNumStr[i];
+  }
+  for (let i = numStr.length; i < str.length; i++) {
+    newStr += str[i];
+  }
+  // console.log(multiple);
+  console.log(newStr);
+  return newStr;
+}
+
+function scaleIngredients() {
+  // console.log(`this is the numArr: ${numArr[0].innerText}`);
+  const scale = document.getElementById('servings');
+  // console.log(scale);
+  const newRecipe =[];
+  const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  for (let i = 0; i < recipeIngredientsElement.length; i++) {
+    
+    const newStr = getNum(recipeIngredientsElement[i].innerText.toString(), scale.value);
+    // console.log(recipeIngredientsElement[i].innerText);
+    // recipeIngredientsElement[i].innerText = newStr;
+    newRecipe [i].innerText = recipeIngredientsElement[i].innerText;
+    recipeIngredientsElement[i].innerText = newStr;
+    // console.log(recipeIngredientsElement[i].innerText);
   }
 }
 
@@ -110,66 +144,66 @@ async function init() {
   const queryString = window.location.search;
 
   const searchParams = new URLSearchParams(queryString);
-  const recipeId = searchParams.get('id');
-  if (recipeId !== null) {
-    fillRecipePage(recipeId);
+  recipeId = searchParams.get('id');
+
+  if (recipeId === null) {
+    // handle bad request
+    // show empty page with note that we can't find that id
+  } else {
+    const currentRecipe = await readRecipe(recipeId);
+    fillRecipePage(currentRecipe);
   }
-  const addIngredient = document.getElementById('addIngredient');
-  addIngredient.addEventListener('click', addIng);
-
-  const deleteIngredient = document.getElementById('deleteIngredient');
-  deleteIngredient.addEventListener('click', deleteIng);
-
-  const button = document.getElementById('plus');
-  button.addEventListener('click', addStep);
-
-  const deleteButton = document.getElementById('Delete');
-  deleteButton.addEventListener('click', deleteStep);
-
-  await getAllRecipes();
-  document.getElementById('Create').addEventListener('click', async () => {
-    const userGenRecipe = {};
-    userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
-    userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
-    userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;
-    userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
-    userGenRecipe.image = document.getElementById('image').value;
-    userGenRecipe.uploader = 'From the User';
-
-    // Need to add tags to CreateRecipe.html so that the user can manually select which tags
-    // associate with their recipe.
-    userGenRecipe.isFromInternet = false;
-    userGenRecipe.vegetarian = false;
-    userGenRecipe.vegan = false;
-    userGenRecipe.cheap = false;
-    userGenRecipe.glutenFree = false;
-    userGenRecipe.dairyFree = false;
-    userGenRecipe.quickEat = false;
-
-    userGenRecipe.ingredients = [];
-    let numIngredients = 0;
-    for (let j = 0; j < document.getElementsByClassName('Ingre').length; j += 1) {
-      const ingredientInfo = {};
-      ingredientInfo.name = document.getElementsByClassName('Ingredient')[j].value;
-      ingredientInfo.amount = document.getElementsByClassName('Ingre')[j].value;
-      ingredientInfo.unit = document.getElementsByClassName('unit')[j].value;
-      userGenRecipe.ingredients.push(ingredientInfo);
-      numIngredients += 1;
-    }
-
-    userGenRecipe.fiveIngredientsOrLess = numIngredients <= 5;
-    userGenRecipe.description = document.getElementsByClassName('descrip')[0].value;
-
-    userGenRecipe.steps = [];
-    for (let k = 0; k < document.getElementsByClassName('step').length; k += 1) {
-      const currStep = {};
-      currStep.number = k;
-      currStep.step = document.getElementsByClassName('step')[k].value;
-      userGenRecipe.steps.push(currStep);
-    }
-
-    await createRecipe(userGenRecipe);
-    window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
+  const createButton = document.getElementById('deleteButton');
+  createButton.addEventListener('click', () => {
+    deleteRecipe(recipeId);
+    window.location = `${window.location.origin}/root/html/homepage.html`;
   });
+
+  const editRecipeButton = document.getElementById('editButton');
+  editRecipeButton.addEventListener('click', () => {
+    // document.cookie = `recipe=${recipeId}`;
+    // console.log(document.cookie);
+    // window.location.href = '../html/CreateRecipe.html';
+    const currentUrl = window.location;
+    window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
+  });
+
+  // fetch four random recipes (except the currently displayed recipe) and
+  // display at bottom of page
+  try {
+    allRecipes = await getAllRecipes();
+  } finally {
+    createRecommendedRecipes();
+  }
+  const button = document.querySelector('#fav-icon');
+  const isFav = await isFavorite(recipeId);
+  button.addEventListener('click', () => {
+    if (button.style.color === 'rgb(255, 204, 0)') {
+      button.style = 'color:grey';
+      deleteFavoriteRecipe(recipeId);
+    } else {
+      button.style = 'color:rgb(255, 204, 0)';
+      addFavoriteRecipe(recipeId);
+    }
+  });
+  // not favorited, user clicks
+  if (isFav) {
+    button.style = 'color:rgb(255, 204, 0)';
+  } else {
+    button.style = 'color:grey';
+  }
+
+  const scaleButton = document.getElementById('servings');
+  const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  scaleButton.addEventListener('change', scaleIngredients);
+
+  // (function(d, s, id) {
+  //   var js, fjs = d.getElementsByTagName(s)[0];
+  //   if (d.getElementById(id)) return;
+  //   js = d.createElement(s); js.id = id;
+  //   js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  //   fjs.parentNode.insertBefore(js, fjs);
+  //   }(document, 'script', 'facebook-jssdk'));
 }
+
 window.addEventListener('DOMContentLoaded', init);
