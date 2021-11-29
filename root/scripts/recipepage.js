@@ -105,19 +105,22 @@ async function init() {
     document.querySelector('main').innerHTML = 'The recipe could not be found.';
   } else {
     fillRecipePage(currentRecipe);
-    const createButton = document.getElementById('deleteButton');
-    createButton.addEventListener('click', () => {
+    // delete recipe button
+    const deleteButton = document.getElementById('deleteButton');
+    deleteButton.addEventListener('click', () => {
       deleteRecipe(recipeId);
       window.location = `${window.location.origin}/root/html/homepage.html`;
-      const editRecipeButton = document.getElementById('editButton');
-      editRecipeButton.addEventListener('click', () => {
-        // document.cookie = `recipe=${recipeId}`;
-        // console.log(document.cookie);
-        // window.location.href = '../html/CreateRecipe.html';
-        const currentUrl = window.location;
-        window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
-      });
     });
+    // edit recipe button
+    const editRecipeButton = document.getElementById('editButton');
+    editRecipeButton.addEventListener('click', () => {
+      // document.cookie = `recipe=${recipeId}`;
+      // console.log(document.cookie);
+      // window.location.href = '../html/CreateRecipe.html';
+      const currentUrl = window.location;
+      window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
+    });
+    // favorite recipe functionality
     const button = document.querySelector('#fav-icon');
     const isFav = await isFavorite(recipeId);
     button.addEventListener('click', () => {
