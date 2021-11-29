@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import * as utils from './testutil.js'
-import { getAllRecipes } from '../../root/scripts/utils.js'; // eslint-disable-line no-lone-blocks
+import * as utilFunctions from '../../root/scripts/utils.js'; // eslint-disable-line no-lone-blocks
 
 // unmockedFetch stores the original global fetch function
 const unmockedFetch = global.fetch
@@ -19,7 +19,7 @@ beforeAll(() => {
 });
 
 test('fetches recipes', async () => {
-    const recipes = await getAllRecipes();
+    const recipes = await utilFunctions.getAllRecipes();
     expect(recipes.length).toBeGreaterThan(0);
 });
 
