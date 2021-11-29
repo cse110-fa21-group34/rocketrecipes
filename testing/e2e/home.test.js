@@ -1,7 +1,6 @@
 describe('home page', () => {
       beforeAll(async () => {
         await page.goto('http://127.0.0.1:5501/root/html/homepage.html');
-        await page.waitForNavigation({waitUntil: 'networkidle2'});
       });
 
       it('should be titled Home page', async () => {
