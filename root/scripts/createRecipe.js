@@ -132,17 +132,25 @@ async function fillRecipePage(recipeId) {
   }
 
   for (let k = 1; k <= recipe.steps.length; k += 1) {
-    if (k > 5) {
-      addStep();
-    }
+    addStep();
     const stepVal = document.getElementsByClassName('step')[k - 1];
     stepVal.value = recipe.steps[k - 1].step;
   }
 }
 
 async function init() {
-  addStep();
-  addIng();
+  const queryString = window.location.search;
+
+  const searchParams = new URLSearchParams(queryString);
+  const recipeId = searchParams.get('id');
+  if (recipeId !== null) {
+    fillRecipePage(recipeId);
+  }
+  else{
+    addStep();
+    addIng();
+  }
+  
 
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
