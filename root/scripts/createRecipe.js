@@ -145,12 +145,10 @@ async function init() {
   const recipeId = searchParams.get('id');
   if (recipeId !== null) {
     fillRecipePage(recipeId);
-  }
-  else{
+  } else {
     addStep();
     addIng();
   }
-  
 
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
