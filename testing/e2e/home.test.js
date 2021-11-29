@@ -1,10 +1,9 @@
 const rootUrl = '127.0.0.1:5501';
+const pullRequestId = process.env.GITHUB_PR_NUMBER;
 
 beforeAll(async () => {
-    const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_PR_NUMBER);
-
-    if(process.env.GITHUB_PR_NUMBER) {
-      console.log("PR: " + process.env.GITHUB_PR_NUMBER);
+    if(pullRequestId) {
+      console.log("PR: " + pullRequestId);
       rootUrl = `deploy-preview-${pullRequestId}--rocketrecipes.netlify.app`;
     }
     else {
