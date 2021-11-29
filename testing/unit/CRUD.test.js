@@ -2,8 +2,7 @@
  * @jest-environment jsdom
  */
 import * as utils from './testutil.js'
-import { getAllRecipes } from '../../root/scripts/utils.js';
-// const recipes = require('../../root/scraper/recipes.json');
+import { getAllRecipes } from '../../root/scripts/utils.js'; // eslint-disable-line no-lone-blocks
 
 // unmockedFetch stores the original global fetch function
 const unmockedFetch = global.fetch
