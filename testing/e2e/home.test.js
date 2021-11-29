@@ -1,13 +1,20 @@
-const rootUrl = 'http://127.0.0.1:5501';
+const rootUrl = '127.0.0.1:5501';
 
 beforeAll(async () => {
     const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_REF);
-    if (!result) throw new Error("Reference not found.");
-    const [, pullRequestId] = result;
-    
-    if(pullRequestId) {
-      rootUrl = `https://deploy-preview-${pullRequestId}--rocketrecipes.netlify.app`
+    try {
+      if (!result) throw new Error("Reference not found.");
+      const [, pullRequestId] = result;
+      
+      if(pullRequestId) {
+        rootUrl = `deploy-preview-${pullRequestId}--rocketrecipes.netlify.app`;
+      }
+      console.log('PULL REQUEST ID: ' + pullRequestId);
     }
+    catch(e) {
+      console.log('not in pr');
+    }
+
 });
 
       describe('home page', () => {
