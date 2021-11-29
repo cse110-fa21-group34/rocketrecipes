@@ -1,6 +1,7 @@
 describe('home page', () => {
       beforeAll(async () => {
-        await page.goto('http://localhost:5501/root/html/homepage.html');
+        await page.goto('http://127.0.0.1:5501/root/html/homepage.html');
+        await page.waitForNavigation({waitUntil: 'networkidle2'});
       });
 
       it('should be titled Home page', async () => {
@@ -10,7 +11,6 @@ describe('home page', () => {
       it('headline should be rocket recipes', async () => {
         await page.waitForSelector('body > main > div > h1');
         const headline = await page.evaluate( () => document.querySelector('body > main > div > h1').textContent);
-        console.log(headline);
         expect(headline).toBe('Rocket Recipes');
       });
 
