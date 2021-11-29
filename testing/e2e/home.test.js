@@ -1,7 +1,7 @@
 const rootUrl = '127.0.0.1:5501';
 
 beforeAll(async () => {
-    const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_REF);
+    const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_PR_NUMBER);
     try {
       if (!result) throw new Error("Reference not found.");
       const [, pullRequestId] = result;
