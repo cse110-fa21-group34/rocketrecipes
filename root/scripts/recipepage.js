@@ -64,6 +64,7 @@ function fillRecipePage(currentRecipe) {
     // create new ingredient li
     const currentIngredientLi = document.createElement('li');
     currentIngredientLi.innerText = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`;
+    currentIngredientLi.setAttribute('class', 'ingred');
     recipeIngredientsElement.appendChild(currentIngredientLi);
   });
 }
@@ -87,6 +88,54 @@ function createRecommendedRecipes() {
       recommendedRecipeContainer.appendChild(recipeCard);
       numReccRecipes += 1;
     }
+  }
+}
+
+String.prototype.replaceAt = function (index, replacement) {
+  return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+};
+
+function getNum(str, multiple) {
+  let newStr = '';
+  if (str.length === 0) {
+    return '';
+  }
+  let numStr = '';
+  let i = 0;
+  while (true) {
+    if (str[i] === ' ') {
+      break;
+    }
+    numStr += str[i];
+    i += 1;
+  }
+  let num = parseFloat(numStr);
+  num *= multiple;
+  const newNumStr = num.toString();
+  for (let i = 0; i < newNumStr.length; i++) {
+    newStr += newNumStr[i];
+  }
+  for (let i = numStr.length; i < str.length; i++) {
+    newStr += str[i];
+  }
+  // console.log(multiple);
+  console.log(newStr);
+  return newStr;
+}
+
+function scaleIngredients() {
+  // console.log(`this is the numArr: ${numArr[0].innerText}`);
+  const scale = document.getElementById('servings');
+  // console.log(scale);
+  const newRecipe = [];
+  const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  for (let i = 0; i < recipeIngredientsElement.length; i++) {
+    const newStr = getNum(recipeIngredientsElement[i].innerText.toString(), scale.value);
+    // console.log(recipeIngredientsElement[i].innerText);
+    // recipeIngredientsElement[i].innerText = newStr;
+    newRecipe[i].innerText = recipeIngredientsElement[i].innerText;
+    recipeIngredientsElement[i].innerText = newStr;
+    // console.log(recipeIngredientsElement[i].innerText);
   }
 }
 
@@ -142,6 +191,10 @@ async function init() {
   } else {
     button.style = 'color:grey';
   }
+
+  const scaleButton = document.getElementById('servings');
+  const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  scaleButton.addEventListener('change', scaleIngredients);
 
   // (function(d, s, id) {
   //   var js, fjs = d.getElementsByTagName(s)[0];
