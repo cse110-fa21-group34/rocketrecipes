@@ -1,6 +1,18 @@
-describe('home page', () => {
-      beforeAll(async () => {
-        await page.goto('http://127.0.0.1:5501/root/html/homepage.html');
+const rootUrl = 'http://127.0.0.1:5501';
+
+beforeAll(async () => {
+    const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env.GITHUB_REF);
+    if (!result) throw new Error("Reference not found.");
+    const [, pullRequestId] = result;
+    
+    if(pullRequestId) {
+      rootUrl = `https://deploy-preview-${pullRequestId}--rocketrecipes.netlify.app`
+    }
+});
+
+      describe('home page', () => {
+        beforeAll(async () => {
+        await page.goto(`http://${rootUrl}/root/html/homepage.html`);
       });
 
       it('should be titled Home page', async () => {
