@@ -66,6 +66,23 @@ function fillRecipePage(currentRecipe) {
     currentIngredientLi.innerText = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`;
     recipeIngredientsElement.appendChild(currentIngredientLi);
   });
+
+  const text = `Check out this recipe for ${document.getElementById('recipe-title').innerText}:`;
+
+  const twitterShare = document.getElementById('twitter-share');
+  twitterShare.href += `${window.location.href}&text=${text} `;
+
+  const facebookShare = document.getElementById('facebook-share');
+  facebookShare.href += `${window.location.href}&quote=${text}`;
+
+  const redditShare = document.getElementById('reddit-share');
+  redditShare.href += `${window.location.href}`;
+
+  const linkedInShare = document.getElementById('linkedin-share');
+  linkedInShare.href += `${window.location.href}`;
+
+  const emailShare = document.getElementById('email-share');
+  emailShare.href += `${text}&body=${window.location.href}`;
 }
 
 // grabs four random recipes from localStorage and displays them at the bottom of the page
