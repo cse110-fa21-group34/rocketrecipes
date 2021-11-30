@@ -118,23 +118,31 @@ function getNum(str, multiple) {
   for (let i = numStr.length; i < str.length; i++) {
     newStr += str[i];
   }
-  // console.log(multiple);
-  console.log(newStr);
+  console.log(multiple);
+  // console.log(newStr);
   return newStr;
 }
 
-function scaleIngredients() {
+function scaleIngredients(currentRecipe) {
   // console.log(`this is the numArr: ${numArr[0].innerText}`);
   const scale = document.getElementById('servings');
-  // console.log(scale);
-  const newRecipe = [];
+
+  // console.log(scale.value);
   const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  console.log(currentRecipe);
   for (let i = 0; i < recipeIngredientsElement.length; i++) {
-    const newStr = getNum(recipeIngredientsElement[i].innerText.toString(), scale.value);
+    const ingre = currentRecipe.ingredients[i];
+    // console.log(ingre.amount);
+    const newStr = getNum(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`, scale.value);
+    if (scale.value / 1 === 0) {
+      console.log(`${ingre.amount} ${ingre.unit} ${ingre.name}`);
+    } else {
+      console.log(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`);
+    }
+    // recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
     // console.log(recipeIngredientsElement[i].innerText);
     // recipeIngredientsElement[i].innerText = newStr;
-    newRecipe[i].innerText = recipeIngredientsElement[i].innerText;
-    recipeIngredientsElement[i].innerText = newStr;
+    // recipeIngredientsElement[i].innerText = newStr;
     // console.log(recipeIngredientsElement[i].innerText);
   }
 }
@@ -192,9 +200,9 @@ async function init() {
     button.style = 'color:grey';
   }
 
+  const currentRecipe = await readRecipe(recipeId);
   const scaleButton = document.getElementById('servings');
-  const recipeIngredientsElement = document.getElementsByClassName('ingred');
-  scaleButton.addEventListener('change', scaleIngredients);
+  scaleButton.addEventListener('change', scaleIngredients(currentRecipe));
 
   // (function(d, s, id) {
   //   var js, fjs = d.getElementsByTagName(s)[0];
