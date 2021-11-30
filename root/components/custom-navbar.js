@@ -18,26 +18,34 @@ class Navbar extends HTMLElement {
             justify-content: space-between;
             
             height: 80px;
+            width: 100%;
             font-size: 20px;
-            margin: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+
         }
         .navbar-image {
             text-decoration: none;
-            width: 60px;
-            height 60px;
-        }
-        .navbar-image > image {
-            width: 60px;
-            height 60px;
+            width: 75px;
+            height 75px;
+            padding: 5px 0 0 10px;
         }
         .navbar-links-container {
             display: flex;
             align-items: center;
-            margin-right: 40px;
         }
         .navbar-text-link {
-            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 130px;
+            padding: 0 20px;
+            height: 80px;
             color: black;
+            text-decoration: none;
+        }
+        .navbar-text-link:hover {
+            cursor: pointer;
+            background-color: #F0F0F0;
         }
         .navbar-button-link {
             margin-left: 40px;
@@ -64,16 +72,12 @@ class Navbar extends HTMLElement {
     const navbarContainer = document.createElement('div');
     navbarContainer.innerHTML = `
         <a class="navbar-image" href="./homepage.html"> 
-            <img src="../media/teamLogo.png" width="60" height="60" > 
+            <img src="../media/teamLogo.png" width="75" height="75" > 
         </a>
         <div class="navbar-links-container"> 
             <a class="navbar-text-link" href="./searchpage.html">Search</a>
-            <form action="./CreateRecipe.html">
-                <button class="navbar-button-link-create-recipe">Create Recipe</button>
-            </form>
-            <form action="./generalAccount.html">
-                <button class="navbar-button-link">My Account</button>
-            </form>
+            <a class="navbar-text-link" href="./CreateRecipe.html">Create Recipe</a>
+            <a class="navbar-text-link" href="./generalAccount.html">My Account</a>
         </div>
     `;
     navbarContainer.classList.add('navbar-container');
