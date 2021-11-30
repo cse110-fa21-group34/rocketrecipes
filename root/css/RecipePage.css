@@ -107,9 +107,10 @@ ul li {
 ul li:not(:first-child) {
   margin-top: 8px;
 }
+
 .share {
   display: inline-block;
-  color: #ffffff;
+  color: #fff;
   border-radius: 12px;
   padding: 8px 10px;
   outline: none;
@@ -118,10 +119,10 @@ ul li:not(:first-child) {
   margin: 0 10px;
 }
 
-.share.twitter     { background: #53aaec; }
-.share.facebook    { background: #2c467c; }
-.share.reddit      { background: #ff5700; }
-.share.hackernews  { background: #3cff00; }
-.share.linkedin    { background: #4875B4; }
-.share.email       { background: #000000; }
-.share.print       { background-color: rgb(207, 32, 114);}
+.share.twitter { background: #53aaec; }
+.share.facebook { background: #2c467c; }
+.share.reddit { background: #ff5700; }
+.share.hackernews { background: #3cff00; }
+.share.linkedin { background: #4875b4; }
+.share.email { background: #000; }
+.share.print { background-color: rgb(207, 32, 114); }
