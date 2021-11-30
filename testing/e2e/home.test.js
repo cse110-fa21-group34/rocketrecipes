@@ -1,4 +1,4 @@
-let rootUrl = '127.0.0.1:5501';
+let rootUrl = '127.0.0.1:5500';
 const pullRequestId = process.env.GITHUB_PR_NUMBER;
 
 beforeAll(async () => {
@@ -12,6 +12,7 @@ beforeAll(async () => {
     else {
       console.log('not in pr');
     }
+
 
 });
 
