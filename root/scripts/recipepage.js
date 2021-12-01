@@ -108,10 +108,6 @@ function createRecommendedRecipes() {
   }
 }
 
-String.prototype.replaceAt = function (index, replacement) {
-  return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-};
-
 async function scaleIngredients() {
   const scale = document.getElementById('servings');
 
