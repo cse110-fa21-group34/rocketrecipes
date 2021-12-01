@@ -304,14 +304,6 @@ export async function search(searchQuery, tags) {
       if (recipeMatches) {
         searchResults.add(recipe);
       }
-      // recipe.ingredients.forEach((ingredient) => {
-      //   const { name } = ingredient;
-      //   if (name) {
-      //     if (ingredient.name.toLowerCase().includes(query)) {
-      //       searchResults.add(recipe);
-      //     }
-      //   }
-      // });
     } catch (e) {
       if (searchResults.has(recipe)) {
         searchResults.delete(recipe);
