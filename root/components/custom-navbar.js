@@ -18,7 +18,7 @@ class Navbar extends HTMLElement {
             justify-content: space-between;
             
             height: 80px;
-            width: 100%;
+            width: 100vw;
             font-size: 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 
@@ -47,25 +47,6 @@ class Navbar extends HTMLElement {
             cursor: pointer;
             background-color: #F0F0F0;
         }
-        .navbar-button-link {
-            margin-left: 40px;
-            border-radius: 12px;
-            border-width: 1px;
-            height: 40px;
-            background-color: pink;
-            font-size: 20px;
-        }
-        .navbar-button-link-create-recipe {
-            margin-left: 40px;
-            border-radius: 12px;
-            border-width: 1px;
-            height: 40px;
-            background-color: pink;
-            font-size: 20px;
-        }
-        .navbar-button-link:hover {
-            cursor: pointer;
-        }
     `;
 
     // create html for navbar
@@ -75,12 +56,27 @@ class Navbar extends HTMLElement {
             <img src="../media/teamLogo.png" width="75" height="75" > 
         </a>
         <div class="navbar-links-container"> 
-            <a class="navbar-text-link" href="./searchpage.html">Search</a>
-            <a class="navbar-text-link" href="./CreateRecipe.html">Create Recipe</a>
-            <a class="navbar-text-link" href="./generalAccount.html">My Account</a>
+            <a class="navbar-text-link" id="search" href="./searchpage.html">Search</a>
+            <a class="navbar-text-link" id="create" href="./CreateRecipe.html">Create Recipe</a>
+            <a class="navbar-text-link" id="account" href="./generalAccount.html">My Account</a>
         </div>
     `;
     navbarContainer.classList.add('navbar-container');
+
+    const page = this.getAttribute('page');
+    switch (page) {
+      case 'search':
+        navbarContainer.querySelector('#search').style.textDecoration = 'underline';
+        break;
+      case 'create':
+        navbarContainer.querySelector('#create').style.textDecoration = 'underline';
+        break;
+      case 'account':
+        navbarContainer.querySelector('#account').style.textDecoration = 'underline';
+        break;
+      default:
+        break;
+    }
 
     this.shadowRoot.append(style, navbarContainer);
   }
