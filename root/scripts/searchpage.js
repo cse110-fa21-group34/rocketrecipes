@@ -43,6 +43,11 @@ async function init() {
   } else {
     const searchedRecipes = await search(searchQuery, filterTags);
     fillSearchPage(searchedRecipes);
+    const searchbarRoot = document.querySelector('custom-searchbar').shadowRoot;
+    searchbarRoot.querySelector('input').value = searchQuery;
+    for (let i = 0; i < filterTags.length; i += 1) {
+      searchbarRoot.getElementById(filterTags[i]).checked = true;
+    }
   }
 }
 
