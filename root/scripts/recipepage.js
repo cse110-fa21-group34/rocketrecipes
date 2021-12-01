@@ -129,17 +129,28 @@ async function scaleIngredients() {
   console.log(scale.value);
   // console.log(scale.value);
   const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  // yield scaled
+  const recipeYieldlement = document.getElementById('yield');
+  recipeYieldlement.innerText = window.currentRecipe.servings * scale.value;
+
+  const recipeTimeElement = document.getElementById('time');
+  recipeTimeElement.innerText = `${window.currentRecipe.readyInMinutes * scale.value} minutes`;
+
   for (let i = 0; i < recipeIngredientsElement.length; i += 1) {
     const ingre = window.currentRecipe.ingredients[i];
     // console.log(ingre.amount);
-    const newStr = getNum(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`, scale.value);
-    recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
+    // const newStr = getNum(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`, scale.value);
+    recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${
+      ingre.name
+    }`;
 
     if (scale.value / 1 === 0) {
       recipeIngredientsElement[i].innerText = `${ingre.amount} ${ingre.unit} ${ingre.name}`;
       console.log(`${ingre.amount} ${ingre.unit} ${ingre.name}`);
     } else {
-      recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
+      recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${
+        ingre.name
+      }`;
       console.log(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`);
     }
     // recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
