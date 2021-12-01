@@ -52,12 +52,16 @@ class Navbar extends HTMLElement {
             flex-direction: column;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
         }
-
         .mobile-link {
             width: 100vw;
             padding: 0;
         }
-
+        .mobile-navbar-button {
+            width: 48px;
+            height: 48px;
+            background: url('https://api.iconify.design/icon-park-outline/hamburger-button.svg?color=%23999&height=48') no-repeat center center / contain;
+            margin-right: 10px;
+        }
         @media (max-width: 650px) {
             .navbar-links-container-desktop {
                 display: none;
@@ -92,7 +96,7 @@ class Navbar extends HTMLElement {
             <a class="navbar-text-link" id="account" href="./generalAccount.html">My Account</a>
         </div>
         <div class="navbar-links-container-mobile"> 
-            <div class="mobile-navbar-button">open</div>
+            <div class="mobile-navbar-button"></div>
         </div>
         <div class="mobile-navbar-expanded">
             <a class="navbar-text-link mobile-link" id="search-mobile" href="./searchpage.html">Search</a>
