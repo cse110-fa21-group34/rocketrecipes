@@ -112,10 +112,10 @@ function getNum(str, multiple) {
   let num = parseFloat(numStr);
   num *= multiple;
   const newNumStr = num.toString();
-  for (let i = 0; i < newNumStr.length; i++) {
+  for (let i = 0; i < newNumStr.length; i += 1) {
     newStr += newNumStr[i];
   }
-  for (let i = numStr.length; i < str.length; i++) {
+  for (let i = numStr.length; i < str.length; i += 1) {
     newStr += str[i];
   }
   console.log(multiple);
@@ -123,20 +123,23 @@ function getNum(str, multiple) {
   return newStr;
 }
 
-function scaleIngredients(currentRecipe) {
+async function scaleIngredients() {
   // console.log(`this is the numArr: ${numArr[0].innerText}`);
   const scale = document.getElementById('servings');
-
+  console.log(scale.value);
   // console.log(scale.value);
   const recipeIngredientsElement = document.getElementsByClassName('ingred');
-  console.log(currentRecipe);
-  for (let i = 0; i < recipeIngredientsElement.length; i++) {
-    const ingre = currentRecipe.ingredients[i];
+  for (let i = 0; i < recipeIngredientsElement.length; i += 1) {
+    const ingre = window.currentRecipe.ingredients[i];
     // console.log(ingre.amount);
     const newStr = getNum(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`, scale.value);
+    recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
+
     if (scale.value / 1 === 0) {
+      recipeIngredientsElement[i].innerText = `${ingre.amount} ${ingre.unit} ${ingre.name}`;
       console.log(`${ingre.amount} ${ingre.unit} ${ingre.name}`);
     } else {
+      recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
       console.log(`${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`);
     }
     // recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${ingre.name}`;
@@ -200,9 +203,9 @@ async function init() {
     button.style = 'color:grey';
   }
 
-  const currentRecipe = await readRecipe(recipeId);
+  window.currentRecipe = await readRecipe(recipeId);
   const scaleButton = document.getElementById('servings');
-  scaleButton.addEventListener('change', scaleIngredients(currentRecipe));
+  scaleButton.addEventListener('change', scaleIngredients);
 
   // (function(d, s, id) {
   //   var js, fjs = d.getElementsByTagName(s)[0];
