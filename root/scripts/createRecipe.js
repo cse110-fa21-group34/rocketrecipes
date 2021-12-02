@@ -105,12 +105,13 @@ async function fillRecipePage(recipeId) {
     stepVal.value = recipe.steps[k - 1].step;
   }
 
-  document.getElementById('cheap').checked = recipe.cheap;
+  document.getElementById('cheap').value = recipe.cheap;
   document.getElementById('vegetarian').value = recipe.vegetarian;
   document.getElementById('vegan').value = recipe.vegan;
   document.getElementById('glutenFree').value = recipe.glutenFree;
   document.getElementById('dairyFree').value = recipe.dairyFree;
   document.getElementById('quickEat').value = recipe.quickEat;
+  document.getElementById('easy').value = recipe.easyCook;
 }
 
 async function init() {
@@ -152,6 +153,7 @@ async function init() {
     userGenRecipe.glutenFree = document.getElementById('glutenFree').checked;
     userGenRecipe.dairyFree = document.getElementById('dairyFree').checked;
     userGenRecipe.quickEat = document.getElementById('quickEat').checked;
+    userGenRecipe.easyCook = document.getElementById('easy').checked;
 
     userGenRecipe.ingredients = [];
     let numIngredients = 0;
