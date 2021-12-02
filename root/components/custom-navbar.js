@@ -12,71 +12,137 @@ class Navbar extends HTMLElement {
     const style = document.createElement('style');
     style.innerHTML = `
         .navbar-container {
+            position: relative;
             display: flex;
             flex-direciton: row;
             align-items: center;
             justify-content: space-between;
             
             height: 80px;
+            width: 100vw;
             font-size: 20px;
-            margin: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
         }
         .navbar-image {
             text-decoration: none;
-            width: 60px;
-            height 60px;
-        }
-        .navbar-image > image {
-            width: 60px;
-            height 60px;
-        }
-        .navbar-links-container {
-            display: flex;
-            align-items: center;
-            margin-right: 40px;
+            width: 75px;
+            height 75px;
+            padding: 5px 0 0 10px;
         }
         .navbar-text-link {
-            margin-left: 30px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            width: 130px;
+            padding: 0 20px;
+            height: 80px;
             color: black;
+            text-decoration: none;
+            background-color: white;
         }
-        .navbar-button-link {
-            margin-left: 40px;
-            border-radius: 12px;
-            border-width: 1px;
-            height: 40px;
-            background-color: pink;
-            font-size: 20px;
-        }
-        .navbar-button-link-create-recipe {
-            margin-left: 40px;
-            border-radius: 12px;
-            border-width: 1px;
-            height: 40px;
-            background-color: pink;
-            font-size: 20px;
-        }
-        .navbar-button-link:hover {
+        .navbar-text-link:hover {
             cursor: pointer;
+            background-color: #F0F0F0;
         }
+        .mobile-navbar-expanded {
+            position: absolute;
+            
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+        }
+        .mobile-link {
+            width: 100vw;
+            padding: 0;
+        }
+        .mobile-navbar-button {
+            width: 48px;
+            height: 48px;
+            background: url('https://api.iconify.design/icon-park-outline/hamburger-button.svg?color=%23999&height=48') no-repeat center center / contain;
+            margin-right: 10px;
+        }
+        @media (max-width: 650px) {
+            .navbar-links-container-desktop {
+                display: none;
+            }
+            .navbar-links-container-mobile {
+                display: flex;
+            }
+            
+        }
+        @media (min-width: 651px) {
+            .navbar-links-container-desktop {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .navbar-links-container-mobile {
+                display: none;
+            }
+        }
+        
     `;
 
     // create html for navbar
     const navbarContainer = document.createElement('div');
     navbarContainer.innerHTML = `
         <a class="navbar-image" href="./homepage.html"> 
-            <img src="../media/teamLogo.png" width="60" height="60" > 
+            <img src="../media/teamLogo.png" width="75" height="75" > 
         </a>
-        <div class="navbar-links-container"> 
-            <a class="navbar-text-link" href="./searchpage.html">Search</a>
-            <form action="./CreateRecipe.html">
-                <button class="navbar-button-link-create-recipe">Create Recipe</button>
-            </form>
-            <form action="./generalAccount.html">
-                <button class="navbar-button-link">My Account</button>
-            </form>
+        <div class="navbar-links-container-desktop"> 
+            <a class="navbar-text-link" id="search" href="./searchpage.html">Search</a>
+            <a class="navbar-text-link" id="create" href="./CreateRecipe.html">Create Recipe</a>
+            <a class="navbar-text-link" id="account" href="./generalAccount.html">My Account</a>
+        </div>
+        <div class="navbar-links-container-mobile"> 
+            <div class="mobile-navbar-button"></div>
+        </div>
+        <div class="mobile-navbar-expanded">
+            <a class="navbar-text-link mobile-link" id="search-mobile" href="./searchpage.html">Search</a>
+            <a class="navbar-text-link mobile-link" id="create-mobile" href="./CreateRecipe.html">Create Recipe</a>
+            <a class="navbar-text-link mobile-link" id="account-mobile" href="./generalAccount.html">My Account</a>
         </div>
     `;
+
+    const navbarLinksBody = navbarContainer.querySelector('.mobile-navbar-expanded');
+    navbarLinksBody.style.display = 'none'; // hide mobile navbar links on new page
+
+    navbarContainer.querySelector('.mobile-navbar-button').addEventListener('click', () => {
+      if (navbarLinksBody.style.display === 'none') {
+        navbarLinksBody.style.display = 'flex';
+      } else {
+        navbarLinksBody.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 650) {
+        navbarLinksBody.style.display = 'none';
+      }
+    });
+
     navbarContainer.classList.add('navbar-container');
+
+    const page = this.getAttribute('page');
+    switch (page) {
+      case 'search':
+        navbarContainer.querySelector('#search').style.textDecoration = 'underline';
+        navbarContainer.querySelector('#search-mobile').style.textDecoration = 'underline';
+        break;
+      case 'create':
+        navbarContainer.querySelector('#create').style.textDecoration = 'underline';
+        navbarContainer.querySelector('#create-mobile').style.textDecoration = 'underline';
+        break;
+      case 'account':
+        navbarContainer.querySelector('#account').style.textDecoration = 'underline';
+        navbarContainer.querySelector('#account-mobile').style.textDecoration = 'underline';
+        break;
+      default:
+        break;
+    }
 
     this.shadowRoot.append(style, navbarContainer);
   }
