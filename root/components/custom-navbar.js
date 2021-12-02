@@ -12,6 +12,7 @@ class Navbar extends HTMLElement {
     const style = document.createElement('style');
     style.innerHTML = `
         .navbar-container {
+            position: relative;
             display: flex;
             flex-direciton: row;
             align-items: center;
@@ -21,6 +22,7 @@ class Navbar extends HTMLElement {
             width: 100vw;
             font-size: 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
         }
         .navbar-image {
             text-decoration: none;
