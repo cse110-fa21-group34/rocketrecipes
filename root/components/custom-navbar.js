@@ -43,21 +43,17 @@ class Navbar extends HTMLElement {
             margin-left: 40px;
             border-radius: 12px;
             border-width: 1px;
-            width: 115px;
             height: 40px;
             background-color: pink;
             font-size: 20px;
-            font-family: 'Times';
         }
         .navbar-button-link-create-recipe {
             margin-left: 40px;
             border-radius: 12px;
             border-width: 1px;
-            width: 150px;
             height: 40px;
             background-color: pink;
             font-size: 20px;
-            font-family: 'Times';
         }
         .navbar-button-link:hover {
             cursor: pointer;
