@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/homeStyle.css" class="style">
+    <link rel="stylesheet" href="../css/global.css" class="style">
     <script src="../components/custom-navbar.js" type="module"></script>
+    <script src="../components/custom-searchbar.js" type="module"></script>
     <script src="../components/recipe-card.js" type="module"></script>
     <script src="../scripts/homepage.js" type="module"></script>
     <title>Home page</title>
@@ -17,14 +19,7 @@
       <div class="midPart">
         <h1>Rocket Recipes</h1>
         <h3>Search through our library of 500+ recipes</h3>
-        <div class="bar">
-            <form id="form">
-                <input class="searchbar"type="text" id="ss" name="searchbar-home"
-                placeholder="Start typing..."
-                aria-label="Search through site content">
-                <button><a href="#"> <img class="search" src="../media/search.png" alt="Search"></a></button>
-            </form>
-          </div>
+        <custom-searchbar />
       </div>
   </main>
   <footer>
