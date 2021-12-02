@@ -109,6 +109,48 @@ test('delete recipe works with invalid id', async () => {
   expect(newRecipes.length).toBe(allRecipes.length);
 });
 
+test('check favorited recipe initializes to empty', async () => {
+  const favoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  expect(favoritedRecipes.length).toBe(0);
+});
+
+test('favorited recipe add does not add invalid id', async () => {
+  const favoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  await utilFunctions.addFavoriteRecipe('1');
+  const newFavoritedRecipes = await utilFunctions.getFavoriteRecipes();
+
+  expect(newFavoritedRecipes).toStrictEqual(favoritedRecipes);
+});
+
+test('favorited recipe adds valid id', async () => {
+  const favoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  const add = await utilFunctions.addFavoriteRecipe('ae94d68f70216f7017e6056291dc2682');
+  expect(add).toBe(true);
+
+  const newFavoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  expect(newFavoritedRecipes.length).toBe(favoritedRecipes.length+1);
+  expect(newFavoritedRecipes).toStrictEqual(['ae94d68f70216f7017e6056291dc2682']);
+});
+
+test('favorited recipe delete on invalid id works', async () => {
+  const favoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  const del = await utilFunctions.deleteFavoriteRecipe('1');
+  expect(del).toBe(false);
+
+  const newFavoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  expect(newFavoritedRecipes).toStrictEqual(favoritedRecipes);
+});
+
+test('valid favorited recipe delete works', async () => {
+  const favoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  const del = await utilFunctions.deleteFavoriteRecipe('ae94d68f70216f7017e6056291dc2682');
+  expect(del).toBe(true);
+
+  const newFavoritedRecipes = await utilFunctions.getFavoriteRecipes();
+  expect(newFavoritedRecipes).toStrictEqual([]);
+  expect(newFavoritedRecipes.length).toBe(0);
+});
+
 // After all tests are done, restore the global fetch function
 // back to the original 
 afterAll(() => {
