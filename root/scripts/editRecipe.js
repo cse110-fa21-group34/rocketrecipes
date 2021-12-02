@@ -111,6 +111,7 @@ async function fillRecipePage(recipeId) {
   document.getElementById('glutenFree').value = recipe.glutenFree;
   document.getElementById('dairyFree').value = recipe.dairyFree;
   document.getElementById('quickEat').value = recipe.quickEat;
+  document.getElementById('easy').value = recipe.easyCook;
 }
 
 async function init() {
@@ -151,6 +152,7 @@ async function init() {
     userGenRecipe.glutenFree = document.getElementById('glutenFree').checked;
     userGenRecipe.dairyFree = document.getElementById('dairyFree').checked;
     userGenRecipe.quickEat = document.getElementById('quickEat').checked;
+    userGenRecipe.easyCook = document.getElementById('easy').checked;
 
     userGenRecipe.ingredients = [];
     let numIngredients = 0;

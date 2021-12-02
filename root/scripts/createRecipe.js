@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import {
-  getAllRecipes, createRecipe, createId, readRecipe,
+  getAllRecipes, createRecipe, createId,
 } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
@@ -73,7 +73,7 @@ function deleteIng() {
   amountStep.remove();
 }
 
-async function fillRecipePage(recipeId) {
+/* async function fillRecipePage(recipeId) {
   const recipe = await readRecipe(recipeId);
   const header = document.getElementById('header');
   header.innerHTML = 'Edit Your Recipe!';
@@ -111,16 +111,16 @@ async function fillRecipePage(recipeId) {
   document.getElementById('glutenFree').value = recipe.glutenFree;
   document.getElementById('dairyFree').value = recipe.dairyFree;
   document.getElementById('quickEat').value = recipe.quickEat;
-}
+  document.getElementById('easy').value = recipe.easyCook;
+} */
 
 async function init() {
-  const queryString = window.location.search;
-
+  /* const queryString = window.location.search;
   const searchParams = new URLSearchParams(queryString);
   const recipeId = searchParams.get('id');
   if (recipeId !== null) {
     fillRecipePage(recipeId);
-  }
+  } */
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
 
@@ -137,7 +137,7 @@ async function init() {
   document.getElementById('Create').addEventListener('click', async () => {
     const userGenRecipe = {};
     userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
-    userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
+    userGenRecipe.title = document.getElementById('name').value;
     userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;
     userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
     userGenRecipe.image = document.getElementById('image').value;
@@ -152,6 +152,7 @@ async function init() {
     userGenRecipe.glutenFree = document.getElementById('glutenFree').checked;
     userGenRecipe.dairyFree = document.getElementById('dairyFree').checked;
     userGenRecipe.quickEat = document.getElementById('quickEat').checked;
+    userGenRecipe.easyCook = document.getElementById('easy').checked;
 
     userGenRecipe.ingredients = [];
     let numIngredients = 0;
