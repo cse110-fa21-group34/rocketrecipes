@@ -199,8 +199,6 @@ async function init() {
     const currentUrl = window.location;
     window.location = `${currentUrl.origin}/root/html/editRecipe.html?id=${recipeId}`;
   });
-
-
   // fetch four random recipes (except the currently displayed recipe) and
   // display at bottom of page
   try {
