@@ -106,14 +106,19 @@
   border-width: 2px;
   padding: 1%;
 }
+
 #Create {
   margin-top: 2%;
-
+  margin-left: 40%;
   width: 15%;
   height: 43px;
   font-size: 20px;
   border-radius: 12px;
   background-color: pink;
+}
+
+#create-recipe-button button {
+  text-align: center;
 }
 
 .buttons {
@@ -127,4 +132,9 @@
   font-size: 20px;
   border-radius: 12px;
   background-color: pink;
+}
+
+form {
+  width: 60%;
+  margin-left: 20%;
 }
