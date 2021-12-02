@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import {
-  getAllRecipes, createRecipe, createId, readRecipe,
+  getAllRecipes, readRecipe, updateRecipe,
 } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
@@ -118,9 +118,8 @@ async function init() {
 
   const searchParams = new URLSearchParams(queryString);
   const recipeId = searchParams.get('id');
-  if (recipeId !== null) {
-    fillRecipePage(recipeId);
-  }
+  await fillRecipePage(recipeId);
+
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
 
@@ -134,10 +133,10 @@ async function init() {
   deleteButton.addEventListener('click', deleteStep);
 
   await getAllRecipes();
-  document.getElementById('Create').addEventListener('click', async () => {
+  document.getElementById('edit-button').addEventListener('click', async () => {
     const userGenRecipe = {};
-    userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
-    userGenRecipe.title = document.getElementsByClassName('recipeName')[0].value;
+    userGenRecipe.id = recipeId; // crypto.randomBytes(16).toString('hex');
+    userGenRecipe.title = document.getElementById('name').value;
     userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;
     userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
     userGenRecipe.image = document.getElementById('image').value;
@@ -175,7 +174,7 @@ async function init() {
       userGenRecipe.steps.push(currStep);
     }
 
-    await createRecipe(userGenRecipe);
+    await updateRecipe(userGenRecipe);
     window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
   });
 }

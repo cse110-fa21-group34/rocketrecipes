@@ -94,12 +94,12 @@ async function init() {
 
   const searchParams = new URLSearchParams(queryString);
   recipeId = searchParams.get('id');
+  const currentRecipe = await readRecipe(recipeId);
 
   if (recipeId === null) {
     // handle bad request
     // show empty page with note that we can't find that id
   } else {
-    const currentRecipe = await readRecipe(recipeId);
     fillRecipePage(currentRecipe);
   }
   const createButton = document.getElementById('deleteButton');
@@ -114,7 +114,7 @@ async function init() {
     // console.log(document.cookie);
     // window.location.href = '../html/CreateRecipe.html';
     const currentUrl = window.location;
-    window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
+    window.location = `${currentUrl.origin}/root/html/editRecipe.html?id=${recipeId}`;
   });
 
   // fetch four random recipes (except the currently displayed recipe) and
