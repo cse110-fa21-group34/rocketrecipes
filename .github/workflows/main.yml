@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install fresh npm packages
-        run: npm install --ignore-scripts
+        run: npm install
 
       - name: Initialize npm
         run: npm init -y
