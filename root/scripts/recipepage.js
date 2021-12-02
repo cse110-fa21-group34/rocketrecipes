@@ -185,7 +185,6 @@ async function init() {
       button.style = 'color:grey';
     }
   }
-  
   const createButton = document.getElementById('deleteButton');
   createButton.addEventListener('click', () => {
     deleteRecipe(recipeId);
