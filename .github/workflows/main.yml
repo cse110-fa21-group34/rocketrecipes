@@ -2,6 +2,8 @@ name: CI
 
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+
 
 
 # Controls when the workflow will run
@@ -21,6 +23,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
+    container: lironavon/docker-puppeteer-container:14.16.0
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
