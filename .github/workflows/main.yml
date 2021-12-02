@@ -34,3 +34,4 @@ jobs:
         
       - name: Run Jest Puppeteer tests
         run: npm run test-e2e
+
