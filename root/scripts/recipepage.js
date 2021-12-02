@@ -64,6 +64,7 @@ function fillRecipePage(currentRecipe) {
     // create new ingredient li
     const currentIngredientLi = document.createElement('li');
     currentIngredientLi.innerText = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`;
+    currentIngredientLi.setAttribute('class', 'ingred');
     recipeIngredientsElement.appendChild(currentIngredientLi);
   });
 
@@ -103,6 +104,33 @@ function createRecommendedRecipes() {
       recipeCard.data = recipe;
       recommendedRecipeContainer.appendChild(recipeCard);
       numReccRecipes += 1;
+    }
+  }
+}
+
+async function scaleIngredients() {
+  const scale = document.getElementById('servings');
+
+  const recipeIngredientsElement = document.getElementsByClassName('ingred');
+  // yield scaled
+  const recipeYieldlement = document.getElementById('yield');
+  recipeYieldlement.innerText = window.currentRecipe.servings * scale.value;
+
+  const recipeTimeElement = document.getElementById('time');
+  recipeTimeElement.innerText = `${window.currentRecipe.readyInMinutes * scale.value} minutes`;
+
+  for (let i = 0; i < recipeIngredientsElement.length; i += 1) {
+    const ingre = window.currentRecipe.ingredients[i];
+    recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${
+      ingre.name
+    }`;
+
+    if (scale.value / 1 === 0) {
+      recipeIngredientsElement[i].innerText = `${ingre.amount} ${ingre.unit} ${ingre.name}`;
+    } else {
+      recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${
+        ingre.name
+      }`;
     }
   }
 }
@@ -165,14 +193,35 @@ async function init() {
   } finally {
     createRecommendedRecipes();
   }
-  //   (function(d, s, id) {
-  //     var js, fjs = d.getElementsByTagName(s)[0];
-  //     if (d.getElementById(id)) return;
-  //     js = d.createElement(s); js.id = id;
-  //     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-  //     fjs.parentNode.insertBefore(js, fjs);
-  //     }(document, 'script', 'facebook-jssdk'));
-  // }
+  const button = document.querySelector('#fav-icon');
+  const isFav = await isFavorite(recipeId);
+  button.addEventListener('click', () => {
+    if (button.style.color === 'rgb(255, 204, 0)') {
+      button.style = 'color:grey';
+      deleteFavoriteRecipe(recipeId);
+    } else {
+      button.style = 'color:rgb(255, 204, 0)';
+      addFavoriteRecipe(recipeId);
+    }
+  });
+  // not favorited, user clicks
+  if (isFav) {
+    button.style = 'color:rgb(255, 204, 0)';
+  } else {
+    button.style = 'color:grey';
+  }
+
+  window.currentRecipe = await readRecipe(recipeId);
+  const scaleButton = document.getElementById('servings');
+  scaleButton.addEventListener('change', scaleIngredients);
+
+  // (function(d, s, id) {
+  //   var js, fjs = d.getElementsByTagName(s)[0];
+  //   if (d.getElementById(id)) return;
+  //   js = d.createElement(s); js.id = id;
+  //   js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  //   fjs.parentNode.insertBefore(js, fjs);
+  //   }(document, 'script', 'facebook-jssdk'));
 }
 
 window.addEventListener('DOMContentLoaded', init);
