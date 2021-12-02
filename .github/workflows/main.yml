@@ -30,6 +30,9 @@ jobs:
       - name: Install fresh npm packages
         run: npm install
 
+      - name: Initialize npm
+        run: npm init -y
+
       - name: Run ESLint
         run: npm run test-lint
 
