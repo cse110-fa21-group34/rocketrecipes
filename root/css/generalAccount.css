@@ -1,12 +1,19 @@
-@media only screen and (min-width: 100px) {
+.midPart {
+    margin-top: 32px;
+    /* background-color: aqua; */
+    text-align: center;
+    margin-left:10% ;
+    margin-right:10% ;
+    display: block;
+}
+@media only screen and (max-width: 700px) {
     .midPart h1{
-        text-align: center;
+        text-align: left;
     }
     .midPart h2{
-        text-align: center;
+        text-align: left;
     }
     #Create{
-        margin:auto !important;
         width: 130px;
         height: 40px;
         border-radius: 10px;
@@ -14,11 +21,10 @@
         font-size: 15px;
     }
     #Favorite{
-        text-align: center;
-        margin-left: 10%;
+        text-align: left;
     }
     .foodList {
-        padding-bottom: 100px;
+        padding-bottom: 40px;
         padding-top: 0px;
         margin:auto !important;
         justify-content: center;
@@ -31,15 +37,7 @@
         padding-top: 0px;
     }
 }
-.midPart {
-    margin-top: 10%;
-    /* background-color: aqua; */
-    text-align: center;
-    margin-left:10% ;
-    margin-right:10% ;
-    display: block;
-}
-@media only screen and (min-width: 700px){
+@media only screen and (min-width: 701px){
     .midPart h1{
         text-align: left;
     }
@@ -47,7 +45,6 @@
         text-align: left;
     }
     #Create{
-        margin-left: 30%;
         width: 130px;
         height: 40px;
         border-radius: 10px;
@@ -57,23 +54,26 @@
     }
     #Favorite{
         text-align: left;
-        margin-left: 10%;
     }
     .foodList {
-        /*border: 1px red solid;*/
-        width: 85%;
-        margin-left: 10%;
-        margin-right: 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
         margin-top: 0px;
-        padding-bottom: 100px;
+        padding-bottom: 40px;
         padding-top: 0px;
-        justify-content: left;
     }
     .FavoriteFood {
-        /*border: 1px red solid;*/
-        width: 85%;
-        margin-left: 10%;
-        margin-right: 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        width: 100%;
         margin-top: 0px;
         padding-bottom: 100px;
         padding-top: 0px;
@@ -102,7 +102,6 @@
     margin-bottom:3px;
 }
 #Create{
-    margin-left: 30%;
     width: 130px;
     height: 40px;
     border-radius: 10px;
