@@ -104,14 +104,17 @@ async function fillRecipePage(recipeId) {
     const stepVal = document.getElementsByClassName('step')[k - 1];
     stepVal.value = recipe.steps[k - 1].step;
   }
-
+  console.log(recipe);
+  console.log(recipe.easyCook);
+  console.log(document.getElementById('easy'));
+  //console.log(document.getElementById('easy').checked);
   document.getElementById('cheap').checked = recipe.cheap;
-  document.getElementById('vegetarian').value = recipe.vegetarian;
-  document.getElementById('vegan').value = recipe.vegan;
-  document.getElementById('glutenFree').value = recipe.glutenFree;
-  document.getElementById('dairyFree').value = recipe.dairyFree;
-  document.getElementById('quickEat').value = recipe.quickEat;
-  document.getElementById('easy').value = recipe.easyCook;
+  document.getElementById('vegetarian').checked = recipe.vegetarian;
+  document.getElementById('vegan').checked = recipe.vegan;
+  document.getElementById('glutenFree').checked = recipe.glutenFree;
+  document.getElementById('dairyFree').checked = recipe.dairyFree;
+  document.getElementById('quickEat').checked = recipe.quickEat;
+  document.getElementById('easyCook').checked = recipe.easyCook;
 }
 
 async function init() {
@@ -152,7 +155,7 @@ async function init() {
     userGenRecipe.glutenFree = document.getElementById('glutenFree').checked;
     userGenRecipe.dairyFree = document.getElementById('dairyFree').checked;
     userGenRecipe.quickEat = document.getElementById('quickEat').checked;
-    userGenRecipe.easyCook = document.getElementById('easy').checked;
+    userGenRecipe.easyCook = document.getElementById('easyCook').checked;
 
     userGenRecipe.ingredients = [];
     let numIngredients = 0;
