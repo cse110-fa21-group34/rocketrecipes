@@ -29,6 +29,9 @@ jobs:
       - name: Install fresh npm packages
         run: npm install
 
+      - name: Set up Chromium
+        run: node node_modules/puppeteer/install.js
+
       - name: Run ESLint
         run: npm run test-lint
 
