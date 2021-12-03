@@ -104,10 +104,7 @@ async function fillRecipePage(recipeId) {
     const stepVal = document.getElementsByClassName('step')[k - 1];
     stepVal.value = recipe.steps[k - 1].step;
   }
-  console.log(recipe);
-  console.log(recipe.easyCook);
-  console.log(document.getElementById('easy'));
-  //console.log(document.getElementById('easy').checked);
+
   document.getElementById('cheap').checked = recipe.cheap;
   document.getElementById('vegetarian').checked = recipe.vegetarian;
   document.getElementById('vegan').checked = recipe.vegan;
