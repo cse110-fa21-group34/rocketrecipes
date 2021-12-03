@@ -116,9 +116,6 @@ async function scaleIngredients() {
   const recipeYieldlement = document.getElementById('yield');
   recipeYieldlement.innerText = window.currentRecipe.servings * scale.value;
 
-  const recipeTimeElement = document.getElementById('time');
-  recipeTimeElement.innerText = `${window.currentRecipe.readyInMinutes * scale.value} minutes`;
-
   for (let i = 0; i < recipeIngredientsElement.length; i += 1) {
     const ingre = window.currentRecipe.ingredients[i];
     recipeIngredientsElement[i].innerText = `${ingre.amount * scale.value} ${ingre.unit} ${
