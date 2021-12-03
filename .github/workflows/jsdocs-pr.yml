@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run JSDocs
-        uses: andstor/jsdoc-action@v1
+        uses: andstor/jsdoc-action@v1.2.0
         with:
           source_dir: ./root/
           recurse: true
