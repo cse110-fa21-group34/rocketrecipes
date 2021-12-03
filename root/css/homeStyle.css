@@ -1,46 +1,44 @@
 /* mobile */
 @media only screen and (min-width: 100px) {
 
-    .midPart h1 {
-        font-size: 6vh; 
-        text-align: center;
-    }
+        .midPart h1 {
+            font-size: 6vh;
+            text-align: center;
+        }
 
-    .midPart {
-        margin-top: 10%;
-        /* background-color: aqua; */
-        margin-left: 5%;
-        margin-right: 5%;
-        text-align: center;
-    }
+        .midPart {
+            margin-top: 10%;
+            margin-left: 5%;
+            margin-right: 5%;
+            text-align: center;
+        }
 
-    .midPart h3 {
-        font-size: 1.4em; 
-    }
+        .midPart h3 {
+            font-size: 1.4em; 
+        }
 
-    .midPart input {
-        width: 100%;
-    }
+        .midPart input {
+            width: 100%;
+        }
 
-    .searchbar {
-        width: 700px;
-    }
+        .searchbar {
+            width: 700px;
+        }
 
-    .foostPart {
-        font-size: 2em;
-        margin-top: 3%;
-        /* background-color: aqua; */
-        text-align: center;
-        margin-bottom: 0px;
-    }
+        .foostPart {
+            font-size: 2em;
+            margin-top: 3%;
+            /* background-color: aqua; */
+            text-align: center;
+            margin-bottom: 0px;
+        }
 
-    .foodList {
-        margin: auto;
-        justify-content: center;
-    }
+        .foodList {
+            margin: auto;
+            justify-content: center;
+        }
 
 }
-
 
 /* desktop */
 @media only screen and (min-width: 700px){
@@ -72,8 +70,6 @@
         margin: 20px;
     }
 
-    /* footer */
-
     .foostPart {
         margin-top: 3%;
         /* background-color: aqua; */
@@ -103,8 +99,7 @@
         margin: 0 auto;
         width: 700px;
         border-radius: 30px;
-        border: 1px solid #dcdcdc;
-        
+        border: 1px solid #dcdcdc; 
     }
 
     .bar:hover {
@@ -137,5 +132,5 @@
         outline: none;
         background-color: #ffffff;
     }    
-    
+
 }
