@@ -76,9 +76,34 @@ class Searchbar extends HTMLElement {
     // create styles for searchbar
     const style = document.createElement('style');
     style.innerHTML = ` 
+            @media only screen and (max-width: 700px) {
+              .bar{
+                margin:0 auto;
+                width:90% !important;
+                border-radius:30px;
+                border:1px solid #dcdcdc;
+              }
+              form button{
+                padding-top:10px;
+                border:none;
+                outline: none;
+                align: right;
+                background-color: #ffffff;
+              }
+              .searchbar{
+                height:16px;
+                border:none;
+                
+                width:70% !important;
+                font-size:16px;
+                outline: none;
+                padding-bottom:20px;
+            }
+            
+            }
             .bar{
                 margin:0 auto;
-                // width:700px;
+                width:700px;
                 border-radius:30px;
                 border:1px solid #dcdcdc;
             }
