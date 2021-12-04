@@ -163,24 +163,6 @@ async function init() {
       const currentUrl = window.location;
       window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
     });
-    // favorite recipe functionality
-    const button = document.querySelector('#fav-icon');
-    const isFav = await isFavorite(recipeId);
-    button.addEventListener('click', () => {
-      if (button.style.color === 'rgb(255, 204, 0)') {
-        button.style = 'color:grey';
-        deleteFavoriteRecipe(recipeId);
-      } else {
-        button.style = 'color:rgb(255, 204, 0)';
-        addFavoriteRecipe(recipeId);
-      }
-    });
-    // not favorited, user clicks
-    if (isFav) {
-      button.style = 'color:rgb(255, 204, 0)';
-    } else {
-      button.style = 'color:grey';
-    }
   }
   const createButton = document.getElementById('deleteButton');
   createButton.addEventListener('click', () => {
