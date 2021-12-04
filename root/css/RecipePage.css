@@ -65,7 +65,18 @@
 #categories {
   font-size: 18px;
 }
-
+#shareContainer {
+  display: flex;
+  flex-direction: column;
+  width: 48px;
+  height: auto;
+}
+.share {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 10px;
+}
 .recipe-button-container {
   display: flex;
   flex-direction: column;
@@ -89,12 +100,23 @@
     top: 0;
     left: 0;
     flex-direction: row;
-    height: 58px;
     width: auto;
+    flex-wrap: wrap;
   }
   .recipe-button {
-    margin: 0 10px 0 0;
+    margin: 0 10px 10px 0;
   }  
+  .share {
+    margin: 0 10px 10px 0;
+  }
+  #shareContainer {
+    flex-direction: row;
+    height: 58px;
+    width: 100%;
+    width: auto;
+    flex-wrap: wrap;
+  }
+  
 }
 
 @media (max-width: 900px) {
@@ -132,21 +154,20 @@ ul li:not(:first-child) {
   margin-top: 8px;
 }
 
-.share {
-  display: inline-block;
-  color: #fff;
-  border-radius: 12px;
-  padding: 8px 10px;
-  outline: none;
-  text-align: center;
-  font-size: 15px;
-  margin: 0 10px;
-}
 
-.share.twitter { background: #53aaec; }
-.share.facebook { background: #2c467c; }
-.share.reddit { background: #ff5700; }
-.share.hackernews { background: #3cff00; }
-.share.linkedin { background: #4875b4; }
-.share.email { background: #000; }
-.share.print { background-color: rgb(207, 32, 114); }
+.share.twitter { 
+  background: url('https://api.iconify.design/bi/twitter.svg?color=%231da1f2&height=48') no-repeat center center / contain;
+}
+.share.facebook { 
+  background: url('https://api.iconify.design/bi/facebook.svg?color=%233b5998&height=48') no-repeat center center / contain;}
+.share.reddit {
+  background: url('https://api.iconify.design/bi/reddit.svg?color=orangered&height=48') no-repeat center center / contain;
+}
+.share.email {
+  background: url('https://api.iconify.design/ant-design/mail-outlined.svg?color=%23545454&height=48') no-repeat center center / contain;
+}
+.share.print { 
+  background: url('https://api.iconify.design/bytesize/print.svg?color=%23545454&height=48') no-repeat center center / contain;
+  border: none;
+  cursor: pointer;
+}

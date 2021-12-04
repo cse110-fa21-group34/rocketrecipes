@@ -82,9 +82,6 @@ function fillRecipePage(currentRecipe) {
   const redditShare = document.getElementById('reddit-share');
   redditShare.href += `${window.location.href}`;
 
-  const linkedInShare = document.getElementById('linkedin-share');
-  linkedInShare.href += `${window.location.href}`;
-
   const emailShare = document.getElementById('email-share');
   emailShare.href += `${text}&body=${window.location.href}`;
 }
@@ -153,8 +150,8 @@ async function init() {
     fillRecipePage(currentRecipe);
   }
 
-  const createButton = document.getElementById('deleteButton');
-  createButton.addEventListener('click', () => {
+  const deleteButton = document.getElementById('deleteButton');
+  deleteButton.addEventListener('click', () => {
     deleteRecipe(recipeId);
     window.location = `${window.location.origin}/root/html/homepage.html`;
   });
@@ -168,6 +165,18 @@ async function init() {
     const currentUrl = window.location;
     window.location = `${currentUrl.origin}/root/html/editRecipe.html?id=${recipeId}`;
   });
+
+  const shareButton = document.getElementById('shareButton');
+  shareButton.addEventListener('click', () => {
+    const isShown = document.getElementById('shareContainer').style.display !== 'none';
+    if (isShown) {
+      document.getElementById('shareContainer').style.display = 'none';
+      deleteFavoriteRecipe(recipeId);
+    } else {
+      document.getElementById('shareContainer').style.display = 'flex';
+    }
+  });
+
   // fetch four random recipes (except the currently displayed recipe) and
   // display at bottom of page
   try {
