@@ -167,7 +167,6 @@ ul li:not(:first-child) {
   margin-top: 8px;
 }
 
-
 .share.twitter { 
   background: url('https://api.iconify.design/bi/twitter.svg?color=%231da1f2&height=48') no-repeat center center / contain;
 }
