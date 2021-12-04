@@ -21,6 +21,7 @@
         <div class="recipe-header">
           <div class="recipe-header-info">
             <h1 id="recipe-title"></h1>
+            <!-- Recipe action buttons like edit, delete, fav -->
             <div class="recipe-button-container">
               <button class="recipe-button" id="fav-icon" 
                 style="background: url('https://api.iconify.design/ant-design/star-filled.svg?color=%23ffc700&height=48') no-repeat center center / contain;">
@@ -34,19 +35,21 @@
               >
               </button>
             </div>
-            <div>
-              <span>
+            <!-- Subtitle info: yield, time, etc -->
+            <div class="recipe-subtitle">
+              <span class="recipe-subtitle-head">
                 <b>Yield: </b><span class="meta--yield" id="yield"></span>
               </span>
-              <span>
+              <span class="recipe-subtitle-head">
                 <b>Total time: </b>
                 <time class="meta--total-time" id="time"></time>
               </span>
-              <span>
+              <span class="recipe-subtitle-head">
                 <label for="servings-input">Servings:</label>
                 <input type="number" placeholder="Scale" class="scale-input" id="servings"  min="1" max="15">
               </span>
             </div>
+            <!-- Categories -->
             <div class="categories" id="categories">
               Categories: <span class="meta--categories" id="categories"></span>
             </div>
