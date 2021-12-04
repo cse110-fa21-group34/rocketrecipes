@@ -151,22 +151,8 @@ async function init() {
   } else {
     // fill the recipe page
     fillRecipePage(currentRecipe);
-    // delete recipe button
-    const deleteButton = document.getElementById('deleteButton');
-    deleteButton.addEventListener('click', () => {
-      deleteRecipe(recipeId);
-      window.location = `${window.location.origin}/root/html/homepage.html`;
-    });
-    // edit recipe button
-    const editRecipeButton = document.getElementById('editButton');
-    editRecipeButton.addEventListener('click', () => {
-      // document.cookie = `recipe=${recipeId}`;
-      // console.log(document.cookie);
-      // window.location.href = '../html/CreateRecipe.html';
-      const currentUrl = window.location;
-      window.location = `${currentUrl.origin}/root/html/createRecipe.html?id=${recipeId}`;
-    });
   }
+
   const createButton = document.getElementById('deleteButton');
   createButton.addEventListener('click', () => {
     deleteRecipe(recipeId);
@@ -174,6 +160,7 @@ async function init() {
   });
 
   const editRecipeButton = document.getElementById('editButton');
+
   editRecipeButton.addEventListener('click', () => {
     // document.cookie = `recipe=${recipeId}`;
     // console.log(document.cookie);
@@ -189,21 +176,28 @@ async function init() {
     createRecommendedRecipes();
   }
   const button = document.querySelector('#fav-icon');
-  const isFav = await isFavorite(recipeId);
-  button.addEventListener('click', () => {
-    if (button.style.color === 'rgb(255, 204, 0)') {
-      button.style = 'color:grey';
+  let isFav = await isFavorite(recipeId);
+  const outlinedStar = "background: url('https://api.iconify.design/ant-design/star-outlined.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;";
+  const filledStar = "background: url('https://api.iconify.design/ant-design/star-filled.svg?color=%23ffc700&height=48') no-repeat center center / contain;";
+
+  button.addEventListener('click', async () => {
+    // change icons based on favorite
+    // filled in star, set style to: background: url('https://api.iconify.design/ant-design/star-filled.svg?color=%23ffc700&height=48') no-repeat center center / contain;
+    // outlined star: set stye to background: url('https://api.iconify.design/ant-design/star-outlined.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;
+    isFav = await isFavorite(recipeId);
+    if (isFav) {
+      button.style = outlinedStar;
       deleteFavoriteRecipe(recipeId);
     } else {
-      button.style = 'color:rgb(255, 204, 0)';
+      button.style = filledStar;
       addFavoriteRecipe(recipeId);
     }
   });
   // not favorited, user clicks
   if (isFav) {
-    button.style = 'color:rgb(255, 204, 0)';
+    button.style = filledStar;
   } else {
-    button.style = 'color:grey';
+    button.style = outlinedStar;
   }
 
   window.currentRecipe = await readRecipe(recipeId);

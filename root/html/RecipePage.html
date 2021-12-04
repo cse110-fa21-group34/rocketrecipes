@@ -20,7 +20,20 @@
       <div class="recipe-container">
         <div class="recipe-header">
           <div class="recipe-header-info">
-            <h1 id="recipe-title"></h1> 
+            <h1 id="recipe-title"></h1>
+            <div class="recipe-button-container">
+              <button class="recipe-button" id="fav-icon" 
+                style="background: url('https://api.iconify.design/ant-design/star-filled.svg?color=%23ffc700&height=48') no-repeat center center / contain;">
+              </button>
+              <button class="recipe-button" id="editButton"
+                style="background: url('https://api.iconify.design/akar-icons/edit.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;"
+                >
+              </button>
+              <button class="recipe-button" id="deleteButton"
+                style="background: url('https://api.iconify.design/akar-icons/trash-can.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;"
+              >
+              </button>
+            </div>
             <div>
               <span>
                 <b>Yield: </b><span class="meta--yield" id="yield"></span>
@@ -53,6 +66,21 @@
           </section>
         </div>
       </div>
+      <div class="foostPart">
+        <a id="twitter-share" href="https://twitter.com/share?url=" class="share twitter" >Twitter</a>
+        <a id="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u=" class="share facebook">Facebook</a>
+        <div id="fb-root"></div>
+        <div class="share facebook fb-share-button" 
+          data-href="`${currentUrl.origin}/root/html/RecipePage.html" 
+          data-layout="button_count">
+        </div>
+        <a id="reddit-share" href="https://reddit.com/submit?url=" class="share reddit">Reddit</a>
+        <a id="linkedin-share" href="https://www.linkedin.com/shareArticle?url=" class="share linkedin">LinkedIn</a>
+        <a id="email-share" href="mailto:?subject=" class="share email">Email</a>
+        <button class="share print" onclick="window.print()">Print this page</button>
+        <h3>Recommended Recipes</h3>
+      </div>
+      <div class="foodList" id="recommendedRecipeContainer"></div>
       <!-- <div class="expand-recipe">
         <div class="sidebar">
             <button class="edit-button" id="editButton">Edit Recipe</button>
