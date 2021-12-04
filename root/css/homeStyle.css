@@ -1,74 +1,74 @@
 /* main */
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin:  10% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin:  10% 5%;
 }
 .midPart {
-    display: flex;
-    flex-direction: column;
-    max-width: 1100px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  width: 100%;
 }
 .midPart h1 {
-    text-align: left;
+  text-align: left;
 }
 
 /* footer */
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin:  10% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin:  10% 5%;
 }
 .foostPart {
-    margin-top: 3%;
-    /* background-color: aqua; */
-    text-align: left;
-    margin-bottom: 0px;
+  margin-top: 3%;
+  /* background-color: aqua; */
+  text-align: left;
+  margin-bottom: 0px;
 }
 
 .foodList {
-    /*border: 1px red solid;*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 0px;
-    padding-bottom: 100px;
-    padding-top: 0px;
+  /*border: 1px red solid;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0px;
+  padding-bottom: 100px;
+  padding-top: 0px;
 }
 .foodList h3{
-    text-decoration: underline;
-    margin-bottom:1px;
+  text-decoration: underline;
+  margin-bottom:1px;
 }
 .foodList span{
 
-     margin-top: 4%;
-    margin-bottom: 4%;
+   margin-top: 4%;
+  margin-bottom: 4%;
 }
 .foodList p{
-    margin-bottom:1px;
-    display:inline;
+  margin-bottom:1px;
+  display:inline;
 }
 .foodList h4{
-    display: inline;
-    margin-left: 20%;
+  display: inline;
+  margin-left: 20%;
 }
 .foodList button{
-    border-radius: 12px;
-    margin-bottom:3px;
+  border-radius: 12px;
+  margin-bottom:3px;
 }
 
 .foodList div {
-    /*border: 10px red solid;*/
-    width: 20%;
-    height: 400px;
-    margin-right: 2%;
-    display: inline-block;
-    overflow: hidden;
-    padding-bottom: 30%;
+  /*border: 10px red solid;*/
+  width: 20%;
+  height: 400px;
+  margin-right: 2%;
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 30%;
 }
