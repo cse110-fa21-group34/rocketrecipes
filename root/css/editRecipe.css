@@ -1,19 +1,20 @@
 .midPart {
   margin-top: 5%;
-  /* background-color: aqua; */
-
   margin-left: 10%;
   margin-right: 10%;
 }
+
 .midPart h2 {
   text-align: left;
   clear: both;
 }
+
 .recipeName {
   width: 60%;
   height: 35px;
   border-radius: 10px;
 }
+
 .image-upload {
   margin-top: 2%;
   width: 60%;
@@ -21,6 +22,7 @@
   border-radius: 10px;
   padding: 1%;
 }
+
 .descrip {
   margin-top: 2%;
   width: 77%;
@@ -29,9 +31,11 @@
   border-width: 2px;
   padding: 1%;
 }
+
 .instructions {
   text-align: center;
 }
+
 .instructions input {
   margin-top: 2%;
   width: 77%;
@@ -39,17 +43,20 @@
   border-width: 2px;
   padding: 0.5%;
 }
+
 .make {
   display: inline-block;
   margin-top: 2%;
   margin-left: 2%;
 }
+
 .amount {
   margin-left: 3%;
   width: 20%;
   height: 20px;
   border-radius: 5px;
 }
+
 .make2 {
   display: inline-block;
   margin-top: 2%;
@@ -63,6 +70,7 @@
   height: 28px;
   padding-left: 1%;
 }
+
 .unit {
   margin-top: 2%;
   width: 8%;
@@ -72,6 +80,7 @@
   margin-left: 2%;
   clear: both;
 }
+
 .Ingredient {
   margin-left: 2%;
   width: 70%;
@@ -79,6 +88,7 @@
   border-radius: 15px;
   padding-left: 1%;
 }
+
 #addIngredient {
   margin-top: 2%;
   margin-left: 50%;
@@ -87,6 +97,7 @@
   border-radius: 12px;
   background-color: pink;
 }
+
 #deleteIngredient {
   margin-left: 2%;
   width: 13%;
@@ -94,10 +105,12 @@
   border-radius: 12px;
   background-color: pink;
 }
+
 #instruct {
   margin-top: 10%;
   margin-left: 10%;
 }
+
 .instructArea {
   margin-left: 10%;
   width: 63%;
@@ -117,13 +130,6 @@
   background-color: pink;
 }
 
-#edit-recipe-button button {
-  text-align: center;
-}
-
-.buttons {
-  text-align: center;
-}
 .buttons button {
   margin-top: 2%;
   margin-bottom: 3%;
@@ -132,6 +138,14 @@
   font-size: 20px;
   border-radius: 12px;
   background-color: pink;
+}
+
+#edit-recipe-button button {
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
 }
 
 form {
