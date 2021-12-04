@@ -30,6 +30,9 @@ function fillRecipePage(currentRecipe) {
   const recipeTimeElement = document.getElementById('time');
   recipeTimeElement.innerText = `${currentRecipe.readyInMinutes} minutes`;
 
+  const recipeDescriptionElement = document.getElementById('description');
+  recipeDescriptionElement.innerHTML = `${currentRecipe.summary}`;
+
   // add categories
   // Create tag buttons based on these tag properties
   const tagProperties = [
@@ -143,7 +146,7 @@ async function init() {
   if (currentRecipe === null) {
     // handle bad request
     // show empty page with note that we can't find that id
-    document.getElementsByClassName('main-info')[0].remove();
+    document.getElementsByClassName('recipe-info')[0].remove();
     document.querySelector('main').innerHTML = 'The recipe could not be found.';
   } else {
     // fill the recipe page

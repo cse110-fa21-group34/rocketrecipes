@@ -17,33 +17,71 @@
       <custom-navbar />
     </header>
     <main>
-      <div class="expand-recipe">
-        <!-- <div class="sidebar">
-            <span class="top-arrow">&#10224;</span><br />
-            <span class="down-arrow">&#10225;</span>
-        </div> -->
-        <div class="main-info">
+      <div class="recipe-container">
+        <div class="recipe-header">
+          <div class="recipe-header-info">
+            <h1 id="recipe-title"></h1> 
+            <div>
+              <span>
+                <b>Yield: </b><span class="meta--yield" id="yield"></span>
+              </span>
+              <span>
+                <b>Total time: </b>
+                <time class="meta--total-time" id="time"></time>
+              </span>
+              <span>
+                <label for="servings-input">Servings:</label>
+                <input type="number" placeholder="Scale" class="scale-input" id="servings"  min="1" max="15">
+              </span>
+            </div>
+            <div class="categories" id="categories">
+              Categories: <span class="meta--categories" id="categories"></span>
+            </div>
+            <p class="description" id="description"></p>
+          </div>
+          <img src="" alt="" class="recipe-image" id="recipe-image" />
+        </div>
+        <div class="half-line"></div>
+        <div class="recipe-body">
+          <section class="section--instructions">
+            <h2>Instructions</h2>
+            <ol id="instructions-list"></ol>
+          </section>
+          <section class="section--ingredients">
+            <h2>Ingredients</h2>
+            <ul id="ingredients-list"></ul>
+          </section>
+        </div>
+      </div>
+      <!-- <div class="expand-recipe">
+        <div class="sidebar">
+            <button class="edit-button" id="editButton">Edit Recipe</button>
+            <button class="edit-button" id="deleteButton">
+              Delete Recipe
+            </button>
+        </div>
+        <div class="recipe-info">
           <div>
             <div class="recipe-header">
               <div class="header-title">
                 <h1 id="recipe-title"></h1> 
                 <span id="fav-icon">&#9733;</span>
               </div>
-              <button class="edit-button" id="editButton">Edit Recipe</button>
-              <button class="edit-button" id="deleteButton">
-                Delete Recipe
-              </button>
-              <label for="tentacles" style="margin-left: 100%;">Servings:</label>
-              <input type="number" placeholder = "Servings" class="edit-button" id="servings"  min="1" max="15" style="margin-top: 25%;">
+              
+            
             </div>
             <div class="meta--wrapper">
-              <span
-                ><b>Yield: </b><span class="meta--yield" id="yield"></span
-              ></span>
-              <span
-                ><b>Total time: </b
-                ><time class="meta--total-time" id="time"></time
-              ></span>
+              <span>
+                <b>Yield: </b><span class="meta--yield" id="yield"></span>
+              </span>
+              <span>
+                <b>Total time: </b>
+                <time class="meta--total-time" id="time"></time>
+              </span>
+              <span>
+                <label for="servings-input">Servings:</label>
+                <input type="number" placeholder="Scale" class="scale-input" id="servings"  min="1" max="15">
+              </span>
             </div>
             <div class="categories" id="categories">
               Categories: <span class="meta--categories" id="categories"></span>
@@ -64,9 +102,9 @@
         <div class="main-image">
           <img src="" alt="" class="thumbnail" id="recipe-image" />
         </div>
-      </div>
+      </div> -->
     </main>
-    <footer>
+    <!-- <footer>
       <div class="foostPart">
         <h3>Recommended Recipes</h3>
       </div>
@@ -74,16 +112,16 @@
 
       <a id="twitter-share" href="https://twitter.com/share?url=" class="share twitter" >Twitter</a>
       <a id="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u=" class="share facebook">Facebook</a>
-      <!-- <div id="fb-root"></div>
+      <div id="fb-root"></div>
       <div class="share facebook fb-share-button" 
         data-href="`${currentUrl.origin}/root/html/RecipePage.html" 
         data-layout="button_count">
-      </div> -->
+      </div>
       <a id="reddit-share" href="https://reddit.com/submit?url=" class="share reddit">Reddit</a>
       <a id="linkedin-share" href="https://www.linkedin.com/shareArticle?url=" class="share linkedin">LinkedIn</a>
       <a id="email-share" href="mailto:?subject=" class="share email">Email</a>
       <button class="share print" onclick="window.print()">Print this page</button>
       
-    </footer>
+    </footer> -->
   </body>
 </html>
