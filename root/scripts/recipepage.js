@@ -185,7 +185,20 @@ async function init() {
       button.style = 'color:grey';
     }
   }
+  const createButton = document.getElementById('deleteButton');
+  createButton.addEventListener('click', () => {
+    deleteRecipe(recipeId);
+    window.location = `${window.location.origin}/root/html/homepage.html`;
+  });
 
+  const editRecipeButton = document.getElementById('editButton');
+  editRecipeButton.addEventListener('click', () => {
+    // document.cookie = `recipe=${recipeId}`;
+    // console.log(document.cookie);
+    // window.location.href = '../html/CreateRecipe.html';
+    const currentUrl = window.location;
+    window.location = `${currentUrl.origin}/root/html/editRecipe.html?id=${recipeId}`;
+  });
   // fetch four random recipes (except the currently displayed recipe) and
   // display at bottom of page
   try {
