@@ -1,5 +1,9 @@
 name: CI
 
+env:
+  GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
+
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -25,6 +29,9 @@ jobs:
 
       - name: Install fresh npm packages
         run: npm install
+
+      - name: Set up Chromium
+        run: node node_modules/puppeteer/install.js
 
       - name: Run ESLint
         run: npm run test-lint

@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-      <custom-navbar />
+      <custom-navbar page="create"/>
     </header>
     <main>
       <div class="midPart">
@@ -63,8 +63,6 @@
           <button id="deleteIngredient">Delete Ingredient</button>
         </div>
       </div>
-    </main>
-    <footer>
       <h3 id="instruct">Instructions:</h3>
       <div class="instructions">
         <input class="step" type="text" placeholder="Step 1" id="Step1" />
@@ -74,10 +72,25 @@
         <input class="step" type="text" placeholder="Step 5" id="Step5" />
       </div>
       <div class="buttons">
-        <button id="Create">Create Recipe</button>
         <button id="plus">Add Step</button>
         <button id="Delete">Delete Step</button>
       </div>
+
+      <form input="checkboxes" class="checkboxes">
+        <label class="container"><input id="cheap" name="Cheap" type="checkbox">Cheap</label>
+        <label class="container"><input id="vegetarian" name="Vegetarian" type="checkbox">Vegetarian</label>
+        <label class="container"><input id="vegan" name="Vegan" type="checkbox">Vegan</label>
+        <label class="container"><input id="glutenFree" name="Gluten Free" type="checkbox">Gluten Free</label>
+        <label class="container"><input id="dairyFree" name="Dairy Free" type="checkbox">Dairy Free</label>
+        <label class="container"><input id="quickEat" name="Quick Eat" type="checkbox">Quick Eat</label>
+        <label class="container"><input id="easy" name="Easy" type="checkbox">Easy</label>
+      </form>
+
+      <div class="create-recipe-button">
+        <button id="Create">Create Recipe</button>
+      </div>
+    </main>
+    <footer>
     </footer>
   </body>
 </html>
