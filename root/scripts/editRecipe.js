@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import {
-  getAllRecipes, createRecipe, createId,
+  getAllRecipes, readRecipe, updateRecipe,
 } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
@@ -73,7 +73,54 @@ function deleteIng() {
   amountStep.remove();
 }
 
+async function fillRecipePage(recipeId) {
+  const recipe = await readRecipe(recipeId);
+  const header = document.getElementById('header');
+  header.innerHTML = 'Edit Your Recipe!';
+  const name = document.getElementById('name');
+  name.value = recipe.title;
+  const imageLink = document.getElementById('image');
+  imageLink.value = recipe.image;
+  const summary = document.querySelector('.descrip');
+  summary.value = recipe.summary.replace(/<[^>]+>/g, '');
+  const servings = document.getElementById('serving');
+  servings.value = recipe.servings;
+  const time = document.getElementById('time');
+  time.value = recipe.readyInMinutes;
+  for (let j = 1; j < recipe.ingredients.length + 1; j += 1) {
+    addIng();
+    const ingredientName = document.getElementById(`ing${j.toString()}`);
+    const amount = document.getElementById(`amount${j.toString()}`);
+    const unit = document.getElementById(`units${j.toString()}`);
+    amount.value = recipe.ingredients[j - 1].amount;
+    ingredientName.value = recipe.ingredients[j - 1].name;
+    unit.value = recipe.ingredients[j - 1].unit;
+  }
+
+  for (let k = 1; k <= recipe.steps.length; k += 1) {
+    if (k > 5) {
+      addStep();
+    }
+    const stepVal = document.getElementsByClassName('step')[k - 1];
+    stepVal.value = recipe.steps[k - 1].step;
+  }
+
+  document.getElementById('cheap').checked = recipe.cheap;
+  document.getElementById('vegetarian').checked = recipe.vegetarian;
+  document.getElementById('vegan').checked = recipe.vegan;
+  document.getElementById('glutenFree').checked = recipe.glutenFree;
+  document.getElementById('dairyFree').checked = recipe.dairyFree;
+  document.getElementById('quickEat').checked = recipe.quickEat;
+  document.getElementById('easyCook').checked = recipe.easyCook;
+}
+
 async function init() {
+  const queryString = window.location.search;
+
+  const searchParams = new URLSearchParams(queryString);
+  const recipeId = searchParams.get('id');
+  await fillRecipePage(recipeId);
+
   const addIngredient = document.getElementById('addIngredient');
   addIngredient.addEventListener('click', addIng);
 
@@ -87,9 +134,9 @@ async function init() {
   deleteButton.addEventListener('click', deleteStep);
 
   await getAllRecipes();
-  document.getElementById('Create').addEventListener('click', async () => {
+  document.getElementById('edit-button').addEventListener('click', async () => {
     const userGenRecipe = {};
-    userGenRecipe.id = createId(); // crypto.randomBytes(16).toString('hex');
+    userGenRecipe.id = recipeId; // crypto.randomBytes(16).toString('hex');
     userGenRecipe.title = document.getElementById('name').value;
     userGenRecipe.readyInMinutes = document.getElementsByClassName('amount')[1].value;
     userGenRecipe.servings = document.getElementsByClassName('amount')[0].value;
@@ -105,7 +152,7 @@ async function init() {
     userGenRecipe.glutenFree = document.getElementById('glutenFree').checked;
     userGenRecipe.dairyFree = document.getElementById('dairyFree').checked;
     userGenRecipe.quickEat = document.getElementById('quickEat').checked;
-    userGenRecipe.easyCook = document.getElementById('easy').checked;
+    userGenRecipe.easyCook = document.getElementById('easyCook').checked;
 
     userGenRecipe.ingredients = [];
     let numIngredients = 0;
@@ -129,7 +176,7 @@ async function init() {
       userGenRecipe.steps.push(currStep);
     }
 
-    await createRecipe(userGenRecipe);
+    await updateRecipe(userGenRecipe);
     window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
   });
 }
