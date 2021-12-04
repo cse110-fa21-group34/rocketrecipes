@@ -171,3 +171,11 @@ ul li:not(:first-child) {
   border: none;
   cursor: pointer;
 }
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin:  32px 5%;
+}
