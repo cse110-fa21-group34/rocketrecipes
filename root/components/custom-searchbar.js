@@ -81,6 +81,7 @@ class Searchbar extends HTMLElement {
                 // width:700px;
                 border-radius:30px;
                 border:1px solid #dcdcdc;
+                max-width: 700px;
             }
             .bar:hover{
                 box-shadow: 1px 1px 8px 1px #dcdcdc;
