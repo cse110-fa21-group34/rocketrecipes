@@ -48,7 +48,7 @@ class RecipeCard extends HTMLElement {
     @media only screen and (min-width: 100px) {
       .recipe-card {
         position: relative;
-        width: 150px;
+        width: 140px;
         height: 200px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
