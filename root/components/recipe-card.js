@@ -76,7 +76,7 @@ class RecipeCard extends HTMLElement {
       .card-body {
         margin: 0px 10px;
         height: 126px;
-        overflow-y: scroll;
+        overflow-y: auto;
       }
       .recipe-card h3{
         text-decoration: underline;

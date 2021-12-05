@@ -78,10 +78,10 @@ class Searchbar extends HTMLElement {
     style.innerHTML = ` 
             .bar{
                 margin:0 auto;
-                width:700px;
+                // width:700px;
                 border-radius:30px;
                 border:1px solid #dcdcdc;
-                
+                max-width: 700px;
             }
             .bar:hover{
                 box-shadow: 1px 1px 8px 1px #dcdcdc;
@@ -94,7 +94,7 @@ class Searchbar extends HTMLElement {
                 height:16px;
                 border:none;
                 
-                width:575px;
+                width:80%;
                 font-size:16px;
                 outline: none;
                 padding-bottom:20px;
@@ -226,14 +226,17 @@ class Searchbar extends HTMLElement {
       });
 
       const currentUrl = window.location;
-      window.location = `${currentUrl.origin}/root/html/searchpage.html?searchQuery=${searchInputValue}${tags.length > 0 ? `&tags=${tags.join(',')}` : ''}`;
+      window.location = `${
+        currentUrl.origin
+      }/root/html/searchpage.html?searchQuery=${searchInputValue}${
+        tags.length > 0 ? `&tags=${tags.join(',')}` : ''
+      }`;
     }
 
-    form.addEventListener('submit',
-      (e) => {
-        e.preventDefault();
-        handleSearch(e);
-      });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleSearch(e);
+    });
   }
 }
 

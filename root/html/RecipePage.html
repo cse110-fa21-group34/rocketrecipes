@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/RecipePage.css" class="style" />
     <link rel="stylesheet" href="../css/global.css" class="style">
     <script src="../components/custom-navbar.js" type="module"></script>
@@ -15,73 +17,70 @@
       <custom-navbar />
     </header>
     <main>
-      <div class="expand-recipe">
-        <!-- <div class="sidebar">
-            <span class="top-arrow">&#10224;</span><br />
-            <span class="down-arrow">&#10225;</span>
-        </div> -->
-        <div class="main-info">
-          <div>
-            <div class="recipe-header">
-              <div class="header-title">
-                <h1 id="recipe-title"></h1> 
-                <span id="fav-icon">&#9733;</span>
+      <div class="recipe-container">
+        <div class="recipe-header">
+          <div class="recipe-header-info">
+            <h1 id="recipe-title"></h1>
+            <!-- Recipe action buttons like edit, delete, fav -->
+            <div class="recipe-button-container">
+              <button class="recipe-button" id="fav-icon" 
+                style="background: url('https://api.iconify.design/ant-design/star-filled.svg?color=%23ffc700&height=48') no-repeat center center / contain;"
+              ></button>
+              <button class="recipe-button" id="editButton"
+                style="background: url('https://api.iconify.design/akar-icons/edit.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;"
+              ></button>
+              <button class="recipe-button" id="deleteButton"
+                style="background: url('https://api.iconify.design/akar-icons/trash-can.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;"
+              ></button>
+              <button class="recipe-button" id="shareButton"
+                style="background: url('https://api.iconify.design/ant-design/share-alt-outlined.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;"
+              ></button>
+              <div id="shareContainer" style="display: none">
+                <a id="twitter-share" href="https://twitter.com/share?url=" class="share twitter"></a>
+                <a id="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u=" class="share facebook"></a>
+                <a id="reddit-share" href="https://reddit.com/submit?url=" class="share reddit"></a>
+                <a id="email-share" href="mailto:?subject=" class="share email"></a>
+                <button class="share print" onclick="window.print()"></button>
               </div>
-              <button class="edit-button" id="editButton">Edit Recipe</button>
-              <button class="edit-button" id="deleteButton">
-                Delete Recipe
-              </button>
-              <label for="tentacles" style="margin-left: 100%;">Servings:</label>
-              <input type="number" placeholder = "Servings" class="edit-button" id="servings"  min="1" max="15" style="margin-top: 25%;">
             </div>
-            <div class="meta--wrapper">
-              <span
-                ><b>Yield: </b><span class="meta--yield" id="yield"></span
-              ></span>
-              <span
-                ><b>Total time: </b
-                ><time class="meta--total-time" id="time"></time
-              ></span>
+            <!-- Subtitle info: yield, time, etc -->
+            <div class="recipe-subtitle">
+              <span class="recipe-subtitle-head">
+                <b>Yield: </b><span class="meta--yield" id="yield"></span>
+              </span>
+              <span class="recipe-subtitle-head">
+                <b>Total time: </b>
+                <time class="meta--total-time" id="time"></time>
+              </span>
+              <span class="recipe-subtitle-head">
+                <label for="servings-input">Servings:</label>
+                <input type="number" placeholder="Scale" class="scale-input" id="servings"  min="1" max="15">
+              </span>
             </div>
+            <!-- Categories -->
             <div class="categories" id="categories">
               Categories: <span class="meta--categories" id="categories"></span>
             </div>
             <p class="description" id="description"></p>
           </div>
-          <main>
-            <section class="section--instructions">
-              <h2>Instructions</h2>
-              <ol id="instructions-list"></ol>
-            </section>
-            <section class="section--ingredients">
-              <h2>Ingredients</h2>
-              <ul id="ingredients-list"></ul>
-            </section>
-          </main>
+          <img src="" alt="" class="recipe-image" id="recipe-image" />
         </div>
-        <div class="main-image">
-          <img src="" alt="" class="thumbnail" id="recipe-image" />
+        <div class="half-line"></div>
+        <div class="recipe-body">
+          <section class="section--instructions">
+            <h2>Instructions</h2>
+            <ol id="instructions-list"></ol>
+          </section>
+          <section class="section--ingredients">
+            <h2>Ingredients</h2>
+            <ul id="ingredients-list"></ul>
+          </section>
         </div>
       </div>
     </main>
     <footer>
-      <div class="foostPart">
-        <h3>Recommended Recipes</h3>
-      </div>
+      <h3>Check out some other recipes</h3>
       <div class="foodList" id="recommendedRecipeContainer"></div>
-
-      <a id="twitter-share" href="https://twitter.com/share?url=" class="share twitter" >Twitter</a>
-      <a id="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u=" class="share facebook">Facebook</a>
-      <!-- <div id="fb-root"></div>
-      <div class="share facebook fb-share-button" 
-        data-href="`${currentUrl.origin}/root/html/RecipePage.html" 
-        data-layout="button_count">
-      </div> -->
-      <a id="reddit-share" href="https://reddit.com/submit?url=" class="share reddit">Reddit</a>
-      <a id="linkedin-share" href="https://www.linkedin.com/shareArticle?url=" class="share linkedin">LinkedIn</a>
-      <a id="email-share" href="mailto:?subject=" class="share email">Email</a>
-      <button class="share print" onclick="window.print()">Print this page</button>
-      
     </footer>
   </body>
 </html>

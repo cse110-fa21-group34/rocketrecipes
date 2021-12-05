@@ -8,9 +8,6 @@ function createRecommendedRecipes() {
   // manually fetching for now until the backend functions are done
   // fetch div for recommended recipes
   const recommendedRecipeContainer = document.getElementById('recommendedRecipeContainer');
-  recommendedRecipeContainer.style.display = 'flex';
-  recommendedRecipeContainer.style.maxWidth = '100%';
-  recommendedRecipeContainer.style.flexWrap = 'wrap';
 
   const randomNumber = Math.floor(Math.random() * (allRecipes.length - 5));
 

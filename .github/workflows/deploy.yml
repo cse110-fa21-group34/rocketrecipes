@@ -14,6 +14,9 @@ jobs:
         run: |
           npm install
           
+      - name: Set up Chromium
+        run: node node_modules/puppeteer/install.js
+
       - name: Test
         run: |
           npm run test
