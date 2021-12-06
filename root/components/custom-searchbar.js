@@ -29,8 +29,6 @@ function createCheckboxes() {
     tagCheckbox.classList.add('container');
     tagCheckbox.innerText = tag.name;
 
-    
-
     // const inpspan = document.createElement('span');
     // inpspan.classList.add('checkmark');
     checkboxContainer1.appendChild(checkboxContainer);
@@ -73,7 +71,7 @@ function createCheckboxContainer() {
   filterContainer.appendChild(showCheckboxesButton);
   
   filterContainer.appendChild(checkboxFormContainer);
-  filterContainer.appendChild(filterContainer1)
+  filterContainer.appendChild(filterContainer1);
   filterContainer1.appendChild(hideCheckboxesButton);
   return filterContainer;
 }
