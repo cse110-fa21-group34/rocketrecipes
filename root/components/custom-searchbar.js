@@ -69,12 +69,11 @@ function createCheckboxContainer() {
 
   // add all checkbox containers and elements to the container
   filterContainer.appendChild(showCheckboxesButton);
-  
   filterContainer.appendChild(checkboxFormContainer);
   filterContainer.appendChild(filterContainer1);
   filterContainer1.appendChild(hideCheckboxesButton);
   return filterContainer;
-}
+};
 
 class Searchbar extends HTMLElement {
   constructor() {
