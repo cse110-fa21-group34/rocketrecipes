@@ -73,7 +73,7 @@ function createCheckboxContainer() {
   filterContainer.appendChild(filterContainer1);
   filterContainer1.appendChild(hideCheckboxesButton);
   return filterContainer;
-};
+}
 
 class Searchbar extends HTMLElement {
   constructor() {
