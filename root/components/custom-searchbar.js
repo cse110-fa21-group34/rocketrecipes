@@ -132,6 +132,7 @@ class Searchbar extends HTMLElement {
               text-decoration: underline;
               font-size: 20px;
               margin-left: 8%;
+              cursor: pointer;
             }
             .checkboxes1{
               display: none;
@@ -145,10 +146,10 @@ class Searchbar extends HTMLElement {
                 margin-top: 5%;
             }
             .checkbox{
-              height: 30px;
+              height:25px;
               margin-left: 3%;
               margin-bottom: 9%;
-              width: 25px;
+              width: 20px;
             }
             .checked{
               display: inline-block;
@@ -156,7 +157,7 @@ class Searchbar extends HTMLElement {
               text-align: left;
             }
             .container {
-                font-size: 25px;
+                font-size: 18px;
                 vertical-align: top;
                 margin-left: 8%;
                 text-align: left;
