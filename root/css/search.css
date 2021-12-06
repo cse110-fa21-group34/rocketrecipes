@@ -9,6 +9,11 @@ main {
 .topRight{
     text-align: right;
 }
+.title{
+  float: left;
+  text-align: left;
+  width: 100%;
+}
 
 .search {
   padding: 10px;
