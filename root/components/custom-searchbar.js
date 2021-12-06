@@ -131,7 +131,7 @@ class Searchbar extends HTMLElement {
               background-color: white;
               text-decoration: underline;
               font-size: 20px;
-              margin-left: 14%;
+              margin-left: 8%;
             }
             .checkboxes1{
               display: none;
