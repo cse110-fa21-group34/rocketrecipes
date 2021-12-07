@@ -1,8 +1,9 @@
 /* main */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
   .midPart h1 {
     font-size: 4em;
   }
+
   .midPart h3 {
     font-size: 1.2em;
     margin-right: 0%;
