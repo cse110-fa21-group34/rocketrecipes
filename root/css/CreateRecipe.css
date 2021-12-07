@@ -82,7 +82,6 @@
     margin-top: 2%;
     margin-left: 20%;
   }
-  
   .Ingre {
     margin-top: 2%;
     width: 8%;
@@ -135,14 +134,12 @@
   }
   #Create {
     margin-top: 2%;
-  
     width: 20%;
     height: 43px;
     font-size: 1em;
     border-radius: 15px;
     background-color: pink;
   }
-  
   .buttons {
     text-align: center;
   }
@@ -162,7 +159,6 @@
   .midPart {
     margin-top: 5%;
     /* background-color: aqua; */
-  
     margin-left: 10%;
     margin-right: 10%;
   }
@@ -176,7 +172,7 @@
     height: 35px;
     border-radius: 15px;
     padding: 1%;
-    fill: #E5E5E5
+    fill: #e5e5e5
   }
   .image-upload {
     margin-top: 2%;
