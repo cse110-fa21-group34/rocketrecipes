@@ -85,6 +85,70 @@ class Searchbar extends HTMLElement {
     // create styles for searchbar
     const style = document.createElement('style');
     style.innerHTML = ` 
+            @media only screen and (max-width: 700px){
+              .button1{
+                margin-top: 2%;
+                margin-bottom: 3%;
+                float: center;
+                /* position: absolute; */
+                left: 0%;
+                border:none;
+                background-color: white;
+                text-decoration: underline;
+                font-size: 20px;
+                margin-left: 0%;
+                cursor: pointer;
+              }
+              .checked{
+                display: inline-block;
+                width: 120px;
+                text-align: left;
+              }
+              .container {
+                font-size: 15px;
+                vertical-align: top;
+                margin-left: 8%;
+                text-align: left;
+              }
+              .checkbox{
+                height:18px;
+                margin-left: 3%;
+                margin-bottom: 9%;
+                width: 20px;
+              }
+            }
+            @media only screen and (min-width: 700px){
+              .button1{
+                margin-top: 2%;
+                margin-bottom: 3%;
+                float: left;
+                /* position: absolute; */
+                left: 2%;
+                border:none;
+                background-color: white;
+                text-decoration: underline;
+                font-size: 20px;
+                margin-left: 8%;
+                cursor: pointer;
+              }
+              .checked{
+                display: inline-block;
+                width: 250px;
+                text-align: left;
+              }
+              .container {
+                font-size: 18px;
+                vertical-align: top;
+                margin-left: 8%;
+                text-align: left;
+              }
+              .checkbox{
+                height:25px;
+                margin-left: 3%;
+                margin-bottom: 9%;
+                width: 20px;
+              }
+            }
             .bar{
                 margin:0 auto;
                 // width:700px;
@@ -100,8 +164,7 @@ class Searchbar extends HTMLElement {
             }
             .searchbar{
                 height:16px;
-                border:none;
-                
+                border:none;    
                 width:80%;
                 font-size:16px;
                 outline: none;
@@ -121,19 +184,6 @@ class Searchbar extends HTMLElement {
                 outline: none;
                 background-color: #ffffff;
             }
-            .button1{
-              margin-top: 2%;
-              margin-bottom: 3%;
-              float: left;
-              /* position: absolute; */
-              left: 2%;
-              border:none;
-              background-color: white;
-              text-decoration: underline;
-              font-size: 20px;
-              margin-left: 8%;
-              cursor: pointer;
-            }
             .checkboxes1{
               display: none;
             }
@@ -144,23 +194,6 @@ class Searchbar extends HTMLElement {
                 text-align: left;
                 margin-left: 8%;
                 margin-top: 5%;
-            }
-            .checkbox{
-              height:25px;
-              margin-left: 3%;
-              margin-bottom: 9%;
-              width: 20px;
-            }
-            .checked{
-              display: inline-block;
-              width: 250px;
-              text-align: left;
-            }
-            .container {
-                font-size: 18px;
-                vertical-align: top;
-                margin-left: 8%;
-                text-align: left;
             }
         `;
 
