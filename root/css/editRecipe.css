@@ -181,26 +181,22 @@
     justify-content: center;
   }
 
-  .container{
+  .container {
     font-size: 15px;
     width: 40%;
     margin: 5px;
     display: inline-block;
   }
 
-  .container input{
+  .container input {
     width: 30px;
   }
 
-  .container input:checked{
-    color:gray;
-  }
-
-  .edit-recipe-button{
+  .edit-recipe-button {
     justify-content: center;
   }
 
-  .edit-recipe-button button{
+  .edit-recipe-button button {
     margin-left: 40%;
     margin-top: 2%;
     margin-top: 2%;
@@ -373,26 +369,22 @@
     justify-content: center;
   }
 
-  .container{
+  .container {
     font-size: 20px;
     width: 20%;
     margin: 10px;
     display: inline-block;
   }
 
-  .container input{
+  .container input {
     width: 30px;
   }
 
-  .container input:checked{
-    color:gray;
-  }
-
-  .edit-recipe-button{
+  .edit-recipe-button {
     justify-content: center;
   }
 
-  .edit-recipe-button button{
+  .edit-recipe-button button {
     margin-left: 40%;
     margin-top: 2%;
     margin-bottom: 3%;
