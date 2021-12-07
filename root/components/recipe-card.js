@@ -164,7 +164,56 @@ class RecipeCard extends HTMLElement {
           margin-right: 5px;
           margin-bottom: 5px;
         }
+      /*
+      .recipe-card:after {
+        content  : "";
+        position : absolute;
+        z-index  : 1;
+        bottom   : 0;
+        left     : 0;
+        pointer-events   : none;
+        background-image : linear-gradient(to bottom, 
+                          rgba(255,255,255, 0), 
+                          rgba(255,255,255, 1) 90%);
+        width    : 100%;
+        height   : 15px;
       }
+      .recipe-card-image {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+      }
+      .card-body {
+        margin: 0px 10px;
+        height: 126px;
+        overflow-y: auto;
+      }
+      .recipe-card h3{
+        text-decoration: underline;
+        margin-bottom: 4px;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+      .recipe-card p{
+        font-size: 12px;
+        margin-top: 0;
+        margin-bottom: 6px;
+      }
+      .tag-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .tag {
+        border-radius: 12px;
+        height: 20px;
+        display: flex;
+        width: unset;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      */
     `;
     const titleElement = card.querySelector('h3');
     titleElement.innerText = data.title || '';

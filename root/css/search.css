@@ -1,22 +1,31 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin:  10% 5%;
+}
 
 .topRight{
     text-align: right;
 }
-
-.center {
-    margin-top: 50px;
-    text-align: center;
+.title{
+  float: left;
+  text-align: left;
+  width: 100%;
 }
 
 .search {
-    padding: 10px;
-    font-size: 20px;
-    border: 1px solid grey;
-    float: left;
-    width: 90%;
-    background: #f1f1f1;
-  }
-
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid grey;
+  float: left;
+  width: 90%;
+  background: #f1f1f1;
+}
+.bar {
+  width: 100%;
+}
 
 /*
 .bar{

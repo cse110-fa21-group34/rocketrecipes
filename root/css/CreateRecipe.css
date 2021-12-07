@@ -294,3 +294,87 @@
   }
 }
 
+/*
+.Ingre {
+  margin-top: 2%;
+  width: 8%;
+  border-radius: 15px;
+  height: 28px;
+  padding-left: 1%;
+}
+.unit {
+  margin-top: 2%;
+  width: 8%;
+  border-radius: 15px;
+  height: 28px;
+  padding-left: 1%;
+  margin-left: 2%;
+  clear: both;
+}
+.Ingredient {
+  margin-left: 2%;
+  width: 70%;
+  height: 28px;
+  border-radius: 15px;
+  padding-left: 1%;
+}
+#addIngredient {
+  margin-top: 2%;
+  margin-left: 50%;
+  width: 13%;
+  height: 27px;
+  border-radius: 12px;
+  background-color: pink;
+}
+#deleteIngredient {
+  margin-left: 2%;
+  width: 13%;
+  height: 27px;
+  border-radius: 12px;
+  background-color: pink;
+}
+#instruct {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.instructArea {
+  margin-left: 10%;
+  width: 63%;
+  height: 200px;
+  border-radius: 15px;
+  border-width: 2px;
+  padding: 1%;
+}
+
+#Create {
+  margin-top: 2%;
+  margin-left: 40%;
+  width: 15%;
+  height: 43px;
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: pink;
+}
+
+#create-recipe-button button {
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+}
+.buttons button {
+  margin-top: 2%;
+  margin-bottom: 3%;
+  width: 20%;
+  height: 43px;
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: pink;
+}
+
+form {
+  width: 60%;
+  margin-left: 20%;
+}
+*/
