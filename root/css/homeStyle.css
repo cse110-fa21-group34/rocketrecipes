@@ -3,7 +3,6 @@
   .midPart h1 {
     font-size: 4em;
   }
-
   .midPart h3 {
     font-size: 1.2em;
     margin-right: 0%;
@@ -12,9 +11,7 @@
     text-align: left;
   }
 }
-@media only screen and (min-width: 700px){
 
-}
 main {
   display: flex;
   flex-direction: column;
