@@ -45,6 +45,9 @@
     padding-top: 0px;
   }
 }
+main {
+    margin: 5% 32px 5% 0;
+}
 #myaccount {
     margin-left: 10%;
     text-align: left;
