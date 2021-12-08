@@ -1,4 +1,18 @@
 /* main */
+@media only screen and (max-width: 700px) {
+  .midPart h1 {
+    font-size: 4em;
+  }
+
+  .midPart h3 {
+    font-size: 1.2em;
+    margin-right: 0%;
+    margin-top: -20px;
+    margin-bottom: 60px;
+    text-align: left;
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;

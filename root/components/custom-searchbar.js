@@ -9,30 +9,36 @@ function createCheckboxes() {
     { id: 'vegan', name: 'Vegan' },
     { id: 'vegetarian', name: 'Vegetarian' },
   ];
-
-  const checkboxContainer = document.createElement('form');
+  const checkboxContainer1 = document.createElement('div');
+  checkboxContainer1.classList.add('checkboxes1');
+  const checkboxContainer = document.createElement('div');
   checkboxContainer.id = 'checkboxes';
   checkboxContainer.classList.add('checkboxes');
 
   tagProperties.forEach((tag) => {
-    const tagCheckbox = document.createElement('label');
-    tagCheckbox.classList.add('container');
-    tagCheckbox.innerText = tag.name;
+    const func = document.createElement('div');
+    func.classList.add('checked');
 
     const inp = document.createElement('input');
     inp.id = tag.id;
     inp.name = tag.name;
     inp.type = 'checkbox';
+    inp.classList.add('checkbox');
 
-    const inpspan = document.createElement('span');
-    inpspan.classList.add('checkmark');
+    const tagCheckbox = document.createElement('label');
+    tagCheckbox.classList.add('container');
+    tagCheckbox.innerText = tag.name;
 
-    tagCheckbox.appendChild(inp);
-    tagCheckbox.appendChild(inpspan);
-    checkboxContainer.appendChild(tagCheckbox);
+    // const inpspan = document.createElement('span');
+    // inpspan.classList.add('checkmark');
+    checkboxContainer1.appendChild(checkboxContainer);
+    checkboxContainer.appendChild(func);
+    func.appendChild(inp);
+    // tagCheckbox.appendChild(inpspan);
+    func.appendChild(tagCheckbox);
   });
 
-  return checkboxContainer;
+  return checkboxContainer1;
 }
 
 // creates checkbox container with show and hide buttons
@@ -41,11 +47,13 @@ function createCheckboxContainer() {
   const checkboxFormContainer = createCheckboxes();
   // create show and hide checkbox buttons and their logic
   const showCheckboxesButton = document.createElement('button');
-  showCheckboxesButton.innerText = 'Show';
-
+  showCheckboxesButton.innerText = 'Show Filters';
+  showCheckboxesButton.classList.add('button1');
+  const filterContainer1 = document.createElement('div');
   const hideCheckboxesButton = document.createElement('button');
   hideCheckboxesButton.style.display = 'none';
-  hideCheckboxesButton.innerText = 'Hide';
+  hideCheckboxesButton.innerText = 'Hide Filters';
+  hideCheckboxesButton.classList.add('button1');
 
   showCheckboxesButton.onclick = () => {
     checkboxFormContainer.style.display = 'unset';
@@ -61,8 +69,9 @@ function createCheckboxContainer() {
 
   // add all checkbox containers and elements to the container
   filterContainer.appendChild(showCheckboxesButton);
-  filterContainer.appendChild(hideCheckboxesButton);
   filterContainer.appendChild(checkboxFormContainer);
+  filterContainer.appendChild(filterContainer1);
+  filterContainer1.appendChild(hideCheckboxesButton);
   return filterContainer;
 }
 
@@ -76,12 +85,75 @@ class Searchbar extends HTMLElement {
     // create styles for searchbar
     const style = document.createElement('style');
     style.innerHTML = ` 
+            @media only screen and (max-width: 700px){
+              .button1{
+                margin-top: 2%;
+                margin-bottom: 3%;
+                float: center;
+                /* position: absolute; */
+                left: 0%;
+                border:none;
+                background-color: white;
+                text-decoration: underline;
+                font-size: 20px;
+                margin-left: 0%;
+                cursor: pointer;
+              }
+              .checked{
+                display: inline-block;
+                width: 120px;
+                text-align: left;
+              }
+              .container {
+                font-size: 15px;
+                vertical-align: top;
+                margin-left: 8%;
+                text-align: left;
+              }
+              .checkbox{
+                height:18px;
+                margin-left: 3%;
+                margin-bottom: 9%;
+                width: 20px;
+              }
+            }
+            @media only screen and (min-width: 700px){
+              .button1{
+                margin-top: 2%;
+                margin-bottom: 3%;
+                float: left;
+                /* position: absolute; */
+                left: 2%;
+                border:none;
+                background-color: white;
+                text-decoration: underline;
+                font-size: 20px;
+                margin-left: 8%;
+                cursor: pointer;
+              }
+              .checked{
+                display: inline-block;
+                width: 250px;
+                text-align: left;
+              }
+              .container {
+                font-size: 18px;
+                vertical-align: top;
+                margin-left: 8%;
+                text-align: left;
+              }
+              .checkbox{
+                height:25px;
+                margin-left: 3%;
+                margin-bottom: 9%;
+                width: 20px;
+              }
+            }
             .bar{
                 margin:0 auto;
                 // width:700px;
                 border-radius:30px;
                 border:1px solid #dcdcdc;
-                max-width: 700px;
             }
             .bar:hover{
                 box-shadow: 1px 1px 8px 1px #dcdcdc;
@@ -92,8 +164,7 @@ class Searchbar extends HTMLElement {
             }
             .searchbar{
                 height:16px;
-                border:none;
-                
+                border:none;    
                 width:80%;
                 font-size:16px;
                 outline: none;
@@ -113,77 +184,19 @@ class Searchbar extends HTMLElement {
                 outline: none;
                 background-color: #ffffff;
             }
+            .checkboxes1{
+              display: none;
+            }
             .checkboxes {
-                display: none;
-                position: relative;
-                padding-left: 35px;
-                margin-bottom: 12px;
-                margin: auto;
-                width: 50%;
-                cursor: pointer;
-                font-size: 22px;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-            .container {
-                display: block;
-                position: relative;
-                padding-left: 35px;
-                margin-bottom: 12px;
-                margin: auto;
-                width: 50%;
-                cursor: pointer;
-                font-size: 22px;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-            .container input {
-                position: absolute;
-                opacity: 0;
-                cursor: pointer;
-                height: 0;
-                width: 0;
-            }
-            .checkmark {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 25px;
-                width: 25px;
-                background-color: #eee;
-            }
-            .container:hover input ~ .checkmark {
-                background-color: #ccc;
-            }
-            .container input:checked ~ .checkmark {
-                background-color: #2196F3;
-            }
-            .checkmark:after {
-                content: "";
-                position: absolute;
-                display: none;
-            }
-            .container input:checked ~ .checkmark:after {
-                display: block;
-            }
-            .container .checkmark:after {
-                left: 9px;
-                top: 5px;
-                width: 5px;
-                height: 10px;
-                border: solid white;
-                border-width: 0 3px 3px 0;
-                -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
+                width: 100%;
+                height: auto;
+                display: inline-block;
+                text-align: left;
+                margin-left: 8%;
+                margin-top: 5%;
             }
         `;
 
-    // create html for searchbar
     const searchbarContainer = document.createElement('div');
     const form = document.createElement('form');
     form.id = 'search-bar-form';
