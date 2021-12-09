@@ -40,9 +40,9 @@ describe('test create recipe page functionality', () => {
         await page.waitForSelector('.ingredSteps');
         await page.waitForSelector('#addIngredient');
         const button = await page.$('#addIngredient');
-        for(let i = 0; i < 3; i += 1) {
-            await button.click();
-        }
+        await button.click();
+        await button.click();
+        await button.click();
         const amountFields = await page.$$('input.Ingre');
         const unitsFields = await page.$$('input.unit');
         const ingredientFields = await page.$$('input.Ingredient');
@@ -55,9 +55,8 @@ describe('test create recipe page functionality', () => {
         await page.waitForSelector('.ingredSteps');
         await page.waitForSelector('#deleteIngredient');
         const button = await page.$('#deleteIngredient');
-        for(let i = 0; i < 2; i += 1) {
-            await button.click();
-        }
+        await button.click();
+        await button.click();
         const amountFields = await page.$$('input.Ingre');
         const unitsFields = await page.$$('input.unit');
         const ingredientFields = await page.$$('input.Ingredient');
