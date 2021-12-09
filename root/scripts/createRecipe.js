@@ -1,12 +1,74 @@
 /* eslint-disable import/extensions */
-import {
-  getAllRecipes, createRecipe, createId,
-} from './utils.js';
+import { getAllRecipes, createRecipe, createId } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
-// const createRecipe = document.querySelector(document.getElementById('Create'));
-// const deleteRecipe = document.querySelector(document.getElementById('Delete'));
+/**
+ * A helper function to check if a string is a valid link
+ * @param {String} link
+ * @returns {Boolean} true if the string is a link
+ */
+function validURL(str) {
+  const pattern = new RegExp(
+    '^(https?:\\/\\/)?' // protocol
+      + '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' // domain name
+      + '((\\d{1,3}\\.){3}\\d{1,3}))' // OR ip (v4) address
+      + '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' // port and path
+      + '(\\?[;&a-z\\d%_.~+=-]*)?' // query string
+      + '(\\#[-a-z\\d_]*)?$',
+    'i',
+  ); // fragment locator
+  return !!pattern.test(str);
+}
+
+/**
+ * A helper function to validate form contents
+ * @param {Object} recipe recipe object to validate
+ * @returns {Object} object containing values for if the form is valid, and error messages otherwise
+ */
+function validateForm(recipe) {
+  if (recipe.title === '' || recipe.summary === '') {
+    return { valid: false, errorMessage: 'Title is empty' };
+  }
+  if (recipe.summary === '') {
+    return { valid: false, errorMessage: 'Summary is empty' };
+  }
+  if (recipe.servings === '') {
+    return { valid: false, errorMessage: 'Servings field is empty' };
+  }
+  if (recipe.readyInMinutes === '') {
+    return { valid: false, errorMessage: 'Time field is empty' };
+  }
+  if (recipe.image !== '' && !validURL(recipe.image)) {
+    return { valid: false, errorMessage: 'Image is not a valid link' };
+  }
+
+  return { valid: true, errorMessage: '' };
+}
+
+/**
+ * A helper function to prune empty ingredients and steps from a recipe
+ * @param {Object} recipe recipe object to prune
+ * @returns {Object} recipe object without unneeded steps and ingredients
+ */
+function trimRecipe(recipe) {
+  const adjustedRecipe = recipe;
+
+  const recipeIngredients = recipe.ingredients.filter(
+    (ing) => ing.name !== '' && ing.amount !== '',
+  );
+  const recipeSteps = recipe.steps.filter((s) => s !== '');
+
+  adjustedRecipe.ingredients = recipeIngredients;
+  adjustedRecipe.steps = recipeSteps;
+
+  // add default image if field is blank
+  if (adjustedRecipe.image === '') {
+    adjustedRecipe.image = 'https://ss1.4sqi.net/img/categories/food/default_256.png';
+  }
+  return adjustedRecipe;
+}
+
 let i = 6; // instructions counter
 let ingCount = 1; // Ingredient Counter
 
@@ -128,9 +190,18 @@ async function init() {
       currStep.step = document.getElementsByClassName('step')[k].value;
       userGenRecipe.steps.push(currStep);
     }
-
-    await createRecipe(userGenRecipe);
-    window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
+    // validate form, if it is valid then create recipe
+    const formValidateObject = validateForm(userGenRecipe);
+    if (formValidateObject.valid) {
+      const trimmedRecipe = trimRecipe(userGenRecipe);
+      await createRecipe(trimmedRecipe);
+      window.location = `${window.location.origin}/root/html/RecipePage.html?id=${trimmedRecipe.id}`;
+    } else {
+      // eslint-disable-next-line no-alert
+      alert(
+        `Your recipe was not created due to invalid inputs. \n\nError message: ${formValidateObject.errorMessage}`,
+      );
+    }
   });
 }
 
