@@ -79,7 +79,7 @@
     border-radius: 5px;
     background-color: #e5e5e5;
     box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
-    border: 0px none;
+    border: 0 none;
   }
 
   .make2 {
@@ -159,7 +159,7 @@
     border-radius: 15px;
     background-color: pink;
   }
-  
+
   .buttons {
     text-align: center;
   }
