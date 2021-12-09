@@ -76,7 +76,7 @@ function deleteIng() {
 async function fillRecipePage(recipeId) {
   const recipe = await readRecipe(recipeId);
   const header = document.getElementById('header');
-  // header.innerHTML = 'Edit Your Recipe!';
+  header.innerHTML = 'Edit Your Recipe!';
   const name = document.getElementById('name');
   name.value = recipe.title;
   const imageLink = document.getElementById('image');
