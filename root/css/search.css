@@ -1,27 +1,25 @@
+@media only screen and (max-width: 700px){
+  main h1{
+      font-size: 3em;
+  }
+}
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin:  10% 5%;
+  margin:  32px 5% 10%;
 }
-
-.topRight{
-    text-align: right;
+.midPart {
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  width: 100%;
 }
 .title{
   float: left;
   text-align: left;
   width: 100%;
-}
-
-.search {
-  padding: 10px;
-  font-size: 20px;
-  border: 1px solid grey;
-  float: left;
-  width: 90%;
-  background: #f1f1f1;
 }
 .bar {
   width: 100%;
