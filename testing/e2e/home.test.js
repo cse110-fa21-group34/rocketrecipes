@@ -17,7 +17,7 @@ beforeAll(async () => {
 
       describe('home page', () => {
         beforeAll(async () => {
-        await page.goto(`http://${rootUrl}/root/html/homepage.html`);
+        await page.goto(`http://${rootUrl}/root/html/index.html`);
       });
 
       it('should be titled Home page', async () => {
