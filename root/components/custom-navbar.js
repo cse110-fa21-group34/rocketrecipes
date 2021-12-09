@@ -88,7 +88,7 @@ class Navbar extends HTMLElement {
     // create html for navbar
     const navbarContainer = document.createElement('div');
     navbarContainer.innerHTML = `
-        <a class="navbar-image" href="./homepage.html"> 
+        <a class="navbar-image" href="./index.html"> 
             <img src="../media/teamLogo.png" width="75" height="75" > 
         </a>
         <div class="navbar-links-container-desktop"> 
