@@ -124,6 +124,7 @@ class RecipeCard extends HTMLElement {
         width: unset;
         margin-right: 5px;
         margin-bottom: 5px;
+        cursor: pointer;
       }
     `;
     const titleElement = card.querySelector('h3');
