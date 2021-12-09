@@ -7,7 +7,7 @@ import {
 
 // const createRecipe = document.querySelector(document.getElementById('Create'));
 // const deleteRecipe = document.querySelector(document.getElementById('Delete'));
-let i = 6; // instructions counter
+let i = 1; // instructions counter
 let ingCount = 1; // Ingredient Counter
 
 function addStep() {
