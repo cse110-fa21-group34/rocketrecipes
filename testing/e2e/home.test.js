@@ -17,11 +17,11 @@ beforeAll(async () => {
 
       describe('home page', () => {
         beforeAll(async () => {
-        await page.goto(`http://${rootUrl}/root/html/homepage.html`);
+        await page.goto(`http://${rootUrl}/root/html/index.html`);
       });
 
       it('should be titled Home page', async () => {
-        await expect(page.title()).resolves.toMatch('Home page');
+        await expect(page.title()).resolves.toMatch('Home');
       });
 
       it('headline should be rocket recipes', async () => {

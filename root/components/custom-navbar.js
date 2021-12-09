@@ -16,10 +16,9 @@ class Navbar extends HTMLElement {
             display: flex;
             flex-direciton: row;
             align-items: center;
+            width: 100%;
             justify-content: space-between;
-            
             height: 80px;
-            width: 100vw;
             font-size: 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
             z-index: 1000;
@@ -48,14 +47,14 @@ class Navbar extends HTMLElement {
         }
         .mobile-navbar-expanded {
             position: absolute;
-            
+            width: 100%;
             top: 80px;
             display: flex;
             flex-direction: column;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
         }
         .mobile-link {
-            width: 100vw;
+            width: 100%;
             padding: 0;
         }
         .mobile-navbar-button {
@@ -89,7 +88,7 @@ class Navbar extends HTMLElement {
     // create html for navbar
     const navbarContainer = document.createElement('div');
     navbarContainer.innerHTML = `
-        <a class="navbar-image" href="./homepage.html"> 
+        <a class="navbar-image" href="./index.html"> 
             <img src="../media/teamLogo.png" width="75" height="75" > 
         </a>
         <div class="navbar-links-container-desktop"> 

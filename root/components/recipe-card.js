@@ -45,16 +45,42 @@ class RecipeCard extends HTMLElement {
     `;
 
     style.innerHTML = `
-      .recipe-card {
-        position: relative;
-        width: 200px;
-        height: 250px;
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 20px;
-        margin: 20px;
-        overflow: hidden;
-        cursor: pointer;
+      @media only screen and (max-width: 700px){
+        .recipe-card {
+          position: relative;
+          width: 140px;
+          height: 200px;
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 20px;
+          margin: 10px;
+          overflow: hidden;
+          cursor: pointer;
+        }
+        .recipe-card-image {
+          width: 100%;
+          height: 90px;
+          object-fit: cover;
+        }
       }
+      @media only screen and (min-width: 700px){
+        .recipe-card {
+          position: relative;
+          width: 250px;
+          height: 250px;
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 20px;
+          margin: 20px;
+          overflow: hidden;
+          cursor: pointer;
+        }
+        .recipe-card-image {
+          width: 100%;
+          height: 120px;
+          object-fit: cover;
+        }
+
+      }
+      
       .recipe-card:after {
         content  : "";
         position : absolute;
@@ -68,15 +94,11 @@ class RecipeCard extends HTMLElement {
         width    : 100%;
         height   : 15px;
       }
-      .recipe-card-image {
-        width: 100%;
-        height: 120px;
-        object-fit: cover;
-      }
+      
       .card-body {
         margin: 0px 10px;
         height: 126px;
-        overflow-y: scroll;
+        overflow-y: auto;
       }
       .recipe-card h3{
         text-decoration: underline;
@@ -102,6 +124,7 @@ class RecipeCard extends HTMLElement {
         width: unset;
         margin-right: 5px;
         margin-bottom: 5px;
+        cursor: pointer;
       }
     `;
     const titleElement = card.querySelector('h3');
