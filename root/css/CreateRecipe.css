@@ -145,7 +145,9 @@ form {
 }
 
 .checkboxes input{
-  /*height: auto;
-  width: 100%;*/
+  height:20px;
+  width:20px;
   margin-left: 2%;
 }
+
+
