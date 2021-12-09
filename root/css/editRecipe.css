@@ -135,7 +135,7 @@
   .ingredSteps input {
     background-color: #e5e5e5;
     box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
-    border: 0px none;
+    border: 0 none;
   }
 
   #instruct {
@@ -256,7 +256,7 @@
     border-width: 2px;
     padding: 1%;
   }
-  
+
   .ingredSteps input {
     background-color: #e5e5e5;
     box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
