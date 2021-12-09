@@ -109,6 +109,7 @@
 
 #Create {
   margin-top: 2%;
+  margin-bottom: 1%;
   margin-left: 40%;
   width: 15%;
   height: 43px;
@@ -137,4 +138,11 @@
 form {
   width: 60%;
   margin-left: 20%;
+}
+
+.checkboxes{
+  text-align: center;
+}
+
+.checkboxes input{
 }

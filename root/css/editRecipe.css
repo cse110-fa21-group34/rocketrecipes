@@ -122,6 +122,7 @@
 
 #edit-button {
   margin-top: 2%;
+  margin-bottom: 1%;
   margin-left: 40%;
   width: 15%;
   height: 43px;
@@ -145,6 +146,10 @@
 }
 
 .buttons {
+  text-align: center;
+}
+
+.checkboxes {
   text-align: center;
 }
 
