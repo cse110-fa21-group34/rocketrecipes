@@ -21,7 +21,7 @@ beforeAll(async () => {
       });
 
       it('should be titled Home page', async () => {
-        await expect(page.title()).resolves.toMatch('Home page');
+        await expect(page.title()).resolves.toMatch('Home');
       });
 
       it('headline should be rocket recipes', async () => {
