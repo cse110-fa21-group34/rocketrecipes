@@ -12,6 +12,7 @@ class Navbar extends HTMLElement {
     const style = document.createElement('style');
     style.innerHTML = `
         .navbar-container {
+            background-color: #C2FFD9;
             position: relative;
             display: flex;
             flex-direciton: row;
@@ -23,6 +24,9 @@ class Navbar extends HTMLElement {
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
             z-index: 1000;
         }
+        .navbar-container a{
+          background-color:  #C2FFD9;
+        }
         .navbar-image {
             text-decoration: none;
             width: 75px;
@@ -30,6 +34,7 @@ class Navbar extends HTMLElement {
             padding: 5px 0 0 10px;
         }
         .navbar-text-link {
+            background-color: #FFAB4C;
             display: flex;
             text-align: center;
             align-items: center;

@@ -1,4 +1,7 @@
 /* main */
+*{
+  background-color: #FEF2E6;
+}
 @media only screen and (max-width: 700px) {
   .midPart h1 {
     font-size: 4em;

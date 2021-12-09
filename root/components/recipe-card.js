@@ -125,6 +125,7 @@ class RecipeCard extends HTMLElement {
         margin-right: 5px;
         margin-bottom: 5px;
         cursor: pointer;
+        background-color: #F9D5A7
       }
     `;
     const titleElement = card.querySelector('h3');
