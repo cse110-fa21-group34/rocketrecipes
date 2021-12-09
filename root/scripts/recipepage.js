@@ -147,6 +147,7 @@ async function init() {
     document.querySelector('main').innerHTML = 'The recipe could not be found.';
   } else {
     // fill the recipe page
+    document.title = currentRecipe.title;
     fillRecipePage(currentRecipe);
   }
 
