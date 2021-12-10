@@ -51,7 +51,7 @@ class Navbar extends HTMLElement {
         }
         .navbar-text-link:hover {
             cursor: pointer;
-            background-color: #31f77d;
+            background-color: #98fbbe;
         }
         .mobile-navbar-expanded {
             position: absolute;

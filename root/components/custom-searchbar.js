@@ -154,6 +154,7 @@ class Searchbar extends HTMLElement {
                 // width:700px;
                 border-radius:30px;
                 border:1px solid ;
+                background-color: white;
             }
             .bar:hover{
                 box-shadow: 1px 1px 8px 1px #dcdcdc;
@@ -169,7 +170,8 @@ class Searchbar extends HTMLElement {
                 font-size:16px;
                 outline: none;
                 padding-bottom:20px;
-                background-color:#FEF2E6;
+                background-color: white;
+
             }
             .search{
                 padding-top:10px;
@@ -183,7 +185,7 @@ class Searchbar extends HTMLElement {
                 padding-top:10px;
                 border:none;
                 outline: none;
-                background-color: #FEF2E6;
+                background-color: white;
             }
             .checkboxes1{
               display: none;
