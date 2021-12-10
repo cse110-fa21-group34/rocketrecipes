@@ -146,15 +146,6 @@ label > input {
     border-width: 2px;
   }
 
-  #Create {
-    margin-top: 2%;
-    width: 20%;
-    height: 43px;
-    font-size: 1em;
-    border-radius: 15px;
-    background-color: pink;
-  }
-
   .checkboxes {
     margin-top: 20px;
     display: flex;  
@@ -259,15 +250,6 @@ label > input {
     height: 200px;
     border-radius: 15px;
     border-width: 2px;
-  }
-
-  #Create {
-    margin-top: 2%;
-    width: 15%;
-    height: 43px;
-    font-size: 20px;
-    border-radius: 12px;
-    background-color: pink;
   }
 
   .checkboxes {
