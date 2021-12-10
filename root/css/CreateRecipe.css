@@ -3,13 +3,13 @@
 }
 input {
   padding: 1%;
-  background-color: #e5e5e5;
+  background-color: #fff;
   box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
   border: 0 none;
 }
 textarea {
   padding: 1%;
-  background-color: #e5e5e5;
+  background-color: #fff;
   box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
   border: 0 none;
 }
@@ -36,14 +36,14 @@ label > input {
   margin-left: 10px;
   width: 20%;
   border-radius: 5px;
-  background-color: #e5e5e5;
-  box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
+  background-color: #fff;
+  /*box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);*/
   border: 0 none;
 }
 
 .ingredSteps input {
-  background-color: #e5e5e5;
-  box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
+  background-color: #fff;
+  /*box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);*/
   border: 0 none;
 }
 
@@ -104,8 +104,8 @@ label > input {
     height: 35px;
     border: 0 none;
     border-radius: 15px;
-    background-color: #e5e5e5;
-    box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
+    background-color: #fff;
+    /*box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);*/
     font-size: 1em;
   }
 
@@ -123,8 +123,8 @@ label > input {
     height: 200px;
     border-radius: 15px;
     border-width: 2px;
-    background-color: #e5e5e5;
-    box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
+    background-color: #fff;
+    /*box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);*/
     border: 0 none;
   }
 
@@ -132,8 +132,8 @@ label > input {
     margin-bottom: 2%;
     width: 94%;
     border-radius: 15px;
-    background-color: #e5e5e5;
-    box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
+    background-color: #fff;
+    /*box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);*/
     border: 0 none;
     padding-right: 2%;
   }
@@ -210,7 +210,7 @@ label > input {
     width: 60%;
     height: 35px;
     border-radius: 15px;
-    fill: #e5e5e5;
+    fill: #;
     font-size: 1em;
   }
 
@@ -238,8 +238,8 @@ label > input {
     border-radius: 15px;
     border-width: 2px;
     padding-right: 2%;
-    background-color: #e5e5e5;
-    box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);
+    background-color: #fff;
+    /*box-shadow: inset 0 0 2px 2px rgb(220, 220, 220);*/
     border: 0 none;
   }
 
@@ -273,7 +273,7 @@ label > input {
   }
 
   .container input:checked {
-    color: gray;
+    color: white;
   }
 
   .create-recipe-button {
