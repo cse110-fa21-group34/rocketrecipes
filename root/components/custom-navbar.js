@@ -29,6 +29,9 @@ class Navbar extends HTMLElement {
             height 75px;
             padding: 5px 0 0 10px;
         }
+        .navbar-image img{
+            object-fit: cover;
+        }
         .navbar-text-link {
             display: flex;
             text-align: center;
