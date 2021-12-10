@@ -1,4 +1,4 @@
-let rootUrl = '127.0.0.1:5501';
+let rootUrl = 'rocketrecipes.netlify.app';
 const pullRequestId = process.env.GITHUB_PR_NUMBER;
 
 beforeAll(async () => {
@@ -17,7 +17,7 @@ beforeAll(async () => {
 
       describe('home page', () => {
         beforeAll(async () => {
-        await page.goto(`http://${rootUrl}/root/html/homepage.html`);
+        await page.goto(`http://${rootUrl}/root/html/index.html`);
       });
 
       it('should be titled Home page', async () => {
