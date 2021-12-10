@@ -30,7 +30,11 @@ One more special feature we decided to include in our project was the ability to
 
 ## Repository Setup
 
+The repository can be accessed at https://github.com/cse110-fa21-group34/rocketrecipes. We follow a development model similar to GitFlow. Deployments are hosted on the ```deploy``` branch, and the primary branch for development is ```main```. 
 
+The repository is split up into various folders. The web application itself is inside ```root/```, while our documentation is in ```docs/``` and automated tests are in ```testing/```. Github Action workflows can be found at ```.github/```. Dependencies can be found in the ```package.json```. Other configuration files can also be found at ```/```. 
+
+When contributing to the project, one should first submit a pull request for the ```main``` branch. Then, there will be automated unit and end-to-end tests as well as a code quality tool to verify the quality of the pull request. Then, documentation will be automatically generated and a live deployment of the pull request will be created. After the pull request passes human review, it can be merged into ```main``` safely. After enough pull requests have been accumulated, a release will be made and the ```deployment``` branch will be updated.
 
 ---
 ## Testing
