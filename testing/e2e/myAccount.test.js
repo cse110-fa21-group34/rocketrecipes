@@ -15,18 +15,18 @@ beforeAll(async () => {
 
 });
 
-      describe('my account page', () => {
-        beforeAll(async () => {
-        await page.goto(`http://${rootUrl}/root/html/generalAccount.html`);
-      });
+describe('my account page', () => {
+    beforeAll(async () => {
+    await page.goto(`http://${rootUrl}/root/html/generalAccount.html`);
+    });
 
-      it('should be titled my account', async () => {
-        await expect(page.title()).resolves.toMatch('My Account');
-      });
+    it('should be titled my account', async () => {
+    await expect(page.title()).resolves.toMatch('My Account');
+    });
 
-      it('headline should be my account', async () => {
-        await page.waitForSelector('#myaccount');
-        const headline = await page.evaluate( () => document.querySelector('#myaccount').textContent);
-        expect(headline).toBe('My Account');
-      });
+    it('headline should be my account', async () => {
+    await page.waitForSelector('#myaccount');
+    const headline = await page.evaluate( () => document.querySelector('#myaccount').textContent);
+    expect(headline).toBe('My Account');
+    });
 });
