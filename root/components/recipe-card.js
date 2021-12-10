@@ -66,7 +66,7 @@ class RecipeCard extends HTMLElement {
         .recipe-card {
           position: relative;
           width: 250px;
-          height: 250px;
+          height: 320px;
           box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
           border-radius: 20px;
           margin: 20px;
@@ -75,7 +75,7 @@ class RecipeCard extends HTMLElement {
         }
         .recipe-card-image {
           width: 100%;
-          height: 120px;
+          height: 180px;
           object-fit: cover;
         }
 
