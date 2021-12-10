@@ -5,7 +5,7 @@ import {
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
-let i = 6; // instructions counter
+let i = 1; // instructions counter
 let ingCount = 1; // Ingredient Counter
 
 function addStep() {
