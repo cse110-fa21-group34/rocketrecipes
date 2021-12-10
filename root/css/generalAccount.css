@@ -4,7 +4,7 @@
     justify-content: center;
     margin-left: 0%;
     margin-right: 0%;
-    margin-top: -20px;
+    margin-top: 0px;
     padding-bottom: 0;
     padding-top: 0;
   }
@@ -22,6 +22,9 @@
   main h1 {
     font-size: 3em;
   }
+  #myrecipes{
+    margin-bottom: 2%;
+}
 }
 
 @media only screen and (min-width: 700px) {
@@ -30,7 +33,7 @@
     width: 100%;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: -30px;
+    margin-top: 0px;
     padding-bottom: 0;
     padding-top: 0;
   }
@@ -44,6 +47,9 @@
     padding-bottom: 100px;
     padding-top: 0px;
   }
+  #myrecipes{
+    margin-bottom: 2%;
+    }
 }
 main {
     margin: 5% 32px 5% 0;
@@ -136,4 +142,8 @@ span {
 .foodPic {
     width: 90%;
     position: relative;
+}
+
+#myrecipes{
+    margin-bottom: 2%;
 }

@@ -90,7 +90,7 @@ class RecipeCard extends HTMLElement {
         pointer-events   : none;
         background-image : linear-gradient(to bottom, 
                           rgba(255,255,255, 0), 
-                          rgba(255,255,255, 1) 90%);
+                          #FEF2E6 90%);
         width    : 100%;
         height   : 15px;
       }
@@ -119,6 +119,7 @@ class RecipeCard extends HTMLElement {
       }
       .tag {
         border-radius: 12px;
+        border-color: #F9D5A7;
         height: 20px;
         display: flex;
         width: unset;
