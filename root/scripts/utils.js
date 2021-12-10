@@ -66,8 +66,10 @@ export async function getFavoriteRecipes() {
 
   const blankFavoritedRecipes = [];
   try {
-    localStorage.setItem(LOCAL_STORAGE_FAVORITED_RECIPES_KEY,
-      JSON.stringify(blankFavoritedRecipes));
+    localStorage.setItem(
+      LOCAL_STORAGE_FAVORITED_RECIPES_KEY,
+      JSON.stringify(blankFavoritedRecipes),
+    );
   } catch (e) {
     return false;
   }
@@ -311,4 +313,70 @@ export async function search(searchQuery, tags) {
     }
   }
   return Array.from(searchResults);
+}
+
+/**
+ * A helper function to check if a string is a valid link
+ * @param {String} link
+ * @returns {Boolean} true if the string is a link
+ */
+export function validURL(str) {
+  const pattern = new RegExp(
+    '^(https?:\\/\\/)?' // protocol
+      + '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' // domain name
+      + '((\\d{1,3}\\.){3}\\d{1,3}))' // OR ip (v4) address
+      + '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' // port and path
+      + '(\\?[;&a-z\\d%_.~+=-]*)?' // query string
+      + '(\\#[-a-z\\d_]*)?$',
+    'i',
+  ); // fragment locator
+  return !!pattern.test(str);
+}
+
+/**
+ * A helper function to validate form contents
+ * @param {Object} recipe recipe object to validate
+ * @returns {Object} object containing values for if the form is valid, and error messages otherwise
+ */
+export function validateForm(recipe) {
+  if (recipe.title === '' || recipe.summary === '') {
+    return { valid: false, errorMessage: 'Title is empty' };
+  }
+  if (recipe.summary === '') {
+    return { valid: false, errorMessage: 'Summary is empty' };
+  }
+  if (recipe.servings === '') {
+    return { valid: false, errorMessage: 'Servings field is empty' };
+  }
+  if (recipe.readyInMinutes === '') {
+    return { valid: false, errorMessage: 'Time field is empty' };
+  }
+  if (recipe.image !== '' && !validURL(recipe.image)) {
+    return { valid: false, errorMessage: 'Image is not a valid link' };
+  }
+
+  return { valid: true, errorMessage: '' };
+}
+
+/**
+ * A helper function to prune empty ingredients and steps from a recipe
+ * @param {Object} recipe recipe object to prune
+ * @returns {Object} recipe object without unneeded steps and ingredients
+ */
+export function trimRecipe(recipe) {
+  const adjustedRecipe = recipe;
+
+  const recipeIngredients = recipe.ingredients.filter(
+    (ing) => ing.name !== '' && ing.amount !== '',
+  );
+  const recipeSteps = recipe.steps.filter((s) => s.step !== '');
+
+  adjustedRecipe.ingredients = recipeIngredients;
+  adjustedRecipe.steps = recipeSteps;
+
+  // add default image if field is blank
+  if (adjustedRecipe.image === '') {
+    adjustedRecipe.image = 'https://media.istockphoto.com/photos/white-plate-wooden-table-tablecloth-rustic-wooden-clean-copy-freepik-picture-id1170315961?k=20&m=1170315961&s=612x612&w=0&h=nCCDMyt_1sMF3PdDurLw2pcTPgu7YBzjCaZO6z78CxE=';
+  }
+  return adjustedRecipe;
 }

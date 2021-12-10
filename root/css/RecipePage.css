@@ -8,6 +8,7 @@
 }
 
 .recipe-header {
+  width: 100%;
   max-width: 1100px;
   position: relative;
 
@@ -17,7 +18,12 @@
   column-gap: 30px;
   align-items: center;
 }
-
+.recipe-header-info {
+  height: 100%;
+  width: 100%;
+  /* display: flex;
+  flex-direction: column; */
+}
 .recipe-image {
   width: 300px;
   height: 300px;
@@ -132,7 +138,7 @@
   
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .recipe-header {
     display: flex;
     flex-direction: column;
@@ -188,7 +194,12 @@ ul li:not(:first-child) {
   border: none;
   cursor: pointer;
 }
-
+.rec{
+  margin-left: 105px;
+}
+.foodList{
+  margin-left: 90px;
+}
 footer {
   display: flex;
   flex-direction: column;
