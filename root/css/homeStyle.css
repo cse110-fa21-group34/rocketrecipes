@@ -43,7 +43,6 @@ footer {
 }
 .foostPart {
   margin-top: 3%;
-  /* background-color: aqua; */
   text-align: left;
   margin-bottom: 0px;
 }
@@ -57,30 +56,28 @@ footer {
   max-width: 1200px;
   padding-top: 0px;
 }
-.foodList h3{
+.foodList h3 {
   text-decoration: underline;
   margin-bottom:1px;
 }
-.foodList span{
-
-   margin-top: 4%;
+.foodList span {
+  margin-top: 4%;
   margin-bottom: 4%;
 }
-.foodList p{
+.foodList p {
   margin-bottom:1px;
   display:inline;
 }
-.foodList h4{
+.foodList h4 {
   display: inline;
   margin-left: 20%;
 }
-.foodList button{
+.foodList button {
   border-radius: 12px;
   margin-bottom:3px;
 }
 
 .foodList div {
-  /*border: 10px red solid;*/
   width: 20%;
   height: 400px;
   margin-right: 2%;

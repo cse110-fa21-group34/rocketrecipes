@@ -1,12 +1,11 @@
 @media only screen and (max-width: 700px) {
   .foodList {
-    /*border: 1px red solid;*/
     justify-content: center;
     margin-left: 0%;
     margin-right: 0%;
     margin-top: 0px;
-    padding-bottom: 0;
-    padding-top: 0;
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
 
   .FavoriteFood {
@@ -22,14 +21,13 @@
   main h1 {
     font-size: 3em;
   }
-  #myrecipes{
+  #myrecipes {
     margin-bottom: 2%;
-}
+  }
 }
 
 @media only screen and (min-width: 700px) {
   .foodList {
-    /*border: 1px red solid;*/
     width: 100%;
     margin-left: 10%;
     margin-right: 10%;
@@ -39,7 +37,6 @@
   }
 
   .FavoriteFood {
-    /*border: 1px red solid;*/
     width: 100%;
     margin-left: 10%;
     margin-right: 10%;
@@ -64,7 +61,7 @@ main {
     margin-bottom: 2%;
 }
 span {
-    margin-top: center;
+  margin-top: center;
 }
 .foodList h3{
     text-decoration: underline;
@@ -85,7 +82,6 @@ span {
 }
 
 .foodList div {
-    /*border: 10px red solid;*/
     width: 20%;
     height: 400px;
     margin-right: 2%;
