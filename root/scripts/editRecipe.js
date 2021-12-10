@@ -1,5 +1,7 @@
 /* eslint-disable import/extensions */
-import { getAllRecipes, readRecipe, updateRecipe } from './utils.js';
+import {
+  getAllRecipes, readRecipe, updateRecipe, validateForm, trimRecipe,
+} from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
@@ -174,8 +176,18 @@ async function init() {
       userGenRecipe.steps.push(currStep);
     }
 
-    await updateRecipe(userGenRecipe);
-    window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
+    // validate form, if it is valid then create recipe
+    const formValidateObject = validateForm(userGenRecipe);
+    if (formValidateObject.valid) {
+      const trimmedRecipe = trimRecipe(userGenRecipe);
+      await updateRecipe(trimmedRecipe);
+      window.location = `${window.location.origin}/root/html/RecipePage.html?id=${trimmedRecipe.id}`;
+    } else {
+      // eslint-disable-next-line no-alert
+      alert(
+        `Your recipe was not updated due to invalid inputs. \n\nError message: ${formValidateObject.errorMessage}`,
+      );
+    }
   });
 }
 

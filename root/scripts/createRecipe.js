@@ -1,13 +1,11 @@
 /* eslint-disable import/extensions */
 import {
-  getAllRecipes, createRecipe, createId,
+  getAllRecipes, createRecipe, createId, validateForm, trimRecipe,
 } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
-// const createRecipe = document.querySelector(document.getElementById('Create'));
-// const deleteRecipe = document.querySelector(document.getElementById('Delete'));
-let i = 1; // instructions counter
+let i = 6; // instructions counter
 let ingCount = 1; // Ingredient Counter
 
 function addStep() {
@@ -128,9 +126,18 @@ async function init() {
       currStep.step = document.getElementsByClassName('step')[k].value;
       userGenRecipe.steps.push(currStep);
     }
-
-    await createRecipe(userGenRecipe);
-    window.location = `${window.location.origin}/root/html/RecipePage.html?id=${userGenRecipe.id}`;
+    // validate form, if it is valid then create recipe
+    const formValidateObject = validateForm(userGenRecipe);
+    if (formValidateObject.valid) {
+      const trimmedRecipe = trimRecipe(userGenRecipe);
+      await createRecipe(trimmedRecipe);
+      window.location = `${window.location.origin}/root/html/RecipePage.html?id=${trimmedRecipe.id}`;
+    } else {
+      // eslint-disable-next-line no-alert
+      alert(
+        `Your recipe was not created due to invalid inputs. \n\nError message: ${formValidateObject.errorMessage}`,
+      );
+    }
   });
 }
 
