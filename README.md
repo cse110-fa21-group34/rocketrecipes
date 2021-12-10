@@ -1,7 +1,40 @@
 # Rocket Recipes
-### Where your palette will be blasting off to the moon, time and time again.
+### Where your palette will be blasting off to the moon, time and time again
 
 This is Team Rocket's (Team 34) project repository for Rocket Recipes, a web application that allows users to search and create recipes for their own personal culinary escapades. 
+
+Check out our website live [here](https://rocketrecipes.netlify.app/)!
+
+---
+## Features
+
+#### CRUD Features
+
+Our project includes all CRUD features, including creating a new recipe, reading and viewing recipes, updating and editing recipes, and deleting recipes all together.
+
+Creating a recipe can be done by clicking the "Create Recipe" button on the navbar. This feature is also accessible from the account page.
+
+Users can view recipes by clicking on a recipe card, which will redirect them to a page specialized to that recipe. Users can search for recipes on the home page and on the search page based on key words, as well as filter recipes with our predetermined set of filters. 
+
+Once the user is on a specific recipe, they can click the edit button that redirects them to the update recipe page, or decide to delete the recipe.
+
+#### Special Features
+
+One of the special features we've added is the ability for users to favorite recipes. This feature is available by clicking the star while they are viewing a specific recipe. Once the user has favorited a recipe, it will appear on their account page under the "Favorited Recipes" section. We chose to include this feature because, from our user-oriented research, we found that most chefs tend to find recipes they like and cook them over and over again. By favoriting a recipe, the user will be able to easily find the recipe again.
+
+Another special feature we added was the ability to scale a recipe. When looking at a specific recipe, the user can input a number with which to scale the recipe. This will scale the yield of the recipe, as well as the amount of each ingredient they will need to make it.
+
+One more special feature we decided to include in our project was the ability to share a recipe to social media. When looking at a specific recipe, the user will see a "network" button along with the other buttons. When clicked, it will expand and show buttons to share the recipe to Twitter, Facebook, Reddit, to email the recipe to another person, or to print the recipe.
+
+---
+
+## Repository Setup
+
+The repository can be accessed at https://github.com/cse110-fa21-group34/rocketrecipes. We follow a development model similar to GitFlow. Deployments are hosted on the ```deploy``` branch, and the primary branch for development is ```main```. 
+
+The repository is split up into various folders. The web application itself is inside ```root/```, while our documentation is in ```docs/``` and automated tests are in ```testing/```. Github Action workflows can be found at ```.github/```. Dependencies can be found in the ```package.json```. Other configuration files can also be found at ```/```. 
+
+When contributing to the project, one should first submit a pull request for the ```main``` branch. Then, there will be automated unit and end-to-end tests as well as a code quality tool to verify the quality of the pull request. Then, documentation will be automatically generated and a live deployment of the pull request will be created. After the pull request passes human review, it can be merged into ```main``` safely. After enough pull requests have been accumulated, a release will be made and the ```deployment``` branch will be updated.
 
 ---
 ## Testing

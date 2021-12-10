@@ -151,6 +151,19 @@ async function init() {
     fillRecipePage(currentRecipe);
   }
 
+  const shareButton = document.getElementById('shareButton');
+  const printSoloButton = document.getElementById('print-solo');
+  if (currentRecipe.isFromInternet) {
+    // show share buttons
+    shareButton.style.display = 'block';
+    printSoloButton.style.display = 'none';
+  } else {
+    // hide share buttons
+    shareButton.style.display = 'none';
+    // show replacement print button
+    printSoloButton.style.display = 'block';
+  }
+
   const deleteButton = document.getElementById('deleteButton');
   deleteButton.addEventListener('click', () => {
     deleteRecipe(recipeId);
@@ -160,14 +173,10 @@ async function init() {
   const editRecipeButton = document.getElementById('editButton');
 
   editRecipeButton.addEventListener('click', () => {
-    // document.cookie = `recipe=${recipeId}`;
-    // console.log(document.cookie);
-    // window.location.href = '../html/CreateRecipe.html';
     const currentUrl = window.location;
     window.location = `${currentUrl.origin}/root/html/editRecipe.html?id=${recipeId}`;
   });
 
-  const shareButton = document.getElementById('shareButton');
   shareButton.addEventListener('click', () => {
     const isShown = document.getElementById('shareContainer').style.display !== 'none';
     if (isShown) {
