@@ -1,3 +1,14 @@
+.back-button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  background: url('https://api.iconify.design/eva/arrow-back-outline.svg?color=%23111&height=40') no-repeat center center / contain;
+  cursor: pointer;
+}
+
 .recipe-container {
   display: flex;
   flex-direction: column;

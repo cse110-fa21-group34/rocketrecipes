@@ -177,6 +177,20 @@ async function init() {
       document.getElementById('shareContainer').style.display = 'flex';
     }
   });
+  const backButton = document.getElementById('back-button');
+  backButton.addEventListener('click', () => {
+    if (document.referrer === '') {
+      window.location.href = new URL(window.location.origin);
+      return;
+    }
+    const prevPage = new URL(document.referrer);
+    const currentPage = new URL(window.location);
+    if (prevPage.origin === currentPage.origin) {
+      window.history.back();
+    } else {
+      window.location.href = new URL(window.location.origin);
+    }
+  });
 
   // fetch four random recipes (except the currently displayed recipe) and
   // display at bottom of page
