@@ -218,3 +218,9 @@ footer {
   height: 100%;
   margin: 32px 5%;
 }
+
+#print-solo { 
+  background: url('https://api.iconify.design/bytesize/print.svg?color=%23c4c4c4&height=48') no-repeat center center / contain;
+  border: none;
+  cursor: pointer;
+}
