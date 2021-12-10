@@ -12,6 +12,7 @@ class Navbar extends HTMLElement {
     const style = document.createElement('style');
     style.innerHTML = `
         .navbar-container {
+            background-color: #C2FFD9;
             position: relative;
             display: flex;
             flex-direciton: row;
@@ -23,6 +24,9 @@ class Navbar extends HTMLElement {
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
             z-index: 1000;
         }
+        .navbar-container a{
+          background-color:  #C2FFD9;
+        }
         .navbar-image {
             text-decoration: none;
             width: 75px;
@@ -33,6 +37,7 @@ class Navbar extends HTMLElement {
             object-fit: cover;
         }
         .navbar-text-link {
+            background-color: #FFAB4C;
             display: flex;
             text-align: center;
             align-items: center;
@@ -46,7 +51,7 @@ class Navbar extends HTMLElement {
         }
         .navbar-text-link:hover {
             cursor: pointer;
-            background-color: #F0F0F0;
+            background-color: #98fbbe;
         }
         .mobile-navbar-expanded {
             position: absolute;
@@ -92,7 +97,7 @@ class Navbar extends HTMLElement {
     const navbarContainer = document.createElement('div');
     navbarContainer.innerHTML = `
         <a class="navbar-image" href="./index.html"> 
-            <img src="../media/teamLogo.png" width="75" height="75" > 
+            <img src="../media/teamLogo.png" width="68" height="68" > 
         </a>
         <div class="navbar-links-container-desktop"> 
             <a class="navbar-text-link" id="search" href="./searchpage.html">Search</a>

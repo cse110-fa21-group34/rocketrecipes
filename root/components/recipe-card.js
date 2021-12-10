@@ -34,14 +34,14 @@ class RecipeCard extends HTMLElement {
     card.classList.add('recipe-card');
 
     card.innerHTML = `
-        <span class="clickable-card">
+        <div class="clickable-card">
           <img src="../media/teamLogo.png" class="recipe-card-image">
           <div class="card-body">
             <h3></h3>
             <p></p>
             <span class="tag-container" />
           </div>
-        <span>
+        </div>
     `;
 
     style.innerHTML = `
@@ -67,11 +67,12 @@ class RecipeCard extends HTMLElement {
           position: relative;
           width: 250px;
           height: 320px;
-          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.35);
           border-radius: 20px;
           margin: 20px;
           overflow: hidden;
           cursor: pointer;
+          background-color: white;
         }
         .recipe-card-image {
           width: 100%;
@@ -90,7 +91,7 @@ class RecipeCard extends HTMLElement {
         pointer-events   : none;
         background-image : linear-gradient(to bottom, 
                           rgba(255,255,255, 0), 
-                          rgba(255,255,255, 1) 90%);
+                          #E3E3E3 90%);
         width    : 100%;
         height   : 15px;
       }
@@ -119,12 +120,14 @@ class RecipeCard extends HTMLElement {
       }
       .tag {
         border-radius: 12px;
+        border-color: #F9D5A7;
         height: 20px;
         display: flex;
         width: unset;
         margin-right: 5px;
         margin-bottom: 5px;
         cursor: pointer;
+        background-color: #F9D5A7
       }
     `;
     const titleElement = card.querySelector('h3');
