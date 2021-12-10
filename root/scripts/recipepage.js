@@ -154,7 +154,7 @@ async function init() {
   const deleteButton = document.getElementById('deleteButton');
   deleteButton.addEventListener('click', () => {
     deleteRecipe(recipeId);
-    window.location = `${window.location.origin}/root/html/homepage.html`;
+    window.location = `${window.location.origin}/root/html/index.html`;
   });
 
   const editRecipeButton = document.getElementById('editButton');
@@ -175,6 +175,20 @@ async function init() {
       deleteFavoriteRecipe(recipeId);
     } else {
       document.getElementById('shareContainer').style.display = 'flex';
+    }
+  });
+  const backButton = document.getElementById('back-button');
+  backButton.addEventListener('click', () => {
+    if (document.referrer === '') {
+      window.location.href = new URL(window.location.origin);
+      return;
+    }
+    const prevPage = new URL(document.referrer);
+    const currentPage = new URL(window.location);
+    if (prevPage.origin === currentPage.origin) {
+      window.history.back();
+    } else {
+      window.location.href = new URL(window.location.origin);
     }
   });
 

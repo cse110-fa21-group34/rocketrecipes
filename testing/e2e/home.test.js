@@ -17,7 +17,7 @@ beforeAll(async () => {
 
       describe('home page', () => {
         beforeAll(async () => {
-        await page.goto(`http://${rootUrl}/root/html/homepage.html`);
+        await page.goto(`http://${rootUrl}/root/html/index.html`);
       });
 
       it('should be titled Home page', async () => {
@@ -30,9 +30,9 @@ beforeAll(async () => {
         expect(headline).toBe('Rocket Recipes');
       });
 
-      it('should have 4 recommended recipes', async () => {
+      it('should have 8 recommended recipes', async () => {
         await page.waitForSelector('recipe-card');
         const recipes = await page.$$('recipe-card');
-        expect(recipes.length).toBe(4);
+        expect(recipes.length).toBe(8);
       });
 })

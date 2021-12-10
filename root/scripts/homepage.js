@@ -9,9 +9,10 @@ function createRecommendedRecipes() {
   // fetch div for recommended recipes
   const recommendedRecipeContainer = document.getElementById('recommendedRecipeContainer');
 
-  const randomNumber = Math.floor(Math.random() * (allRecipes.length - 5));
+  const numRecipes = 8;
+  const randomNumber = Math.floor(Math.random() * (allRecipes.length - numRecipes - 1));
 
-  for (let i = 0; i < 4; i += 1) {
+  for (let i = 0; i < numRecipes; i += 1) {
     const recipeCard = document.createElement('recipe-card');
     recipeCard.data = allRecipes[randomNumber + i];
 
