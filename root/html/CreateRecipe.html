@@ -57,32 +57,34 @@
         <div class="ingredSteps">
         </div>
 
-        <div>
-          <button id="addIngredient">Add Ingredient</button>
-          <button id="deleteIngredient">Delete Ingredient</button>
+        <div class="buttons">
+          <button class="recipeButton" id="addIngredient">Add Ingredient</button>
+          <button class="recipeButton" id="deleteIngredient">Delete Ingredient</button>
+        </div>
+
+        <h3 id="instruct">Instructions:</h3>
+        <div class="instructions">
+        </div>
+        <div class="buttons">
+          <button class="recipeButton" id="plus">Add Step</button>
+          <button class="recipeButton" id="Delete">Delete Step</button>
+        </div>
+
+        <form input="checkboxes" class="checkboxes">
+          <label class="container"><input id="cheap" name="Cheap" type="checkbox">Cheap</label>
+          <label class="container"><input id="vegetarian" name="Vegetarian" type="checkbox">Vegetarian</label>
+          <label class="container"><input id="vegan" name="Vegan" type="checkbox">Vegan</label>
+          <label class="container"><input id="glutenFree" name="Gluten Free" type="checkbox">Gluten Free</label>
+          <label class="container"><input id="dairyFree" name="Dairy Free" type="checkbox">Dairy Free</label>
+          <label class="container"><input id="quickEat" name="Quick Eat" type="checkbox">Quick Eat</label>
+          <label class="container"><input id="easy" name="Easy" type="checkbox">Easy</label>
+        </form>
+
+        <div class="create-recipe-button">
+          <button id="Create">Create Recipe</button>
         </div>
       </div>
-      <h3 id="instruct">Instructions:</h3>
-      <div class="instructions">
-      </div>
-      <div class="buttons">
-        <button id="plus">Add Step</button>
-        <button id="Delete">Delete Step</button>
-      </div>
-
-      <form input="checkboxes" class="checkboxes">
-        <label class="container"><input id="cheap" name="Cheap" type="checkbox">Cheap</label>
-        <label class="container"><input id="vegetarian" name="Vegetarian" type="checkbox">Vegetarian</label>
-        <label class="container"><input id="vegan" name="Vegan" type="checkbox">Vegan</label>
-        <label class="container"><input id="glutenFree" name="Gluten Free" type="checkbox">Gluten Free</label>
-        <label class="container"><input id="dairyFree" name="Dairy Free" type="checkbox">Dairy Free</label>
-        <label class="container"><input id="quickEat" name="Quick Eat" type="checkbox">Quick Eat</label>
-        <label class="container"><input id="easy" name="Easy" type="checkbox">Easy</label>
-      </form>
-
-      <div class="create-recipe-button">
-        <button id="Create">Create Recipe</button>
-      </div>
+      
     </main>
     <footer>
     </footer>

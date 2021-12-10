@@ -1,7 +1,5 @@
 /* eslint-disable import/extensions */
-import {
-  getAllRecipes, readRecipe, updateRecipe,
-} from './utils.js';
+import { getAllRecipes, readRecipe, updateRecipe } from './utils.js';
 /* eslint-disable prefer-destructuring */
 // const crypto = require('crypto');
 
