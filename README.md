@@ -5,6 +5,8 @@ This is Team Rocket's (Team 34) project repository for Rocket Recipes, a web app
 
 Check out our website live [here](https://rocketrecipes.netlify.app/)!
 
+If you are looking for our Private video, the link is [here](https://www.youtube.com/watch?v=MG4AHLxTytE)!
+
 ---
 ## Features
 
