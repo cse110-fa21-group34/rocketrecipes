@@ -1,4 +1,4 @@
-let rootUrl = '127.0.0.1:5501';
+let rootUrl = 'rocketrecipes.netlify.app';
 const pullRequestId = process.env.GITHUB_PR_NUMBER;
 
 beforeAll(async () => {
